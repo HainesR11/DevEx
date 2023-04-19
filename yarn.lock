@@ -1649,7 +1649,7 @@
   resolved "https://registry.npmjs.org/@react-native-firebase/analytics/-/analytics-16.7.0.tgz"
   integrity sha512-oLnmChS7w/iuGPiHDxVzxJy60pWD+HjhEGLRdENaEMrF2SA+AQtfJtqvZnGGKPecxZIhUID325xZLBuABIkeBQ==
 
-"@react-native-firebase/app@16.7", "@react-native-firebase/app@16.7.0":
+"@react-native-firebase/app@16.7.0":
   version "16.7.0"
   resolved "https://registry.npmjs.org/@react-native-firebase/app/-/app-16.7.0.tgz"
   integrity sha512-+CQodRrXZnT6iX2wAnTWbNKBZJco7MM6WcDTtf7koS7+D1jV6eCzjUgAZmG0G9WKzVV9uRuitkh1ZMve1982fg==
@@ -1658,7 +1658,7 @@
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/remote-config@16.7":
+"@react-native-firebase/remote-config@16.7.0":
   version "16.7.0"
   resolved "https://registry.npmjs.org/@react-native-firebase/remote-config/-/remote-config-16.7.0.tgz"
   integrity sha512-jsoaQM9F2/fOUIhIJNmX/8blMlDRwDLiDd07qNFFCTc00gFrR7VN9x81BDKiLNKMMo/0WcSMTrGHj/Pb41MoYA==
