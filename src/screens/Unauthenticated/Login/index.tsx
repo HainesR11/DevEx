@@ -1,10 +1,18 @@
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {Image, SafeAreaView, View} from 'react-native';
+import createStyles from './Login.styles';
 
 const Login = () => {
+  const styles = useThemedStyles(createStyles);
   return (
     <SafeAreaView>
-      <Text>Welcome to login Screen </Text>
+      <View style={styles.screenContainer}>
+        <Image
+          source={require('@DevEx/assets/DevEx(NoBackground).png')}
+          style={styles.imageBackground}
+        />
+      </View>
     </SafeAreaView>
   );
 };

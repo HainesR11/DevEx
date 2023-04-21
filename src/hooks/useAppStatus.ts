@@ -17,8 +17,8 @@ const useAppStatus = () => {
 
     if (maintenance) {
       setAppStatus('maintenanceMode');
-      // } else {
-      //   setAppStatus('launchApp');
+    } else {
+      setAppStatus('launchApp');
     }
   }, []);
 
