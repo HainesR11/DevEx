@@ -93,7 +93,7 @@ const theme = createTheme({
   breakpoints: {},
   buttons: {
     primary: {
-      background: colors.blue,
+      background: colors.lightBlue,
       foreground: colors.white,
     },
     secondary: {

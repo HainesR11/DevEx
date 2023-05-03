@@ -26,6 +26,7 @@ const colors = {
   purpleDark: '#505074',
   primaryDark: '#000CC4',
   blue: '#000FF5',
+  lightBlue: '#60A8DF',
   errorDark: '#B11212',
   criticalRed: '#C1481B',
   shadowGrey: '#C4C4C426',
