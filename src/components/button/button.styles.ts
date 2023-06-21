@@ -5,7 +5,17 @@ const {width, height} = Dimensions.get('screen');
 
 export const createStyles = (theme: Theme) =>
   StyleSheet.create({
-    button: {},
+    button: {
+      width: width - width / 4,
+      height: height / 20,
+      backgroundColor: theme.buttons.primary.background,
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      text: {
+        color: 'white',
+      },
+    },
     radio: {
       width: 19,
       height: 19,

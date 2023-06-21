@@ -1,3 +1,4 @@
+import colors from '@DevEx/utils/styles/palette/colors';
 import {Theme} from '@DevEx/utils/styles/theme';
 import {Dimensions, StyleSheet} from 'react-native';
 
@@ -13,11 +14,15 @@ export const createStyles = (theme: Theme) =>
       justifyContent: 'space-evenly',
       backgroundColor: theme.colors.grey10,
       borderRadius: 7,
-      padding: 10,
       marginBottom: 20,
       alignItems: 'center',
     },
     textInput: {
       width: width / 1.75,
+      height: '100%',
+    },
+    Error: {
+      borderWidth: 2,
+      borderColor: colors.criticalRed,
     },
   });
