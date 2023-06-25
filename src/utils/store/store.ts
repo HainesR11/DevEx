@@ -1,10 +1,3 @@
-import {USER_SLICE} from '@DevEx/constants/sliceConstant';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  combineReducers,
-  configureStore,
-  createListenerMiddleware,
-} from '@reduxjs/toolkit';
 import {
   FLUSH,
   PAUSE,
@@ -15,7 +8,14 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  combineReducers,
+  configureStore,
+  createListenerMiddleware,
+} from '@reduxjs/toolkit';
 
+import {USER_SLICE} from '@DevEx/constants/sliceConstant';
 import userReducer from '@DevEx/utils/store/userSlice/userSlice';
 
 const userPersistConfig = {

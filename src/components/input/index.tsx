@@ -1,6 +1,8 @@
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import React, {FC} from 'react';
-import {View, TextInput} from 'react-native';
+import {TextInput, View} from 'react-native';
+
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+
 import {createStyles} from './input.styles';
 
 type TInputProps = {
@@ -21,6 +23,8 @@ type TEmailIconInputProps = {
   secure?: boolean;
   onChange: (e: string) => void;
   valid: boolean;
+  isLoading: boolean;
+  value: string;
 };
 
 export const InputBox = ({placeholder, onChange}: TInputProps) => {
@@ -63,6 +67,8 @@ export const ValidIconInput = ({
   placeholder,
   onChange,
   secure,
+  isLoading,
+  value,
 }: TEmailIconInputProps) => {
   const styles = useThemedStyles(createStyles);
 
@@ -70,8 +76,10 @@ export const ValidIconInput = ({
     <View style={[styles.container, !valid && styles.Error]}>
       <Icon />
       <TextInput
+        editable={!isLoading}
+        value={value}
         secureTextEntry={secure}
-        style={styles.textInput}
+        style={[styles.textInput, isLoading && styles.loading]}
         placeholder={placeholder}
         onChangeText={onChange}
       />

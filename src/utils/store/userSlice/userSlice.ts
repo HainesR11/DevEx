@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+
 import {USER_SLICE} from '@DevEx/constants/sliceConstant';
 
 const initialState = {};

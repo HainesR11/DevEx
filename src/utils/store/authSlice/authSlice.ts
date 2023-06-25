@@ -1,7 +1,7 @@
-import {AUTH_SLICE} from '@DevEx/constants/sliceConstant';
-import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-
 import uuid from 'react-native-uuid';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+
+import {AUTH_SLICE} from '@DevEx/constants/sliceConstant';
 
 export interface EncryptedAuthState {
   tokens: any;

@@ -1,17 +1,21 @@
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import React, {FC, useEffect, useRef, useState} from 'react';
 import {
+  ActivityIndicator,
+  Animated,
   Pressable,
+  Text,
   TouchableOpacity,
   View,
-  Text,
-  Animated,
-  ActivityIndicator,
 } from 'react-native';
-import {createStyles} from './button.styles';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import theme from '@DevEx/utils/styles/theme';
+
+import LoadingSpinner from '../loadingSpinner/loadingSpinner';
+
+import {createStyles} from './button.styles';
 
 type TButtonProps = {
   styles?: any;
@@ -30,8 +34,11 @@ export const PrimaryButton = ({
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={{...style.button, ...styles}}>
-        <ActivityIndicator animating={isLoading} />
-        <Text style={style.button.text}>{title}</Text>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <Text style={style.button.text}>{title}</Text>
+        )}
       </View>
     </TouchableOpacity>
   );

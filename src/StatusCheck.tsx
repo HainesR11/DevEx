@@ -2,7 +2,6 @@ import React from 'react';
 import {SafeAreaView} from 'react-native';
 
 import useAppStatus from '@DevEx/hooks/useAppStatus';
-
 import {LoadingSpinner, Maintenance} from '@DevEx/screens';
 
 const AppStatusCheck = ({children}: {children: Element}) => {

@@ -1,21 +1,24 @@
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import React, {useState} from 'react';
-import {Image, SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
-import createStyles from './Login.styles';
+import {Buffer} from 'buffer';
+import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {ScreenStackHeaderConfigProps} from 'react-native-screens';
+import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useNavigation} from '@react-navigation/native';
+
 import {PrimaryButton} from '@DevEx/components';
 import {IconInput} from '@DevEx/components';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
-import {Buffer} from 'buffer';
 import {ValidIconInput} from '@DevEx/components/input';
-import {useNavigation} from '@react-navigation/native';
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {TUnauthNavParams} from '@DevEx/screens/RootNavigation';
+
 import {FnEmailValidator, FnPasswordCheck} from './validators/loginValidators';
 
-const passwordValidLogic = (email: boolean, password: boolean) => {
+import createStyles from './Login.styles';
+
+const passwordValidLogic = (password: string) => {
   switch (password) {
-    case email:
-    case password:
+    case 'password':
       return true;
     default:
       return false;
@@ -35,11 +38,15 @@ const Login = () => {
 
   const navigation = useNavigation<TUnauthNavParams>();
 
-  const onPressLogin = () => {
+  const onPressLogin = async () => {
+    setLoading(true);
     // Testing encoding - will later impement into onLogin Function
     // const decode = Buffer.from(password, 'base64').toString('utf8');
+
     FnEmailValidator(email, setEmailValid);
-    !!emailValid && FnPasswordCheck(password, emailValid, setPasswordValid);
+    FnPasswordCheck(password, emailValid, setPasswordValid);
+    // !!emailValid && passwordValidLogic(password);
+    setLoading(false);
   };
 
   return (
@@ -57,6 +64,8 @@ const Login = () => {
             <Text style={styles.invalidText}>Invalid Password</Text>
           )}
           <ValidIconInput
+            isLoading={loading}
+            value={email}
             placeholder="Email"
             valid={emailValid}
             onChange={e => {
@@ -71,6 +80,8 @@ const Login = () => {
             )}
           />
           <ValidIconInput
+            value={password}
+            isLoading={loading}
             placeholder="Password"
             valid={passwordValid}
             onChange={e =>
@@ -90,6 +101,7 @@ const Login = () => {
         <View>
           <PrimaryButton
             title="LOGIN"
+            isLoading={loading}
             styles={styles.button}
             onPress={onPressLogin}
           />

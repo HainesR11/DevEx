@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
-import {createStyles} from './ForgotPassword.styles';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useNavigation} from '@react-navigation/native';
-import {TUnauthNavParams} from '@DevEx/screens/RootNavigation';
-import {InputBox} from '@DevEx/components/input';
+
 import {PrimaryButton} from '@DevEx/components';
+import {InputBox} from '@DevEx/components/input';
 import {codeSentString} from '@DevEx/constants';
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {TUnauthNavParams} from '@DevEx/screens/RootNavigation';
+
+import {createStyles} from './ForgotPassword.styles';
 
 type Email = string;
 

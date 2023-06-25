@@ -1,3 +1,3 @@
 export {defaults as firebaseDefaults} from './firebase';
-export {USER_SLICE, AUTH_SLICE} from './sliceConstant';
+export {AUTH_SLICE, USER_SLICE} from './sliceConstant';
 export {codeSentString} from './Unauthenticated';

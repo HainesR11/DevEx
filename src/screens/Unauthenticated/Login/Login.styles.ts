@@ -1,7 +1,8 @@
+import {Dimensions, StyleSheet} from 'react-native';
+import {color} from '@shopify/restyle';
+
 import colors from '@DevEx/utils/styles/palette/colors';
 import {Theme} from '@DevEx/utils/styles/theme';
-import {color} from '@shopify/restyle';
-import {Dimensions, StyleSheet} from 'react-native';
 
 const {width, height} = Dimensions.get('screen');
 

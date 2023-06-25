@@ -1,5 +1,6 @@
-import {Theme} from '@DevEx/utils/styles/theme';
 import {Dimensions, StyleSheet} from 'react-native';
+
+import {Theme} from '@DevEx/utils/styles/theme';
 
 const {width, height} = Dimensions.get('screen');
 

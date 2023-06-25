@@ -1,6 +1,7 @@
+import {Dimensions, StyleSheet} from 'react-native';
+
 import colors from '@DevEx/utils/styles/palette/colors';
 import {Theme} from '@DevEx/utils/styles/theme';
-import {Dimensions, StyleSheet} from 'react-native';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -24,5 +25,8 @@ export const createStyles = (theme: Theme) =>
     Error: {
       borderWidth: 2,
       borderColor: colors.criticalRed,
+    },
+    loading: {
+      color: colors.lightGrey,
     },
   });

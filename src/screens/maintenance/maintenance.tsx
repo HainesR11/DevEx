@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, SafeAreaView, Text} from 'react-native';
-import createStyles from './maintenance.styles';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {SafeAreaView, Text, View} from 'react-native';
 import {faGears} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import theme from '@DevEx/utils/styles/theme';
+
+import createStyles from './maintenance.styles';
 
 const Maintenance = () => {
   const styles = useThemedStyles(createStyles);

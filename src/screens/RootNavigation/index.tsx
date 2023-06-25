@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  StackNavigationProp,
   createStackNavigator,
+  StackNavigationProp,
 } from '@react-navigation/stack';
 
-import {Login, ForgotPassword} from '@DevEx/screens/Unauthenticated';
+import {ForgotPassword, Login} from '@DevEx/screens/Unauthenticated';
 
 import 'react-native-gesture-handler';
 

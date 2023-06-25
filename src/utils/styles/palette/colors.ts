@@ -21,6 +21,7 @@ const primaryColors = {
 };
 
 const colors = {
+  lightGrey: '#a9a9a9',
   purpleLight: '#7D7CA3',
   purplePrimary: '#000FF5',
   purpleDark: '#505074',
