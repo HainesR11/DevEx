@@ -4,32 +4,23 @@ import {
   StackNavigationProp,
 } from '@react-navigation/stack';
 
-import {ForgotPassword, Login} from '@DevEx/screens/Unauthenticated';
-
 import 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
+import { RootState } from '@DevEx/utils/store/store';
+import Home from '../Authenticated/Home';
 
-type TUnauthenticatedScreenParams = {
-  Login: undefined;
-  CreateAccount: undefined;
-  ForgotPassword: undefined;
-};
+type TAuthenticatedScreenParams = {
+  Home: undefined
+}
 
-export type TUnauthNavParams =
-  StackNavigationProp<TUnauthenticatedScreenParams>;
-
-const UnauthStack = createStackNavigator<TUnauthenticatedScreenParams>();
+const AuthStack = createStackNavigator<TAuthenticatedScreenParams>();
 
 const RootNavigation = () => {
   return (
-    <UnauthStack.Navigator
-      initialRouteName="Login"
-      screenOptions={{
-        headerShown: false,
-      }}>
-      <UnauthStack.Screen name="Login" component={Login} />
-      <UnauthStack.Screen name="ForgotPassword" component={ForgotPassword} />
-    </UnauthStack.Navigator>
-  );
+      <AuthStack.Navigator>
+        <AuthStack.Screen name='Home' component={Home}/>
+      </AuthStack.Navigator>
+    )
 };
 
 export default RootNavigation;

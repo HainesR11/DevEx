@@ -21,7 +21,7 @@ type TButtonProps = {
   styles?: any;
   title: string;
   isLoading?: boolean;
-  onPress: () => void | FC;
+  onPress: () => void;
 };
 
 export const PrimaryButton = ({

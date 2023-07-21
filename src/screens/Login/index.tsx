@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Buffer} from 'buffer';
 import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {ScreenStackHeaderConfigProps} from 'react-native-screens';
@@ -11,6 +11,8 @@ import {IconInput} from '@DevEx/components';
 import {ValidIconInput} from '@DevEx/components/input';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {TUnauthNavParams} from '@DevEx/screens/RootNavigation';
+import { setAuth } from '@DevEx/utils/store/authSlice/authSlice';
+import { setUser } from '@DevEx/utils/store/userSlice/userSlice';
 
 import {FnEmailValidator, FnPasswordCheck} from './validators/loginValidators';
 
@@ -48,6 +50,12 @@ const Login = () => {
     // !!emailValid && passwordValidLogic(password);
     setLoading(false);
   };
+
+  useEffect(() => {
+    if(emailValid && passwordValid){
+      setUser({isAuthenticated: true})
+    }
+  }, [emailValid, passwordValid])
 
   return (
     <SafeAreaView style={styles.screenContainer}>

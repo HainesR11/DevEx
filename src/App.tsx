@@ -10,6 +10,7 @@ import {persist, store} from '@DevEx/utils/store/store';
 import AppStatusCheck from './StatusCheck';
 import RootNavigation from './screens/RootNavigation';
 import theme from './utils/styles/theme';
+import OnboardingWrapper from './components/OnboardingWrapper/OnboardingWrapper';
 
 const App = () => {
   return (
@@ -20,9 +21,11 @@ const App = () => {
       <Provider store={store}>
         <AppStatusCheck>
           <PersistGate persistor={persist}>
-            <NavigationContainer>
-              <RootNavigation />
-            </NavigationContainer>
+            <OnboardingWrapper>
+              <NavigationContainer>
+                <RootNavigation />
+              </NavigationContainer>
+            </OnboardingWrapper>
           </PersistGate>
         </AppStatusCheck>
       </Provider>

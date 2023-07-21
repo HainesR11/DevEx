@@ -15,18 +15,28 @@ import {
   createListenerMiddleware,
 } from '@reduxjs/toolkit';
 
-import {USER_SLICE} from '@DevEx/constants/sliceConstant';
+import {AUTH_SLICE, USER_SLICE} from '@DevEx/constants/sliceConstant';
 import userReducer from '@DevEx/utils/store/userSlice/userSlice';
+import authReducer from '@DevEx/utils/store/authSlice/authSlice'
+import { createKeychainStorage } from './Keychain';
+
+const keychain = createKeychainStorage()
 
 const userPersistConfig = {
   key: USER_SLICE,
   storage: AsyncStorage,
 };
 
+const authPersistConfig = {
+  key: AUTH_SLICE,
+  storage: keychain
+}
+
 const listenerMiddleware = createListenerMiddleware();
 
 const reducers = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
+  auth: persistReducer(authPersistConfig, authReducer)
 });
 
 export const store = configureStore({

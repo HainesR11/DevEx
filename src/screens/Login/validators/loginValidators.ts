@@ -19,8 +19,7 @@ export const FnPasswordCheck = (
   emailValid: boolean,
   onSuccess: (value: boolean) => void,
 ) => {
-  console.log(passwordText === 'test', 'testing password fn');
-  //Will call back end to check passwird matches
+  //Will call back end to check password matches
   if (emailValid) {
     if (passwordText === 'test') {
       onSuccess(true);
