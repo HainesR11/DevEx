@@ -8,9 +8,9 @@ import {ThemeProvider} from '@shopify/restyle';
 import {persist, store} from '@DevEx/utils/store/store';
 
 import AppStatusCheck from './StatusCheck';
-import RootNavigation from './screens/RootNavigation';
-import theme from './utils/styles/theme';
 import OnboardingWrapper from './components/OnboardingWrapper/OnboardingWrapper';
+import LaunchNavigator from './navigators/RootNavigation/LaunchNavigator';
+import theme from './utils/styles/theme';
 
 const App = () => {
   return (
@@ -23,7 +23,7 @@ const App = () => {
           <PersistGate persistor={persist}>
             <OnboardingWrapper>
               <NavigationContainer>
-                <RootNavigation />
+                <LaunchNavigator />
               </NavigationContainer>
             </OnboardingWrapper>
           </PersistGate>

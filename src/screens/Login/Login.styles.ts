@@ -8,6 +8,7 @@ const {width, height} = Dimensions.get('screen');
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
+    // Modal view
     screenContainer: {
       height: height - height / 10,
       display: 'flex',
@@ -49,5 +50,18 @@ const createStyles = (theme: Theme) =>
       paddingBottom: 10,
       color: theme.colors.errorDark,
     },
+
+    //Main login screen
+    viewContainer: {
+      paddingTop: theme.spacing.m,
+      height: '100%',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    loginButtonContainer: {
+      padding: theme.spacing.m,
+      justifyContent: 'flex-end',
+    },
   });
+
 export default createStyles;

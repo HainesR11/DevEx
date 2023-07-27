@@ -4,40 +4,11 @@ import colors from './palette/colors';
 import padding from './spacing/padding';
 
 export const gradients = {
-  skyPrimaryGradient: ['#FF9E00', '#FF0000', '#B5007D', '#21429C', '#0071FF'],
-  skyErrorGradient: ['#C40000', '#C40000'],
-  tvPrimaryGradient: ['#000FF5', '#00D2FF'],
-  bbPrimaryGradient: ['#FF00A5', '#6E00FF'],
+  devexMainGradient: ['000FF5','#000000'],
   vipSilverGradient: ['#708186', '#A1ACB2'],
   vipGoldGradient: ['#C88B2E', '#E6BB63'],
   vipPlatinumGradient: ['#6E6C89', '#8D8DBE'],
   vipDiamondGradient: ['#191919', '#474747'],
-  mobilePrimaryGradient: ['#FF6400', '#FF0A50', '#FF00A5'],
-  productPrimaryGradient: ['#21429C', '#B5007D'],
-  greyGradientStripe: ['#C4C4C400', '#F9F9F9', '#C4C4C400'],
-  greyGradient: ['#C4C4C4ff', '#00000000'],
-  primaryButton: ['rgba(0, 15, 245, 0.8)', 'rgba(0, 15, 245, 1)'],
-  primaryDisabledButton: ['rgba(74, 74, 74, 0.8)', 'rgba(74, 74, 74, 1)'],
-  mobilePrimary: ['#FF6400', '#FF00A5'],
-  broadbandPrimary: ['#FF00A5', '#6E00FF'],
-  skySpinnerGradient: [
-    '#C4C4C4',
-    '#FF9E00',
-    '#FF0000',
-    '#B5007D',
-    '#21429C',
-    '#0071FF',
-  ],
-  skySpinnerNonGradientPrimary: ['#FFF', '#FFF', '#FFF', '#FFFFFF00'],
-  skySpinnerNonGradientSecondary: [
-    '#000FF5',
-    '#000FF5',
-    '#000FF5',
-    '#000FF500',
-  ],
-  none: ['#fafafa', '#fafafa'],
-  broadbandDowntime: ['#1F232E', '#3D4D79'],
-  skyProtect: ['#E6222D', '#FF5C00', '#EA4F31', '#F08125', '#F3901A'],
 };
 
 const theme = createTheme({

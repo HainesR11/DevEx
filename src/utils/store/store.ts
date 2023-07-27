@@ -16,11 +16,12 @@ import {
 } from '@reduxjs/toolkit';
 
 import {AUTH_SLICE, USER_SLICE} from '@DevEx/constants/sliceConstant';
+import authReducer from '@DevEx/utils/store/authSlice/authSlice';
 import userReducer from '@DevEx/utils/store/userSlice/userSlice';
-import authReducer from '@DevEx/utils/store/authSlice/authSlice'
-import { createKeychainStorage } from './Keychain';
 
-const keychain = createKeychainStorage()
+import {createKeychainStorage} from './Keychain';
+
+const keychain = createKeychainStorage();
 
 const userPersistConfig = {
   key: USER_SLICE,
@@ -29,14 +30,14 @@ const userPersistConfig = {
 
 const authPersistConfig = {
   key: AUTH_SLICE,
-  storage: keychain
-}
+  storage: keychain,
+};
 
 const listenerMiddleware = createListenerMiddleware();
 
 const reducers = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
-  auth: persistReducer(authPersistConfig, authReducer)
+  auth: persistReducer(authPersistConfig, authReducer),
 });
 
 export const store = configureStore({

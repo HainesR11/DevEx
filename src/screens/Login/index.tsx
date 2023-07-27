@@ -1,44 +1,36 @@
 import React, {useEffect, useState} from 'react';
 import {Buffer} from 'buffer';
-import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
-import {ScreenStackHeaderConfigProps} from 'react-native-screens';
+import {
+  Image,
+  Modal,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useNavigation} from '@react-navigation/native';
 
 import {PrimaryButton} from '@DevEx/components';
-import {IconInput} from '@DevEx/components';
 import {ValidIconInput} from '@DevEx/components/input';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {TUnauthNavParams} from '@DevEx/screens/RootNavigation';
-import { setAuth } from '@DevEx/utils/store/authSlice/authSlice';
-import { setUser } from '@DevEx/utils/store/userSlice/userSlice';
+import {setUser} from '@DevEx/utils/store/userSlice/userSlice';
 
 import {FnEmailValidator, FnPasswordCheck} from './validators/loginValidators';
 
 import createStyles from './Login.styles';
+import { useDispatch } from 'react-redux';
 
-const passwordValidLogic = (password: string) => {
-  switch (password) {
-    case 'password':
-      return true;
-    default:
-      return false;
-  }
-  //passwordValidLogic(emailValid, passwordValid)
-};
-
-const Login = () => {
+const LoginForm = () => {
   const styles = useThemedStyles(createStyles);
 
   const [email, setEmail] = useState<string>('');
+  const dispatch = useDispatch()
   const [password, setPassword] = useState<string>('');
 
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
   const [loading, setLoading] = useState<boolean>(false);
-
-  const navigation = useNavigation<TUnauthNavParams>();
 
   const onPressLogin = async () => {
     setLoading(true);
@@ -52,10 +44,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if(emailValid && passwordValid){
-      setUser({isAuthenticated: true})
+    if (emailValid && passwordValid) {
+      dispatch(setUser({isAuthenticated: true}));
     }
-  }, [emailValid, passwordValid])
+  }, [emailValid, passwordValid]);
 
   return (
     <SafeAreaView style={styles.screenContainer}>
@@ -101,8 +93,7 @@ const Login = () => {
               <FontAwesomeIcon style={styles.icon} size={20} icon={faLock} />
             )}
           />
-          <TouchableOpacity
-            onPress={() => navigation.navigate('ForgotPassword')}>
+          <TouchableOpacity onPress={() => {}}>
             <Text style={styles.text}>Forgot password?</Text>
           </TouchableOpacity>
         </View>
@@ -119,4 +110,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

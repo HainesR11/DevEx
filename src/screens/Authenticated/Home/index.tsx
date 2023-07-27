@@ -1,10 +1,10 @@
-import { SafeAreaView, Text } from "react-native"
+import {SafeAreaView, Text} from 'react-native';
 
 const Home = () => {
-    return(
-        <SafeAreaView>
-            <Text>Home Page</Text>
-        </SafeAreaView>
-    )
-}
-export default Home
+  return (
+    <SafeAreaView>
+      <Text>Home Page</Text>
+    </SafeAreaView>
+  );
+};
+export default Home;
