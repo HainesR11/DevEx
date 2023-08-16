@@ -10,7 +10,7 @@ const createStyles = (theme: Theme) =>
   StyleSheet.create({
     // Modal view
     screenContainer: {
-      height: height - height / 10,
+      // height: height - height / 10,
       display: 'flex',
       justifyContent: 'center',
     },
@@ -19,7 +19,6 @@ const createStyles = (theme: Theme) =>
       height: height - height / 5,
       alignItems: 'center',
       paddingHorizontal: theme.spacing.m,
-      justifyContent: 'space-between',
     },
     imageBackground: {
       width: height / 4,

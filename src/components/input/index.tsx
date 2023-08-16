@@ -4,6 +4,8 @@ import {TextInput, View} from 'react-native';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 
 import {createStyles} from './input.styles';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 type TInputProps = {
   placeholder: string;
@@ -11,20 +13,20 @@ type TInputProps = {
 };
 
 type TIconInputProps = {
-  Icon: FC;
+  icon: IconProp;
   placeholder: string;
   secure?: boolean;
   onChange: (e: string) => void;
 };
 
 type TEmailIconInputProps = {
-  Icon: FC;
+  icon: IconProp;
   placeholder: string;
   secure?: boolean;
   onChange: (e: string) => void;
   valid: boolean | undefined;
   isLoading: boolean;
-  value: string;
+  value?: string;
 };
 
 export const InputBox = ({placeholder, onChange}: TInputProps) => {
@@ -41,7 +43,7 @@ export const InputBox = ({placeholder, onChange}: TInputProps) => {
 };
 
 export const IconInput = ({
-  Icon,
+  icon,
   placeholder,
   secure = false,
   onChange,
@@ -50,7 +52,7 @@ export const IconInput = ({
 
   return (
     <View style={{...styles.container}}>
-      <Icon />
+      <FontAwesomeIcon icon={icon}/>
       <TextInput
         style={styles.textInput}
         secureTextEntry={secure}
@@ -63,21 +65,19 @@ export const IconInput = ({
 
 export const ValidIconInput = ({
   valid,
-  Icon,
+  icon,
   placeholder,
   onChange,
   secure,
-  isLoading,
-  value,
+  isLoading
 }: TEmailIconInputProps) => {
   const styles = useThemedStyles(createStyles);
 
   return (
     <View style={[styles.container, valid === false && styles.Error]}>
-      <Icon />
+      <FontAwesomeIcon icon={icon}/>
       <TextInput
         editable={!isLoading}
-        value={value}
         secureTextEntry={secure}
         style={[styles.textInput, isLoading && styles.loading]}
         placeholder={placeholder}

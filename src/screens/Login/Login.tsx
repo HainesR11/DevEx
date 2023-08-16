@@ -1,5 +1,5 @@
 import LoginForm from '.';
-import {SafeAreaView, Modal, Text, View} from 'react-native';
+import {SafeAreaView, Modal, Text, View, Image} from 'react-native';
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '@DevEx/utils/store/store';
@@ -8,6 +8,7 @@ import createStyles from './Login.styles';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {strings} from '@DevEx/constants/stings';
 import GradientText from '@DevEx/components/Text/text';
+import {Logo} from '@DevEx/assets';
 
 const Login = () => {
   const styles = useThemedStyles(createStyles);
@@ -15,9 +16,7 @@ const Login = () => {
   const [loginVisible, setLoginVisible] = useState<boolean>(false);
   const {isAuthenticated} = useSelector((state: RootState) => state.user);
 
-  const style = {
-    
-  }
+  const style = {};
 
   return (
     <SafeAreaView>
@@ -32,7 +31,16 @@ const Login = () => {
       </Modal>
       {!isAuthenticated && (
         <View style={styles.viewContainer}>
-          <GradientText testID='LoginGradientText' textStyle={{fontSize: 25}} lineHeight={40} text={"Welcome, Lets get you set up"} gradientStyle='devexMainGradient'/>
+          <>
+            <GradientText
+              testID="LoginGradientText"
+              textStyle={{fontSize: 25}}
+              lineHeight={40}
+              text={'Welcome, Lets get you set up'}
+              gradientStyle="devexMainGradient"
+            />
+            <Image source={Logo} style={styles.imageBackground} />
+          </>
           <View style={styles.loginButtonContainer}>
             <PrimaryButton
               title="Continue"
