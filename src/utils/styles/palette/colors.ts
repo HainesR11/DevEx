@@ -21,6 +21,10 @@ const primaryColors = {
 };
 
 const colors = {
+  red: '#E73711',
+  darkGreen: '#086300',
+  lightGreen: '#15ff00',
+  green: '#33912a',
   lightGrey: '#a9a9a9',
   purpleLight: '#7D7CA3',
   purplePrimary: '#000FF5',
@@ -38,7 +42,7 @@ const colors = {
 
   ...primaryColors,
   ...greyScale,
-  //XFI
+
   passwordWeak: '#C40000',
   passwordMedium: '#FF9E00',
   passwordStrong: '#16AC2E',

@@ -28,8 +28,8 @@ const LoginForm = () => {
   const dispatch = useDispatch()
   const [password, setPassword] = useState<string>('');
 
-  const [emailValid, setEmailValid] = useState(true);
-  const [passwordValid, setPasswordValid] = useState(true);
+  const [emailValid, setEmailValid] = useState<boolean | undefined>();
+  const [passwordValid, setPasswordValid] = useState<boolean | undefined>();
   const [loading, setLoading] = useState<boolean>(false);
 
   const onPressLogin = async () => {
@@ -41,26 +41,23 @@ const LoginForm = () => {
     FnPasswordCheck(password, emailValid, setPasswordValid);
     // !!emailValid && passwordValidLogic(password);
     setLoading(false);
-  };
-
-  useEffect(() => {
     if (emailValid && passwordValid) {
       dispatch(setUser({isAuthenticated: true}));
     }
-  }, [emailValid, passwordValid]);
+  };
 
   return (
     <SafeAreaView style={styles.screenContainer}>
       <View style={styles.container}>
         <Image
-          source={require('@DevEx/assets/DevExLogo.png')}
+          source={require('@DevEx/assets/DevExIcon.png')}
           style={styles.imageBackground}
         />
         <View>
-          {!emailValid && (
+          {emailValid === false && (
             <Text style={styles.invalidText}>Please enter a valid Email</Text>
           )}
-          {emailValid && !passwordValid && (
+          {(emailValid && passwordValid === false) && (
             <Text style={styles.invalidText}>Invalid Password</Text>
           )}
           <ValidIconInput

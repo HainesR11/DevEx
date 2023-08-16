@@ -16,7 +16,7 @@ export const FnEmailValidator = (
 
 export const FnPasswordCheck = (
   passwordText: string,
-  emailValid: boolean,
+  emailValid: boolean | undefined,
   onSuccess: (value: boolean) => void,
 ) => {
   //Will call back end to check password matches

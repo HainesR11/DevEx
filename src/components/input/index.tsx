@@ -22,7 +22,7 @@ type TEmailIconInputProps = {
   placeholder: string;
   secure?: boolean;
   onChange: (e: string) => void;
-  valid: boolean;
+  valid: boolean | undefined;
   isLoading: boolean;
   value: string;
 };
@@ -73,7 +73,7 @@ export const ValidIconInput = ({
   const styles = useThemedStyles(createStyles);
 
   return (
-    <View style={[styles.container, !valid && styles.Error]}>
+    <View style={[styles.container, valid === false && styles.Error]}>
       <Icon />
       <TextInput
         editable={!isLoading}

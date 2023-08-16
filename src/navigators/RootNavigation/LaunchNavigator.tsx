@@ -4,18 +4,18 @@ import {
 } from '@react-navigation/stack';
 
 import 'react-native-gesture-handler';
-import HomeNavigator from '../home/HomeNavigator';
+import {TabNavigator} from '../index'
 
 type TAuthenticatedScreenParams = {
-  HomeNavigator: undefined;
+  TabNavigator: undefined;
 };
 
 const AuthStack = createStackNavigator<TAuthenticatedScreenParams>();
 
 const LaunchNavigator = () => {
   return (
-    <AuthStack.Navigator initialRouteName='HomeNavigator' screenOptions={{headerShown: false}}>
-      <AuthStack.Screen name="HomeNavigator" component={HomeNavigator} />
+    <AuthStack.Navigator initialRouteName='TabNavigator' screenOptions={{headerShown: false}}>
+      <AuthStack.Screen name="TabNavigator" component={TabNavigator} />
     </AuthStack.Navigator>
   );
 };

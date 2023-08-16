@@ -4,7 +4,7 @@ import colors from './palette/colors';
 import padding from './spacing/padding';
 
 export const gradients = {
-  devexMainGradient: ['000FF5','#000000'],
+  devexMainGradient: [ colors.blue, colors.red],
   vipSilverGradient: ['#708186', '#A1ACB2'],
   vipGoldGradient: ['#C88B2E', '#E6BB63'],
   vipPlatinumGradient: ['#6E6C89', '#8D8DBE'],
@@ -40,11 +40,6 @@ const theme = createTheme({
     rewardsOrange: colors.orange,
     informationTileBackground: colors.grey10,
     primaryNumber: colors.blue,
-    vipGold: gradients.vipGoldGradient[0],
-    vipSilver: gradients.vipSilverGradient[0],
-    vipPlatinum: gradients.vipPlatinumGradient[0],
-    vipDiamond: gradients.vipDiamondGradient[0],
-    //XFI
     passwordGrey: colors.grey80,
     passwordWeak: colors.passwordWeak,
     passwordMedium: colors.passwordMedium,
