@@ -1,21 +1,41 @@
+import React from 'react';
+import {
+  StyleProp,
+  Text as RNText,
+  TextStyle,
+  View,
+  ViewStyle,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {StyleProp, Text, TextStyle, View, ViewStyle} from 'react-native';
-import theme, {gradients} from '@DevEx/utils/styles/theme';
-import createStyles from './text.styles';
 import MaskedView from '@react-native-masked-view/masked-view';
 
-type TGradienttext = {
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {gradients} from '@DevEx/utils/styles/theme';
+
+import createStyles from './text.styles';
+
+type TGradientTextProps = {
   text: string;
   gradientStyle: keyof typeof gradients;
   testID: string;
   textAlign?: 'left' | 'center' | 'right';
   lineHeight?: number;
-  textStyle?: TextStyle
-  bold?: boolean
+  textStyle?: TextStyle;
+  bold?: boolean;
   style?: ViewStyle | TextStyle;
 };
 
-const GradientText = ({
+type TTextProps = {
+  text: string;
+  testId: string;
+  textStyle?: TextStyle;
+  bold?: boolean;
+  italic?: boolean;
+  onPress?: () => void;
+  VMargin?: number;
+};
+
+export const GradientText = ({
   text,
   testID,
   textAlign = 'left',
@@ -24,8 +44,8 @@ const GradientText = ({
   bold,
   lineHeight,
   style = {},
-}: TGradienttext) => {
-  const styles = createStyles(theme);
+}: TGradientTextProps) => {
+  const styles = useThemedStyles(createStyles);
 
   const additionalTextStyles = (maskStyle: StyleProp<TextStyle>) => {
     const textStyles = [maskStyle];
@@ -37,9 +57,14 @@ const GradientText = ({
   };
 
   const textComponent = (maskStyle: StyleProp<TextStyle>) => (
-    <Text style={[additionalTextStyles(maskStyle), textStyle, bold && {fontWeight: "bold"}]}>
+    <RNText
+      style={[
+        additionalTextStyles(maskStyle),
+        textStyle,
+        bold && {fontWeight: 'bold'},
+      ]}>
       {text}
-    </Text>
+    </RNText>
   );
   return (
     <View testID={testID} style={[styles.container, style, styles[textAlign]]}>
@@ -55,4 +80,29 @@ const GradientText = ({
   );
 };
 
-export default GradientText;
+export const Text = ({
+  text,
+  bold = false,
+  testId,
+  textStyle,
+  italic,
+  onPress,
+  VMargin,
+  ...props
+}: TTextProps) => {
+  const styles = useThemedStyles(createStyles);
+  return (
+    <RNText
+      testID={testId}
+      onPress={onPress}
+      {...props}
+      style={[
+        bold && styles.bold,
+        italic && styles.italic,
+        textStyle,
+        {marginVertical: VMargin},
+      ]}>
+      {text}
+    </RNText>
+  );
+};

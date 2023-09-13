@@ -9,7 +9,6 @@ import {PrimaryButton} from '@DevEx/components';
 import {InputBox} from '@DevEx/components/input';
 import {codeSentString} from '@DevEx/constants';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {TUnauthNavParams} from '@DevEx/navigators/RootNavigation/LaunchNavigator';
 
 import {createStyles} from './ForgotPassword.styles';
 
@@ -21,7 +20,7 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState<Email>('');
   const [confirmed, setConfirmed] = useState<boolean>(false);
 
-  const navigation = useNavigation<TUnauthNavParams>();
+  const navigation = useNavigation();
 
   const CodeSent = () => {
     return (

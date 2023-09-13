@@ -1,6 +1,6 @@
-import { Theme } from '@DevEx/utils/styles/theme';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
+import {Theme} from '@DevEx/utils/styles/theme';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
@@ -25,6 +25,12 @@ const createStyles = (theme: Theme) =>
     right: {
       alignItems: 'flex-end',
       textAlign: 'right',
+    },
+    bold: {
+      fontWeight: 'bold',
+    },
+    italic: {
+      fontStyle: 'italic',
     },
   });
 

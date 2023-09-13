@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {TextInput, View} from 'react-native';
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 
 import {createStyles} from './input.styles';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 type TInputProps = {
   placeholder: string;
@@ -52,7 +52,7 @@ export const IconInput = ({
 
   return (
     <View style={{...styles.container}}>
-      <FontAwesomeIcon icon={icon}/>
+      <FontAwesomeIcon icon={icon} />
       <TextInput
         style={styles.textInput}
         secureTextEntry={secure}
@@ -69,13 +69,13 @@ export const ValidIconInput = ({
   placeholder,
   onChange,
   secure,
-  isLoading
+  isLoading,
 }: TEmailIconInputProps) => {
   const styles = useThemedStyles(createStyles);
 
   return (
     <View style={[styles.container, valid === false && styles.Error]}>
-      <FontAwesomeIcon icon={icon}/>
+      <FontAwesomeIcon icon={icon} />
       <TextInput
         editable={!isLoading}
         secureTextEntry={secure}

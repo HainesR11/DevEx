@@ -1,17 +1,36 @@
-import { ValidIconInput } from '@DevEx/components/input';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
-import {Image, View} from 'react-native';
+import React, {useState} from 'react';
+import {View} from 'react-native';
+import {faUser} from '@fortawesome/free-solid-svg-icons';
+import auth from '@react-native-firebase/auth';
+
+import {PrimaryButton} from '@DevEx/components';
+import {ValidIconInput} from '@DevEx/components/input';
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+
 import createStyles from './Login.styles';
-import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
-import { Logo } from '@DevEx/assets';
 
 const LoginForm = () => {
-  const styles = useThemedStyles(createStyles)
+  const styles = useThemedStyles(createStyles);
+  const [username, setUsername] = useState('rhys@sky.uk');
+  const [password, setPassword] = useState('testing');
+
+  const onLogin = () => {
+    auth()
+      .signInWithEmailAndPassword(username, password)
+      .then(() => console.log('You are logged in'))
+      .catch(e => console.log(e));
+  };
+
   return (
     <View style={styles.screenContainer}>
-      <Image source={Logo} style={styles.imageBackground}/>
-      <ValidIconInput icon={faUser} placeholder='Email' onChange={() => {}} isLoading={false} valid={true} />
+      <ValidIconInput
+        icon={faUser}
+        placeholder="Email"
+        onChange={() => {}}
+        isLoading={false}
+        valid={true}
+      />
+      <PrimaryButton title="Login" onPress={onLogin} />
     </View>
   );
 };

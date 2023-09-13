@@ -10,9 +10,10 @@ const createStyles = (theme: Theme) =>
   StyleSheet.create({
     // Modal view
     screenContainer: {
-      // height: height - height / 10,
+      height: height - height / 5,
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: 'space-around',
+      alignItems: 'center',
     },
     container: {
       width: width,
@@ -54,12 +55,13 @@ const createStyles = (theme: Theme) =>
     viewContainer: {
       paddingTop: theme.spacing.m,
       height: '100%',
-      justifyContent: 'space-between',
-      alignItems: 'center'
+      justifyContent: 'space-around',
+      alignItems: 'center',
     },
     loginButtonContainer: {
       padding: theme.spacing.m,
       justifyContent: 'flex-end',
+      alignItems: 'center',
     },
   });
 

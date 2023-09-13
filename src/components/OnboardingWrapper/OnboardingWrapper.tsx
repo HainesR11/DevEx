@@ -1,4 +1,4 @@
-import React, {Children, FC} from 'react';
+import React, {FC} from 'react';
 import {useSelector} from 'react-redux';
 
 import {Login} from '@DevEx/screens';
@@ -28,7 +28,7 @@ const OnboardingWrapper: FC<TOnboardingWrapper> = ({children}: any) => {
   if (onboardingActionsToRender && onboardingActionsToRender.length > 0) {
     return <>{onboardingActionsToRender[0].component}</>;
   }
-  console.log(isAuthenticated)
+  console.log(isAuthenticated);
   return <>{children}</>;
 };
 

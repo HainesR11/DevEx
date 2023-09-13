@@ -1,22 +1,23 @@
-import LoginForm from '.';
-import {SafeAreaView, Modal, Text, View, Image} from 'react-native';
-import {useState} from 'react';
+import React, {useState} from 'react';
+import {Image, Modal, SafeAreaView, View} from 'react-native';
 import {useSelector} from 'react-redux';
-import {RootState} from '@DevEx/utils/store/store';
+
 import {PrimaryButton} from '@DevEx/components';
-import createStyles from './Login.styles';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {Text} from '@DevEx/components';
 import {strings} from '@DevEx/constants/stings';
-import GradientText from '@DevEx/components/Text/text';
-import {Logo} from '@DevEx/assets';
+import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {RootState} from '@DevEx/utils/store/store';
+import colors from '@DevEx/utils/styles/palette/colors';
+
+import LoginForm from '.';
+
+import createStyles from './Login.styles';
 
 const Login = () => {
   const styles = useThemedStyles(createStyles);
 
   const [loginVisible, setLoginVisible] = useState<boolean>(false);
   const {isAuthenticated} = useSelector((state: RootState) => state.user);
-
-  const style = {};
 
   return (
     <SafeAreaView>
@@ -30,21 +31,39 @@ const Login = () => {
         <LoginForm />
       </Modal>
       {!isAuthenticated && (
-        <View style={styles.viewContainer}>
-          <>
-            <GradientText
-              testID="LoginGradientText"
-              textStyle={{fontSize: 25}}
-              lineHeight={40}
-              text={'Welcome, Lets get you set up'}
-              gradientStyle="devexMainGradient"
+        <View style={[styles.viewContainer]}>
+          <View style={{alignItems: 'center'}}>
+            <Image
+              source={require('@DevEx/assets/DevExIcon.png')}
+              style={{width: 300, height: 300}}
             />
-            <Image source={Logo} style={styles.imageBackground} />
-          </>
+            <Text
+              text={strings.loginWelcome}
+              testId="WelcomeText"
+              bold
+              textStyle={{fontSize: 25, marginVertical: 10}}
+            />
+            <Text
+              text={strings.loginText}
+              testId=""
+              textStyle={{
+                color: colors.grey50,
+                textAlign: 'center',
+                width: 250,
+                marginTop: 10,
+              }}
+            />
+          </View>
           <View style={styles.loginButtonContainer}>
             <PrimaryButton
               title="Continue"
               onPress={() => setLoginVisible(true)}
+            />
+            <Text
+              text="I already have an account"
+              testId="ExistingAccount"
+              VMargin={10}
+              onPress={() => console.log('test')}
             />
           </View>
         </View>
