@@ -11,14 +11,14 @@ const createStyles = (theme: Theme) =>
     screenContainer: {
       height: height - height / 5,
       display: 'flex',
-      alignContent: 'center',
-      alignItems: 'center',
       justifyContent: 'space-around',
     },
-    textContainer: {
-      width: 300,
-      marginBottom: theme.spacing.m,
+    itemContainer: {
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      height: height - height / 3,
     },
+    gradientText: {fontSize: 30, textAlign: 'center'},
     image: {
       marginBottom: theme.spacing.m,
       width: theme.spacing.xl,
@@ -39,6 +39,17 @@ const createStyles = (theme: Theme) =>
     },
     largeMarginBottom: {
       marginBottom: theme.spacing.xl,
+    },
+    createContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    link: {
+      color: colors.blue,
+      marginLeft: theme.spacing.xs,
+    },
+    forgotText: {
+      textAlign: 'right',
     },
     //Main login screen
     viewContainer: {

@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import {Buffer} from 'buffer';
-import {Dimensions, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 
 import {getTokenFromLogin} from '@DevEx/api';
 import {GradientText, PrimaryButton, Text} from '@DevEx/components';
@@ -9,7 +9,6 @@ import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox'
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 
 import createStyles from './Login.styles';
-import theme from '@DevEx/utils/styles/theme';
 
 type TLoginForm = {
   loginVisible: boolean;
@@ -26,26 +25,19 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
     await getTokenFromLogin(username, hashedPassword);
   };
 
-  const {height} = Dimensions.get('screen');
-
   return (
     <ModalWithHeader
       isVisible={loginVisible}
       setVisible={setLoginVisible}
       testID="LoginModal">
       <View style={styles.screenContainer}>
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            height: height - height / 3,
-          }}>
+        <View style={styles.itemContainer}>
           <View style={[styles.loginButtonContainer]}>
             <GradientText
               testID="gradientGetStartedText"
               text={'Log in'}
               gradientStyle="devexMainGradient"
-              textStyle={{fontSize: 30, textAlign: 'center'}}
+              textStyle={styles.gradientText}
             />
             <Text
               text="Sign into your account"
@@ -67,15 +59,24 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
               secureTextEntry
               onChange={event => setPassword(event.nativeEvent.text)}
             />
-            <Text text="Forgot Password" testId="ForgotPassword.text" />
+            <Text
+              textStyle={[styles.link]}
+              text="Forgot Password?"
+              testId="ForgotPassword.text"
+            />
           </View>
           <View>
             <PrimaryButton title="Login" onPress={onLogin} />
-            <Text
-              textStyle={styles.textAlign}
-              text="New user? Create Account"
-              testId=""
-            />
+            <View style={styles.createContainer}>
+              <Text textStyle={styles.textAlign} text="New user?" testId="" />
+              <TouchableOpacity>
+                <Text
+                  textStyle={[styles.textAlign, styles.link]}
+                  text="Create Account"
+                  testId=""
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>

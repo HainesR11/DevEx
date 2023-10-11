@@ -17,7 +17,7 @@ import createStyles from './text.styles';
 type TGradientTextProps = {
   text: string;
   gradientStyle: keyof typeof gradients;
-  testID: string;
+  testID?: string;
   textAlign?: 'left' | 'center' | 'right';
   lineHeight?: number;
   textStyle?: TextStyle;
@@ -33,6 +33,7 @@ type TTextProps = {
   italic?: boolean;
   onPress?: () => void;
   VMargin?: number;
+  HMargin?: number;
 };
 
 export const GradientText = ({
@@ -87,6 +88,7 @@ export const Text = ({
   textStyle,
   italic,
   onPress,
+  HMargin,
   VMargin,
   ...props
 }: TTextProps) => {
@@ -100,7 +102,7 @@ export const Text = ({
         bold && styles.bold,
         italic && styles.italic,
         textStyle,
-        {marginVertical: VMargin},
+        {marginVertical: VMargin, marginHorizontal: HMargin},
       ]}>
       {text}
     </RNText>
