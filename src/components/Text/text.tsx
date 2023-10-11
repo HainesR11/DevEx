@@ -28,7 +28,7 @@ type TGradientTextProps = {
 type TTextProps = {
   text: string;
   testId: string;
-  textStyle?: TextStyle;
+  textStyle?: TextStyle | TextStyle[];
   bold?: boolean;
   italic?: boolean;
   onPress?: () => void;

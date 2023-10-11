@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
-import {Image, Modal, SafeAreaView, View} from 'react-native';
+import {Image, SafeAreaView, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import {PrimaryButton} from '@DevEx/components';
 import {Text} from '@DevEx/components';
 import {strings} from '@DevEx/constants/stings';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {LoginForm} from '@DevEx/screens/index';
 import {RootState} from '@DevEx/utils/store/store';
 import colors from '@DevEx/utils/styles/palette/colors';
-
-import LoginForm from '.';
 
 import createStyles from './Login.styles';
 
@@ -21,15 +20,11 @@ const Login = () => {
 
   return (
     <SafeAreaView>
-      <Modal
-        animationType="slide"
-        visible={loginVisible}
-        presentationStyle="pageSheet"
-        onRequestClose={() => {
-          setLoginVisible(false);
-        }}>
-        <LoginForm />
-      </Modal>
+      <LoginForm
+        loginVisible={loginVisible}
+        setLoginVisible={setLoginVisible}
+      />
+
       {!isAuthenticated && (
         <View style={[styles.viewContainer]}>
           <View style={{alignItems: 'center'}}>
@@ -58,12 +53,6 @@ const Login = () => {
             <PrimaryButton
               title="Continue"
               onPress={() => setLoginVisible(true)}
-            />
-            <Text
-              text="I already have an account"
-              testId="ExistingAccount"
-              VMargin={10}
-              onPress={() => console.log('test')}
             />
           </View>
         </View>

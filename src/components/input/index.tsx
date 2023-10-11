@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, View} from 'react-native';
+import {TextInput, TextStyle, View} from 'react-native';
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
@@ -10,6 +10,7 @@ import {createStyles} from './input.styles';
 type TInputProps = {
   placeholder: string;
   onChange: (e: string) => void;
+  style: TextStyle;
 };
 
 type TIconInputProps = {
@@ -29,14 +30,20 @@ type TEmailIconInputProps = {
   value?: string;
 };
 
-export const InputBox = ({placeholder, onChange}: TInputProps) => {
+export const InputBox = ({
+  placeholder,
+  onChange,
+  style,
+  ...props
+}: TInputProps) => {
   const styles = useThemedStyles(createStyles);
   return (
     <View style={{...styles.container}}>
       <TextInput
-        style={styles.textInput}
+        style={[styles.textInput, style]}
         placeholder={placeholder}
         onChangeText={onChange}
+        {...props}
       />
     </View>
   );
@@ -70,6 +77,7 @@ export const ValidIconInput = ({
   onChange,
   secure,
   isLoading,
+  ...props
 }: TEmailIconInputProps) => {
   const styles = useThemedStyles(createStyles);
 
@@ -82,6 +90,7 @@ export const ValidIconInput = ({
         style={[styles.textInput, isLoading && styles.loading]}
         placeholder={placeholder}
         onChangeText={onChange}
+        {...props}
       />
     </View>
   );

@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {Buffer} from 'buffer';
 
 export const FnEmailValidator = (
   emailText: string,
@@ -30,4 +30,13 @@ export const FnPasswordCheck = (
   } else {
     onSuccess(true);
   }
+};
+
+export const TestText = (password: string) => {
+  // Testing encoding - will later impement into onLogin Function
+  console.log(password);
+  const encode = Buffer.from(password, 'utf-8').toString('base64');
+  console.log(encode);
+  const decode = Buffer.from(encode, 'base64').toString('utf8');
+  console.log(decode);
 };

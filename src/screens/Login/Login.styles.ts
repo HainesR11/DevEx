@@ -1,10 +1,9 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {color} from '@shopify/restyle';
 
 import colors from '@DevEx/utils/styles/palette/colors';
 import {Theme} from '@DevEx/utils/styles/theme';
 
-const {width, height} = Dimensions.get('screen');
+const {height} = Dimensions.get('screen');
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
@@ -12,45 +11,35 @@ const createStyles = (theme: Theme) =>
     screenContainer: {
       height: height - height / 5,
       display: 'flex',
+      alignContent: 'center',
+      alignItems: 'center',
       justifyContent: 'space-around',
-      alignItems: 'center',
     },
-    container: {
-      width: width,
-      height: height - height / 5,
-      alignItems: 'center',
-      paddingHorizontal: theme.spacing.m,
+    textContainer: {
+      width: 300,
+      marginBottom: theme.spacing.m,
     },
-    imageBackground: {
-      width: height / 4,
-      height: height / 4,
+    image: {
+      marginBottom: theme.spacing.m,
+      width: theme.spacing.xl,
+      height: theme.spacing.xl,
     },
-    inputBox: {
-      width: width - width / 4,
-      height: height / 15,
-      backgroundColor: theme.colors.grey10,
-      borderRadius: 7,
-      padding: 10,
-      marginBottom: 20,
+    textAlign: {
+      marginTop: theme.spacing.sm,
+      marginBottom: theme.spacing.s,
     },
     text: {
-      marginLeft: 10,
       color: colors.grey50,
     },
-    button: {},
-    icon: {
-      alignContent: 'center',
+    inputStyle: {
+      width: 350,
     },
-    optionContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
+    smallMarginBottom: {
+      marginBottom: theme.spacing.s,
     },
-    invalidText: {
-      textAlign: 'center',
-      paddingBottom: 10,
-      color: theme.colors.errorDark,
+    largeMarginBottom: {
+      marginBottom: theme.spacing.xl,
     },
-
     //Main login screen
     viewContainer: {
       paddingTop: theme.spacing.m,

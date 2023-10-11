@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Platform, StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -13,8 +13,6 @@ import LaunchNavigator from './navigators/RootNavigation/LaunchNavigator';
 import theme from './utils/styles/theme';
 
 const App = () => {
-  useEffect(() => {}, []);
-
   return (
     <ThemeProvider theme={theme}>
       {Platform.OS === 'ios' ? (
