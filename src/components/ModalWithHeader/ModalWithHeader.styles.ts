@@ -1,6 +1,8 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 import {Theme} from '@DevEx/utils/styles/theme';
+
+const {width} = Dimensions.get('screen');
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
@@ -19,14 +21,24 @@ const createStyles = (theme: Theme) =>
       borderBottomWidth: 1.5,
     },
     gradientLine: {
-      width: 450,
+      width: width,
       height: 5,
       marginBottom: theme.spacing.xs,
     },
     image: {
-      marginBottom: theme.spacing.m,
       width: theme.spacing.xl,
       height: theme.spacing.xl,
+    },
+    iconContainer: {
+      justifyContent: 'space-between',
+      display: 'flex',
+      flexDirection: 'row',
+      flex: 3,
+      width: width - 30,
+      alignItems: 'center',
+    },
+    offset: {
+      paddingLeft: width / 2 - 32.5,
     },
   });
 

@@ -3,6 +3,7 @@ import {
   StyleProp,
   Text as RNText,
   TextStyle,
+  TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
@@ -27,7 +28,7 @@ type TGradientTextProps = {
 
 type TTextProps = {
   text: string;
-  testId: string;
+  testId?: string;
   textStyle?: TextStyle | TextStyle[];
   bold?: boolean;
   italic?: boolean;
@@ -106,5 +107,25 @@ export const Text = ({
       ]}>
       {text}
     </RNText>
+  );
+};
+
+type TTouchableText = {
+  testId?: string;
+  text: string;
+  onPress: () => void;
+  textStyle?: TextStyle | TextStyle[];
+};
+
+export const TouchableText = ({
+  text,
+  onPress,
+  textStyle,
+  testId,
+}: TTouchableText) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <Text testId={testId} text={text} textStyle={textStyle} />
+    </TouchableOpacity>
   );
 };

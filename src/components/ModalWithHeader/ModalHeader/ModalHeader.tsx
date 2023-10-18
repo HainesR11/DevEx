@@ -6,12 +6,12 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useNavigation} from '@react-navigation/native';
 
 import {Text} from '@DevEx/components/Text/text';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 
 import createStyles from './ModalHeader.styles';
-import { useNavigation } from '@react-navigation/native';
 
 type TModalHeader = {
   title?: string;
@@ -19,7 +19,7 @@ type TModalHeader = {
   isFirstScreen?: any;
 };
 
-const ModalHeader = ({title, onClose, isFirstScreen = true }: TModalHeader) => {
+const ModalHeader = ({title, onClose, isFirstScreen = true}: TModalHeader) => {
   const styles = useThemedStyles(createStyles);
   const navigation = useNavigation();
 

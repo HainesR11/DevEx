@@ -6,9 +6,10 @@ import {PrimaryButton} from '@DevEx/components';
 import {Text} from '@DevEx/components';
 import {strings} from '@DevEx/constants/stings';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {LoginForm} from '@DevEx/screens/index';
 import {RootState} from '@DevEx/utils/store/store';
 import colors from '@DevEx/utils/styles/palette/colors';
+
+import LoginForm from './index';
 
 import createStyles from './Login.styles';
 
