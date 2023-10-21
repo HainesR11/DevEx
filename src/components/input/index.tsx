@@ -1,34 +1,10 @@
 import React from 'react';
-import {TextInput, TextStyle, View} from 'react-native';
-import {IconProp} from '@fortawesome/fontawesome-svg-core';
+import {TextInput, View} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 
 import {createStyles} from './input.styles';
-
-type TInputProps = {
-  placeholder: string;
-  onChange: (e: string) => void;
-  style?: TextStyle;
-};
-
-type TIconInputProps = {
-  icon: IconProp;
-  placeholder: string;
-  secure?: boolean;
-  onChange: (e: string) => void;
-};
-
-type TEmailIconInputProps = {
-  icon: IconProp;
-  placeholder: string;
-  secure?: boolean;
-  onChange: (e: string) => void;
-  valid: boolean | undefined;
-  isLoading: boolean;
-  value?: string;
-};
 
 export const InputBox = ({
   placeholder,
@@ -91,6 +67,39 @@ export const ValidIconInput = ({
         placeholder={placeholder}
         onChangeText={onChange}
         {...props}
+      />
+    </View>
+  );
+};
+
+type TVerificationCodeInput = {
+  maxNumber?: Number;
+  valid?: boolean;
+  onChange?: () => void;
+  data: Array<Number>;
+};
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-native/no-inline-styles */
+// TODO: Verification input text plaveholder
+export const VerificationCodeInput = ({
+  maxNumber,
+  data = [],
+  valid,
+  onChange,
+}: TVerificationCodeInput) => {
+  return (
+    <View
+      style={{
+        width: 300,
+        height: 100,
+        justifyContent: 'center',
+        backgroundColor: 'red',
+        alignContent: 'center',
+      }}>
+      <TextInput
+        maxLength={6}
+        style={{letterSpacing: 40, textAlign: 'center'}}
       />
     </View>
   );
