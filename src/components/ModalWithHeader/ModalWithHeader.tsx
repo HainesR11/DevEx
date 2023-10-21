@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React from 'react';
 import {Image, Modal, TouchableOpacity, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {faChevronLeft, faXmark} from '@fortawesome/free-solid-svg-icons';
@@ -22,13 +22,11 @@ interface TModalWithHeader extends THeaderProps {
   testID: string;
   isFromDeeplink?: boolean;
   isVisible: boolean;
-  onRequestClose: Dispatch<SetStateAction<boolean>>;
+  onRequestClose: () => void;
 }
 
 const Header = ({goBack, onClose, closeHidden}: THeaderProps) => {
   const styles = useThemedStyles(createStyles);
-
-  console.log(goBack);
 
   return (
     <View style={styles.header}>
@@ -77,11 +75,11 @@ TModalWithHeader) => {
     <Modal
       animationType="slide"
       visible={isVisible}
-      onRequestClose={() => onRequestClose}
+      onRequestClose={onRequestClose}
       presentationStyle="pageSheet">
       <Header
         closeHidden={closeHidden}
-        onClose={() => onRequestClose}
+        onClose={onRequestClose}
         goBack={goBack}
       />
       {renderChildren()}

@@ -23,6 +23,13 @@ const createStyles = (theme: Theme) => {
       marginTop: theme.spacing.s,
       marginRight: theme.spacing.ml,
     },
+    textError: {
+      color: theme.colors.errorDark,
+    },
+    outlineError: {
+      borderColor: theme.colors.errorDark,
+      borderWidth: 2,
+    },
     outline: {
       borderWidth: my.outlineWidth,
       borderRadius: my.outlineRadius,
@@ -39,9 +46,6 @@ const createStyles = (theme: Theme) => {
     },
     outlineRegular: {
       borderColor: theme.colors.grey70,
-    },
-    outlineError: {
-      borderColor: theme.colors.errorDark,
     },
     titleContainer: {
       justifyContent: 'center',

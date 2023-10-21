@@ -23,6 +23,7 @@ interface TOutlineTextInput extends TextInputProps {
   state?: 'error' | 'regular';
   secureTextEntry?: boolean;
   helpText?: string;
+  errorLine?: boolean;
 }
 
 const OutlineTextInput = ({
@@ -31,6 +32,7 @@ const OutlineTextInput = ({
   state = 'regular',
   testID,
   secureTextEntry,
+  errorLine,
   ...rest
 }: TOutlineTextInput) => {
   const [secure, setSecure] = useState(secureTextEntry ?? false);
@@ -46,7 +48,7 @@ const OutlineTextInput = ({
       <View style={styles.container}>
         <TextInput
           secureTextEntry={secure}
-          style={styles.input}
+          style={[styles.input, errorLine && styles.textError]}
           testID={`${testID}-entry-field`}
           {...rest}
         />
@@ -60,7 +62,12 @@ const OutlineTextInput = ({
           </Pressable>
         )}
         <View
-          style={[StyleSheet.absoluteFill, styles.outline, outlineStyle]}
+          style={[
+            StyleSheet.absoluteFill,
+            styles.outline,
+            outlineStyle,
+            errorLine && styles.outlineError,
+          ]}
           pointerEvents="none"
         />
 

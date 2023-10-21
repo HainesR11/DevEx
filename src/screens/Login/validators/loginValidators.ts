@@ -1,15 +1,12 @@
 import {Buffer} from 'buffer';
 
-export const FnEmailValidator = (
-  emailText: string,
-  onSuccess: (value: boolean) => void,
-) => {
+export const FnEmailValidator = (emailText: string) => {
   // TODO: Find Suitable Validator - Potentionaly react-native-form-validator
   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   if (reg.test(emailText) === false) {
-    onSuccess(false);
+    return false;
   } else {
-    onSuccess(true);
+    return true;
     // setUserToken();
   }
 };

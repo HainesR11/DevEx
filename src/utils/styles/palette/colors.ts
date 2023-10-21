@@ -8,6 +8,7 @@ const greyScale = {
   grey20: '#CCCCCC',
   grey40: '#999999',
   grey50: '#909090',
+  grey60: '#666666',
   grey70: '#4D4D4D',
   grey80: '#333333',
   black: '#000000',
