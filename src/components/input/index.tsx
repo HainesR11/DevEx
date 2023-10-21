@@ -10,7 +10,7 @@ import {createStyles} from './input.styles';
 type TInputProps = {
   placeholder: string;
   onChange: (e: string) => void;
-  style: TextStyle;
+  style?: TextStyle;
 };
 
 type TIconInputProps = {

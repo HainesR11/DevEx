@@ -17,6 +17,8 @@ import {TouchableText} from '@DevEx/components/Text/text';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {setUser} from '@DevEx/utils/store/userSlice/userSlice';
 
+import ForgotPassword from './ForgotPassword/ForgotPassword';
+
 import createStyles from './Login.styles';
 
 type TLoginForm = {
@@ -47,22 +49,22 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
     createUser
       ? (Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 1000,
+          duration: 800,
           useNativeDriver: false,
         }).start(),
         Animated.timing(positionAnim, {
           toValue: 0,
-          duration: 1000,
+          duration: 800,
           useNativeDriver: false,
         }).start())
       : (Animated.timing(fadeAnim, {
           toValue: 0,
-          duration: 1000,
+          duration: 500,
           useNativeDriver: false,
         }).start(),
         Animated.timing(positionAnim, {
           toValue: -50,
-          duration: 1000,
+          duration: 500,
           useNativeDriver: false,
         }).start());
   }, [createUser, fadeAnim, positionAnim]);
@@ -73,11 +75,11 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
         isVisible={loginVisible}
         onRequestClose={() => {
           setLoginVisible(false);
-          setCreateUser(false);
+          setForgotPassword(false);
         }}
         goBack={() => setForgotPassword(false)}
         testID="LoginModal">
-        <></>
+        <ForgotPassword />
       </ModalWithHeader>
     );
   }
@@ -87,6 +89,7 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
       isVisible={loginVisible}
       onRequestClose={() => {
         setLoginVisible(false);
+        setCreateUser(false);
       }}
       goBack={createUser ? () => setCreateUser(false) : undefined}
       testID="LoginModal">

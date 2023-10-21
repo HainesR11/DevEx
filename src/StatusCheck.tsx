@@ -6,7 +6,6 @@ import {LoadingSpinner, Maintenance} from '@DevEx/screens';
 
 const AppStatusCheck = ({children}: {children: Element}) => {
   const {appStatus} = useAppStatus();
-  console.log(appStatus, 'appStatus');
 
   switch (appStatus) {
     case 'loading':
