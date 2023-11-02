@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import {Theme} from '@DevEx/utils/styles/theme';
 

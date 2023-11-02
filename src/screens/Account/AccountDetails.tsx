@@ -5,7 +5,7 @@ import ScreenWithHeader from '@DevEx/components/ScreenWithHeader/ScreenWithHeade
 
 const AccountDetails = () => {
   return (
-    <ScreenWithHeader>
+    <ScreenWithHeader isFirstScreen={false}>
       <Text>Hello there</Text>
     </ScreenWithHeader>
   );

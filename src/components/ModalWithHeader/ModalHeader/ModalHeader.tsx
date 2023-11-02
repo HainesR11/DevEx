@@ -1,15 +1,15 @@
 import React from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import {faChevronLeft, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useNavigation} from '@react-navigation/native';
 
 import {Text} from '@DevEx/components/Text/text';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {gradients} from '@DevEx/utils/styles/theme';
 
 import createStyles from './ModalHeader.styles';
-import LinearGradient from 'react-native-linear-gradient';
-import {gradients} from '@DevEx/utils/styles/theme';
 
 type TModalHeader = {
   title?: string;

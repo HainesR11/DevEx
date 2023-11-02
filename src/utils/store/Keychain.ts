@@ -1,5 +1,4 @@
 import EncryptedStorage from 'react-native-encrypted-storage';
-import uuid from 'react-native-uuid';
 
 export function createKeychainStorage() {
   return {

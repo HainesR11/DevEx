@@ -1,12 +1,5 @@
-import React, {FC, useEffect, useRef, useState} from 'react';
-import {
-  ActivityIndicator,
-  Animated,
-  Pressable,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {Animated, Pressable, Text, TouchableOpacity, View} from 'react-native';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 

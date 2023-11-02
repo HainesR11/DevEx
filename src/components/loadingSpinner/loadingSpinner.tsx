@@ -1,10 +1,9 @@
 import React, {useEffect, useRef} from 'react';
-import {Animated, Easing, Image} from 'react-native';
+import {Animated, Easing} from 'react-native';
 import {Path, Svg} from 'react-native-svg';
 
 const LoadingSpinner = () => {
   const animatedRef = useRef(new Animated.Value(0)).current;
-  const spinner = require('@DevEx/assets/Spinner.png');
 
   useEffect(() => {
     Animated.loop(
