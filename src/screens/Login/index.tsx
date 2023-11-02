@@ -26,6 +26,18 @@ type TLoginForm = {
   setLoginVisible: Dispatch<SetStateAction<boolean>>;
 };
 
+const convertToBase64 = (file: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(console.log('---- base64 -----', fileReader.result));
+    };
+    fileReader.onerror = e => console.log('error', e);
+  });
+};
+
 const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
   const styles = useThemedStyles(createStyles);
   const dispatch = useDispatch();
@@ -166,7 +178,10 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
                   text="Have an account?"
                   testId=""
                 />
-                <TouchableOpacity onPress={() => setCreateUser(false)}>
+                <TouchableOpacity
+                  onPress={() =>
+                    convertToBase64(require('../../assets/me.jpg'))
+                  }>
                   <Text
                     textStyle={[styles.textAlign, styles.link]}
                     text="Login"

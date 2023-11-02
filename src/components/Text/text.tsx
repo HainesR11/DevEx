@@ -68,6 +68,7 @@ export const GradientText = ({
       {text}
     </RNText>
   );
+
   return (
     <View testID={testID} style={[styles.container, style, styles[textAlign]]}>
       <MaskedView maskElement={textComponent(styles.transparentBgr)}>

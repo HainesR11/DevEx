@@ -1,20 +1,34 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Home from '@DevEx/screens/Authenticated/Home';
 
-type HomeNavParams = {
-  Account: undefined;
-};
+import {screenNames} from '@DevEx/constants';
+import AccountDetails from '@DevEx/screens/Account/AccountDetails';
+import AccountManagement from '@DevEx/screens/AccountManagment/AccountManagement';
+import DebugScreen from '@DevEx/screens/Debug/debub';
+import {TRootNavigationProps} from '@DevEx/utils/types/types';
 
-const AccountNavigatorStack = createStackNavigator<HomeNavParams>();
+const AccountNavigatorStack = createStackNavigator<TRootNavigationProps>();
 
 const AccountNavigator = () => {
   return (
     <AccountNavigatorStack.Navigator
-      initialRouteName="Account"
-      screenOptions={{headerShown: false}}>
-      <AccountNavigatorStack.Screen name="Account" component={Home} />
+      screenOptions={{headerShown: false}}
+      initialRouteName={screenNames.ACCOUNT_MANAGEMENT}>
+      <AccountNavigatorStack.Screen
+        options={{headerShown: false}}
+        name={screenNames.ACCOUNT_MANAGEMENT}
+        component={AccountManagement}
+      />
+      <AccountNavigatorStack.Screen
+        name={screenNames.ACCOUNT_DETAILS}
+        component={AccountDetails}
+      />
+      <AccountNavigatorStack.Screen
+        name={screenNames.DEBUG_SCREEN}
+        component={DebugScreen}
+      />
     </AccountNavigatorStack.Navigator>
   );
 };
+
 export default AccountNavigator;

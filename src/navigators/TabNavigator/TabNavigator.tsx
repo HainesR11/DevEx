@@ -1,18 +1,34 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {faHouse} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import HomeNavigator from '../HomeNavigator/HomeNavigator';
+import {HOME_NAVIGATOR} from '@DevEx/constants/screenNames';
+import HomeNavigator from '@DevEx/navigators/HomeNavigator/HomeNavigator';
+import colors from '@DevEx/utils/styles/palette/colors';
+import {TRootNavigationProps} from '@DevEx/utils/types/types';
 
-type TTabNavigatorProps = {
-  HomeNavigator: undefined;
-};
-
-const TabNavStack = createStackNavigator<TTabNavigatorProps>();
+const TabNavStack = createBottomTabNavigator<TRootNavigationProps>();
 
 const TabNavigator = () => {
   return (
     <TabNavStack.Navigator>
-      <TabNavStack.Screen name="HomeNavigator" component={HomeNavigator} />
+      <TabNavStack.Screen
+        name={HOME_NAVIGATOR}
+        options={{
+          tabBarLabel: 'Home',
+          headerShown: false,
+          tabBarActiveTintColor: colors.grey80,
+          tabBarInactiveTintColor: colors.grey40,
+          tabBarIcon: ({focused}) => (
+            <FontAwesomeIcon
+              color={focused ? colors.grey80 : colors.grey40}
+              icon={faHouse}
+            />
+          ),
+        }}
+        component={HomeNavigator}
+      />
     </TabNavStack.Navigator>
   );
 };

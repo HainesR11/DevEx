@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {useSelector} from 'react-redux';
 
-import {Login} from '@DevEx/screens';
+import Login from '@DevEx/screens/Login/Login';
 import {RootState} from '@DevEx/utils/store/store';
 
 interface TOnboardingWrapper {

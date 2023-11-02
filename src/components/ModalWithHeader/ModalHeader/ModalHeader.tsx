@@ -1,10 +1,6 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
-import {
-  faAngleLeft,
-  faChevronCircleLeft,
-  faXmark,
-} from '@fortawesome/free-solid-svg-icons';
+import {Image, TouchableOpacity, View} from 'react-native';
+import {faChevronLeft, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useNavigation} from '@react-navigation/native';
 
@@ -12,42 +8,69 @@ import {Text} from '@DevEx/components/Text/text';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 
 import createStyles from './ModalHeader.styles';
+import LinearGradient from 'react-native-linear-gradient';
+import {gradients} from '@DevEx/utils/styles/theme';
 
 type TModalHeader = {
   title?: string;
-  onClose?: any;
-  isFirstScreen?: any;
+  onClose?: () => void;
+  isFirstScreen?: boolean;
+  closeHidden?: boolean;
 };
 
-const ModalHeader = ({title, onClose, isFirstScreen = true}: TModalHeader) => {
+const ModalHeader = ({
+  title,
+  onClose,
+  closeHidden = false,
+  isFirstScreen = true,
+}: TModalHeader) => {
   const styles = useThemedStyles(createStyles);
   const navigation = useNavigation();
 
-  const doGoBack = () => navigation.goBack();
-  const doClose = () => {
+  const onBackHandler = () => navigation.goBack();
+  const onCloseHandler = () => {
     const parent = navigation.getParent();
-    if (parent) {
-      parent.goBack();
+    if (onClose) {
+      onClose();
     } else {
-      doGoBack();
+      if (parent) {
+        parent.goBack();
+      } else {
+        onBackHandler();
+      }
     }
   };
 
-  // const onCloseHandler = () => {
-  //   onClose
-  // }
-
   return (
-    <View style={isFirstScreen ? styles.firstContainer : styles.Container}>
-      {!isFirstScreen && (
-        <TouchableOpacity onPress={() => doGoBack()}>
-          <FontAwesomeIcon icon={faAngleLeft} size={20} />
-        </TouchableOpacity>
-      )}
-      {title && <Text text={title} testId="ModalHeader-Title" />}
-      <TouchableOpacity onPress={() => doClose()}>
-        <FontAwesomeIcon icon={faXmark} size={20} />
-      </TouchableOpacity>
+    <View style={styles.header}>
+      <LinearGradient
+        style={styles.gradientLine}
+        colors={gradients.devexMainGradient}
+      />
+      <View
+        style={[
+          isFirstScreen ? styles.offset : undefined,
+          styles.iconContainer,
+        ]}>
+        {!isFirstScreen && (
+          <TouchableOpacity onPress={onBackHandler}>
+            <FontAwesomeIcon size={17} icon={faChevronLeft} />
+          </TouchableOpacity>
+        )}
+        {title ? (
+          <Text text={title} />
+        ) : (
+          <Image
+            style={styles.image}
+            source={require('@DevEx/assets/DevExIcon.png')}
+          />
+        )}
+        {!closeHidden && (
+          <TouchableOpacity onPress={onCloseHandler}>
+            <FontAwesomeIcon size={20} icon={faXmark} />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };

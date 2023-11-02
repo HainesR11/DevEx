@@ -14,6 +14,7 @@ interface THeaderProps {
   goBack?: () => void;
   onClose?: () => void;
   closeHidden?: boolean;
+  isFirstPage: boolean;
 }
 interface TModalWithHeader extends THeaderProps {
   children: React.ReactNode;
@@ -23,9 +24,10 @@ interface TModalWithHeader extends THeaderProps {
   isFromDeeplink?: boolean;
   isVisible: boolean;
   onRequestClose: () => void;
+  isFirstPage: boolean;
 }
 
-const Header = ({goBack, onClose, closeHidden}: THeaderProps) => {
+const Header = ({goBack, onClose, closeHidden, isFirstPage}: THeaderProps) => {
   const styles = useThemedStyles(createStyles);
 
   return (
@@ -34,9 +36,10 @@ const Header = ({goBack, onClose, closeHidden}: THeaderProps) => {
         style={styles.gradientLine}
         colors={gradients.devexMainGradient}
       />
-      <View style={[!goBack ? styles.offset : undefined, styles.iconContainer]}>
-        {goBack && (
-          <TouchableOpacity onPress={goBack}>
+      <View
+        style={[isFirstPage ? styles.offset : undefined, styles.iconContainer]}>
+        {!isFirstPage && (
+          <TouchableOpacity onPress={() => goBack}>
             <FontAwesomeIcon size={17} icon={faChevronLeft} />
           </TouchableOpacity>
         )}
@@ -60,6 +63,7 @@ const ModalWithHeader = ({
   isVisible,
   onRequestClose,
   goBack,
+  isFirstPage = true,
   closeHidden = false,
 }: // isFromDeeplink = false,
 // testID,
@@ -78,6 +82,7 @@ TModalWithHeader) => {
       onRequestClose={onRequestClose}
       presentationStyle="pageSheet">
       <Header
+        isFirstPage={isFirstPage}
         closeHidden={closeHidden}
         onClose={onRequestClose}
         goBack={goBack}
