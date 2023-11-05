@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Image, SafeAreaView, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import {PrimaryButton} from '@DevEx/components';
+import {Button} from '@DevEx/components';
 import {Text} from '@DevEx/components';
 import {strings} from '@DevEx/constants/stings';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
@@ -51,7 +51,7 @@ const Login = () => {
             />
           </View>
           <View style={styles.loginButtonContainer}>
-            <PrimaryButton
+            <Button type="Primary"
               title="Continue"
               onPress={() => setLoginVisible(true)}
             />

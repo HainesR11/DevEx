@@ -1,13 +1,15 @@
 import React from 'react';
 import {Image, SafeAreaView, TouchableOpacity, View} from 'react-native';
-import {useSelector} from 'react-redux';
+import DeviceInfo from 'react-native-device-info';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-import {GradientText, Text} from '@DevEx/components';
+import {Button, GradientText, Text} from '@DevEx/components';
 import {ACCOUNT_DETAILS, DEBUG_SCREEN} from '@DevEx/constants/screenNames';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {RootState} from '@DevEx/utils/store/store';
+import {clearUser} from '@DevEx/utils/store/userSlice/userSlice';
 import {
   TAccountManagement,
   TRootNavigationProps,
@@ -54,35 +56,48 @@ const AccountManagement = () => {
   });
 
   const {user} = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
 
   const styles = useThemedStyles(createStyles);
 
   return (
-    <SafeAreaView>
-      <View style={styles.headerContainer}>
-        <Image
-          source={require('@DevEx/assets/me.jpg')}
-          style={styles.AccountManagementImage}
-        />
-        <View>
-          <GradientText
-            bold
-            gradientStyle="devexMainGradient"
-            textStyle={styles.gradientHeaderText}
-            text={user.Name}
+    <SafeAreaView style={styles.accountManagmentContainer}>
+      <View>
+        <View style={styles.headerContainer}>
+          <Image
+            source={require('@DevEx/assets/me.jpg')}
+            style={styles.AccountManagementImage}
           />
-          <Text textStyle={styles.headerText} text={user.Email} />
+          <View>
+            <GradientText
+              bold
+              gradientStyle="devexMainGradient"
+              textStyle={styles.gradientHeaderText}
+              text={user.name}
+            />
+            <Text textStyle={styles.headerText} text={user.email} />
+          </View>
+        </View>
+        {filteredActions.map(({title, screenName}, index) => {
+          return (
+            <AccountManagementItem
+              key={index}
+              title={title}
+              screenName={screenName as keyof TAccountManagement}
+            />
+          );
+        })}
+        <View style={styles.logoutButton}>
+          <Button
+            type="Secondary"
+            title="Log Out"
+            onPress={() => dispatch(clearUser())}
+          />
         </View>
       </View>
-      {filteredActions.map(({title, screenName}, index) => {
-        return (
-          <AccountManagementItem
-            key={index}
-            title={title}
-            screenName={screenName}
-          />
-        );
-      })}
+      <View style={styles.logoutButton}>
+        <Text text={`v${DeviceInfo.getVersion()}`} />
+      </View>
     </SafeAreaView>
   );
 };

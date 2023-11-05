@@ -4,7 +4,7 @@ import {SafeAreaView, Text} from 'react-native';
 const SearchScreen = () => {
   return (
     <SafeAreaView>
-      <Text>Hello there frm search</Text>
+      <Text>Hello there from search</Text>
     </SafeAreaView>
   );
 };

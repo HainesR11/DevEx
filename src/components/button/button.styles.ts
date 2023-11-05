@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
+import colors from '@DevEx/utils/styles/palette/colors';
 import {Theme} from '@DevEx/utils/styles/theme';
 
 const {width, height} = Dimensions.get('screen');
@@ -7,14 +8,19 @@ const {width, height} = Dimensions.get('screen');
 export const createStyles = (theme: Theme) =>
   StyleSheet.create({
     button: {
-      width: width - width / 4,
-      height: height / 20,
+      container: {
+        width: width - width / 4,
+        height: height / 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
       backgroundColor: theme.buttons.primary.background,
       borderRadius: 10,
-      alignItems: 'center',
-      justifyContent: 'center',
-      text: {
+      primaryText: {
         color: 'white',
+      },
+      secondaryText: {
+        color: colors.blue,
       },
     },
     radio: {

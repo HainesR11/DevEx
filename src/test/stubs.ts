@@ -1,15 +1,16 @@
 export const accountDetailsStub = {
   id: 24,
-  Name: 'Rhys Haines',
-  ProfilePic: '1234.png',
-  Email: 'Rhys.haines@gmail.com',
-  Following: [
+  username: 'HainesR11',
+  name: 'Rhys Haines',
+  profilePic: '1234.png',
+  email: 'Rhys.haines@gmail.com',
+  following: [
     {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
     {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
     {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
     {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
   ],
-  Followers: [
+  followers: [
     {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
     {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
     {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
@@ -18,3 +19,210 @@ export const accountDetailsStub = {
     {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
   ],
 };
+
+export const HomeScreenData = [
+  {
+    user: {
+      image: '',
+      name: 'Rhys Haines',
+      username: 'HainesR11',
+    },
+    timestamp: '123456789',
+    data: `Does any know how to create a new react app?`,
+    likes: [
+      'HainesR11',
+      'HainesR2',
+      'HainesR3',
+      'HainesR4',
+      'HainesR5',
+      'HainesR6',
+      'HainesR7',
+      'HainesR8',
+      'HainesR9',
+    ],
+    dislikes: [],
+    comments: [
+      {
+        user: {
+          image: '',
+          name: 'Jamie Pierce',
+          username: 'PierceJ11',
+        },
+
+        data: `Use create-react-app is a simple command that can be ran.
+        Try using this:
+        ~~~JavaScript
+        npx create-react-app {Name of your project}
+        ~~~
+        `,
+      },
+      {
+        user: {
+          image: '',
+          name: 'Scott Taylor',
+          username: 'ScottT11',
+        },
+
+        data: `
+        Just run this command 
+        ~~~JavaScript
+        npx create-react-app ProjectName
+        ~~~
+        `,
+      },
+    ],
+  },
+  {
+    user: {
+      image: '',
+      name: 'Rhys Haines',
+      username: 'HainesR11',
+    },
+    timestamp: '123456789',
+    data: `Does any know how to create a new react app?`,
+    likes: [
+      'HainesR11',
+      'HainesR2',
+      'HainesR3',
+      'HainesR4',
+      'HainesR5',
+      'HainesR6',
+      'HainesR7',
+      'HainesR8',
+      'HainesR9',
+    ],
+    dislikes: [],
+    comments: [
+      {
+        user: {
+          image: '',
+          name: 'Jamie Pierce',
+          username: 'PierceJ11',
+        },
+
+        data: `Use create-react-app is a simple command that can be ran.
+        Try using this:
+        ~~~JavaScript
+        npx create-react-app {Name of your project}
+        ~~~
+        `,
+      },
+      {
+        user: {
+          image: '',
+          name: 'Scott Taylor',
+          username: 'ScottT11',
+        },
+
+        data: `
+        Just run this command 
+        ~~~JavaScript
+        npx create-react-app ProjectName
+        ~~~
+        `,
+      },
+    ],
+  },
+  {
+    user: {
+      image: '',
+      name: 'Rhys Haines',
+      username: 'HainesR11',
+    },
+    timestamp: '123456789',
+    data: `Does any know how to create a new react app?`,
+    likes: [
+      'HainesR1',
+      'HainesR2',
+      'HainesR3',
+      'HainesR4',
+      'HainesR5',
+      'HainesR6',
+      'HainesR7',
+      'HainesR8',
+      'HainesR9',
+    ],
+    dislikes: ['HainesR11'],
+    comments: [
+      {
+        user: {
+          image: '',
+          name: 'Jamie Pierce',
+          username: 'PierceJ11',
+        },
+
+        data: `Use create-react-app is a simple command that can be ran.
+        Try using this:
+        ~~~JavaScript
+        npx create-react-app {Name of your project}
+        ~~~
+        `,
+      },
+      {
+        user: {
+          image: '',
+          name: 'Scott Taylor',
+          username: 'ScottT11',
+        },
+
+        data: `
+        Just run this command 
+        ~~~JavaScript
+        npx create-react-app ProjectName
+        ~~~
+        `,
+      },
+    ],
+  },
+  {
+    user: {
+      image: '',
+      name: 'Rhys Haines',
+      username: 'HainesR11',
+    },
+    timestamp: '123456789',
+    data: `Does any know how to create a new react app?`,
+    likes: [
+      'HainesR1',
+      'HainesR2',
+      'HainesR3',
+      'HainesR4',
+      'HainesR5',
+      'HainesR6',
+      'HainesR7',
+      'HainesR8',
+      'HainesR9',
+    ],
+    dislikes: [],
+    comments: [
+      {
+        user: {
+          image: '',
+          name: 'Jamie Pierce',
+          username: 'PierceJ11',
+        },
+
+        data: `Use create-react-app is a simple command that can be ran.
+        Try using this:
+        ~~~JavaScript
+        npx create-react-app {Name of your project}
+        ~~~
+        `,
+      },
+      {
+        user: {
+          image: '',
+          name: 'Scott Taylor',
+          username: 'ScottT11',
+        },
+
+        data: `
+        Just run this command 
+        ~~~JavaScript
+        npx create-react-app ProjectName
+        ~~~
+        `,
+      },
+    ],
+  },
+];

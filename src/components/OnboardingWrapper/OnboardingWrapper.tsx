@@ -4,6 +4,8 @@ import {useSelector} from 'react-redux';
 import Login from '@DevEx/screens/Login/Login';
 import {RootState} from '@DevEx/utils/store/store';
 
+import AppHydration from './AppHydration';
+
 interface TOnboardingWrapper {
   children?: React.ReactNode;
 }
@@ -12,6 +14,12 @@ const OnboardingWrapper: FC<TOnboardingWrapper> = ({children}: any) => {
   const {isAuthenticated} = useSelector((state: RootState) => state.user);
 
   const onboardingCollection = [];
+
+  const shouldShowHydrationScreen = isAuthenticated === undefined;
+  onboardingCollection.push({
+    component: <AppHydration />,
+    rules: [shouldShowHydrationScreen],
+  });
 
   const shouldShowLoginScreen = !isAuthenticated;
   onboardingCollection.push({

@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {HomeHeader} from '@DevEx/components/Headers/Headers';
 import {HOME_SCREEN} from '@DevEx/constants/screenNames';
-import Home from '@DevEx/screens/Home';
+import Home from '@DevEx/screens/Home/Home';
 import {TRootNavigationProps} from '@DevEx/utils/types/types';
 
 const HomeNavigatorStack = createStackNavigator<TRootNavigationProps>();

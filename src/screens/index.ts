@@ -1,4 +1,4 @@
-export {default as AccountDetails} from '@DevEx/screens/Account/AccountDetails';
+export {default as AccountDetails} from '@DevEx/screens/AccountManagment/AccountDetails/AccountDetails';
 export {default as LoadingSpinner} from '@DevEx/screens/loading';
 export {default as ForgotPassword} from '@DevEx/screens/Login/ForgotPassword/ForgotPassword';
 export {default as Maintenance} from '@DevEx/screens/maintenance/maintenance';

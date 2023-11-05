@@ -15,22 +15,34 @@ type TButtonProps = {
   title: string;
   isLoading?: boolean;
   onPress: () => void;
+  type: 'Primary' | 'Secondary';
 };
 
-export const PrimaryButton = ({
+export const Button = ({
+  type,
   styles,
   title,
   isLoading,
   onPress,
 }: TButtonProps) => {
   const style = createStyles(theme);
-  return (
+  return type === 'Primary' ? (
     <TouchableOpacity onPress={onPress}>
-      <View style={{...style.button, ...styles}}>
+      <View style={{...style.button, ...style.button.container, ...styles}}>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
-          <Text style={style.button.text}>{title}</Text>
+          <Text style={style.button.primaryText}>{title}</Text>
+        )}
+      </View>
+    </TouchableOpacity>
+  ) : (
+    <TouchableOpacity onPress={onPress}>
+      <View style={{...style.button.container, ...styles}}>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <Text style={style.button.secondaryText}>{title}</Text>
         )}
       </View>
     </TouchableOpacity>

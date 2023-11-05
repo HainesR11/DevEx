@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {screenNames} from '@DevEx/constants';
-import AccountDetails from '@DevEx/screens/Account/AccountDetails';
+import AccountDetails from '@DevEx/screens/AccountManagment/AccountDetails/AccountDetails';
 import AccountManagement from '@DevEx/screens/AccountManagment/AccountManagement';
 import DebugScreen from '@DevEx/screens/Debug/debub';
 import {TRootNavigationProps} from '@DevEx/utils/types/types';

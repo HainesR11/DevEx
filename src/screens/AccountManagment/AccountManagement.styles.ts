@@ -35,9 +35,17 @@ const createStyles = (theme: Theme) =>
     gradientHeaderText: {
       fontSize: 20,
     },
+    logoutButton: {
+      alignItems: 'center',
+    },
     headerText: {
       marginTop: theme.spacing.m,
       paddingLeft: theme.spacing.s,
+    },
+    accountManagmentContainer: {
+      height: '100%',
+      algin: 'center',
+      justifyContent: 'space-between',
     },
   });
 

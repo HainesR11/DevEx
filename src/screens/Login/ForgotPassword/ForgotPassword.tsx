@@ -4,7 +4,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
-import {GradientText, PrimaryButton, Text} from '@DevEx/components';
+import {GradientText, Button, Text} from '@DevEx/components';
 import ListPanel from '@DevEx/components/ListPanel/ListPanel';
 import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox';
 import {codeSentString} from '@DevEx/constants';
@@ -125,7 +125,7 @@ const ForgotPassword = () => {
                 <Text textStyle={styles.errorText} text="Invalid Email" />
               )}
             </View>
-            <PrimaryButton title="Send Code" onPress={validator} />
+            <Button type="Primary" title="Send Code" onPress={validator} />
           </View>
           <ListPanel
             active={activeStep}

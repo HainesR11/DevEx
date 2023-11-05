@@ -59,3 +59,15 @@ export type TAccountManagement = {
   [ACCOUNT_DETAILS]: undefined;
   [DEBUG_SCREEN]: undefined;
 };
+
+type TUser = {id: number; Name: string; profilePic?: string};
+
+export type TUserInfo = {
+  id: number;
+  name: string;
+  username: string;
+  profilePic: string;
+  email: string;
+  following: TUser[];
+  followers: TUser[];
+};

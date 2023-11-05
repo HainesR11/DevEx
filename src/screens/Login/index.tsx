@@ -10,7 +10,7 @@ import {Animated, TouchableOpacity, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 
 // import {getTokenFromLogin} from '@DevEx/api';
-import {GradientText, PrimaryButton, Text} from '@DevEx/components';
+import {GradientText, Button, Text} from '@DevEx/components';
 import ModalWithHeader from '@DevEx/components/ModalWithHeader/ModalWithHeader';
 import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox';
 import {TouchableText} from '@DevEx/components/Text/text';
@@ -84,6 +84,7 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
   if (forgotPassword) {
     return (
       <ModalWithHeader
+        isFirstPage={false}
         isVisible={loginVisible}
         onRequestClose={() => {
           setLoginVisible(false);
@@ -98,6 +99,7 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
 
   return (
     <ModalWithHeader
+      isFirstPage={!createUser}
       isVisible={loginVisible}
       onRequestClose={() => {
         setLoginVisible(false);
@@ -156,7 +158,7 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
             )}
           </Animated.View>
           <View>
-            <PrimaryButton
+            <Button type="Primary"
               title={createUser ? 'Create User' : 'Login'}
               onPress={onLogin}
             />
@@ -178,10 +180,7 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
                   text="Have an account?"
                   testId=""
                 />
-                <TouchableOpacity
-                  onPress={() =>
-                    convertToBase64(require('../../assets/me.jpg'))
-                  }>
+                <TouchableOpacity onPress={() => setCreateUser(false)}>
                   <Text
                     textStyle={[styles.textAlign, styles.link]}
                     text="Login"

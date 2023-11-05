@@ -8,16 +8,17 @@ const initialState = {
   isFirstVisit: false,
   user: {
     id: 24,
-    Name: 'Rhys Haines',
-    ProfilePic: '1234.png',
-    Email: 'Rhys.haines@gmail.com',
-    Following: [
+    username: 'HainesR11',
+    name: 'Rhys Haines',
+    profilePic: '1234.png',
+    email: 'Rhys.haines@gmail.com',
+    following: [
       {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
       {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
       {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
       {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
     ],
-    Followers: [
+    followers: [
       {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
       {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
       {id: 1, Name: 'Jim Lawson', profilePic: '12345.png'},
