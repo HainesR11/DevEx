@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
+  extends: '@react-native',
   parser: '@typescript-eslint/parser',
   rules: {
     'simple-import-sort/imports': 'error',
