@@ -1,10 +1,12 @@
 import {TextStyle} from 'react-native';
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 import {
   ACCOUNT_DETAILS,
   ACCOUNT_MANAGEMENT,
   ACCOUNT_NAVIGATOR,
+  COMMENT_SCREEN,
   DEBUG_SCREEN,
   HOME_NAVIGATOR,
   HOME_SCREEN,
@@ -53,6 +55,7 @@ export type TRootNavigationProps = {
   ComminityScreen: undefined;
   [SEARCH_SCREEN]: undefined;
   [DEBUG_SCREEN]: undefined;
+  [COMMENT_SCREEN]: undefined;
 };
 
 export type TAccountManagement = {
@@ -70,4 +73,26 @@ export type TUserInfo = {
   email: string;
   following: TUser[];
   followers: TUser[];
+};
+
+export type TNavigationProps = StackNavigationProp<TRootNavigationProps>;
+
+type TPostItemUser = {
+  name: string;
+  image: any;
+  username: string;
+};
+
+type TCommentItem = {
+  user: TPostItemUser;
+  data: string;
+};
+
+export type THomeScreenDataItem = {
+  id: string;
+  user: TPostItemUser;
+  data: string;
+  likes: string[];
+  dislikes: string[];
+  comments: TCommentItem[];
 };

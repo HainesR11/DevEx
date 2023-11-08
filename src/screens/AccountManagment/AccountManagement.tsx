@@ -3,17 +3,13 @@ import {Image, SafeAreaView, TouchableOpacity, View} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
 
 import {Button, GradientText, Text} from '@DevEx/components';
 import {ACCOUNT_DETAILS, DEBUG_SCREEN} from '@DevEx/constants/screenNames';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {RootState} from '@DevEx/utils/store/store';
 import {clearUser} from '@DevEx/utils/store/userSlice/userSlice';
-import {
-  TAccountManagement,
-  TRootNavigationProps,
-} from '@DevEx/utils/types/types';
+import {TAccountManagement, TNavigationProps} from '@DevEx/utils/types/types';
 
 import createStyles from './AccountManagement.styles';
 
@@ -21,8 +17,6 @@ type TAccountManagementItem = {
   title: string;
   screenName: keyof TAccountManagement;
 };
-
-type TNavigationProps = StackNavigationProp<TRootNavigationProps>;
 
 const AccountManagementItem = ({title, screenName}: TAccountManagementItem) => {
   const navigation = useNavigation<TNavigationProps>();

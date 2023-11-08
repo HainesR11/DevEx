@@ -35,6 +35,7 @@ type TTextProps = {
   onPress?: () => void;
   VMargin?: number;
   HMargin?: number;
+  numberOfLines?: number;
 };
 
 export const GradientText = ({
@@ -92,6 +93,7 @@ export const Text = ({
   onPress,
   HMargin,
   VMargin,
+  numberOfLines,
   ...props
 }: TTextProps) => {
   const styles = useThemedStyles(createStyles);
@@ -100,6 +102,8 @@ export const Text = ({
       testID={testId}
       onPress={onPress}
       {...props}
+      ellipsizeMode="tail"
+      numberOfLines={numberOfLines}
       style={[
         bold && styles.bold,
         italic && styles.italic,

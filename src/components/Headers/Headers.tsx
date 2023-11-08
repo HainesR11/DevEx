@@ -1,27 +1,55 @@
 import React from 'react';
-import {Image, SafeAreaView, TouchableOpacity} from 'react-native';
-import {faSearch, faUser} from '@fortawesome/free-solid-svg-icons';
+import {Image, SafeAreaView, TouchableOpacity, View} from 'react-native';
+import {
+  faChevronLeft,
+  faSearch,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
 
 import {
   ACCOUNT_NAVIGATOR,
   SEARCH_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {TRootNavigationProps} from '@DevEx/utils/types/types';
+import {TNavigationProps} from '@DevEx/utils/types/types';
+
+import {Text} from '../Text/text';
 
 import createStyles from './Header.styles';
 
-type TNavigationProps = StackNavigationProp<TRootNavigationProps>;
+type THeaderProps = {
+  isHomeScreen?: boolean;
+  title?: {
+    title?: string;
+  };
+};
 
-export const HomeHeader = () => {
+export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
   const navigation = useNavigation<TNavigationProps>();
 
   const styles = useThemedStyles(createStyles);
+
+  if (!isHomeScreen) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity
+          style={styles.chevron}
+          onPress={() => navigation.goBack()}>
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </TouchableOpacity>
+        <Text
+          numberOfLines={1}
+          textStyle={styles.title}
+          text={title?.title as string}
+        />
+      </SafeAreaView>
+    );
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.HomeScreenContainer}>
       <TouchableOpacity onPress={() => navigation.navigate(ACCOUNT_NAVIGATOR)}>
         <FontAwesomeIcon icon={faUser} />
       </TouchableOpacity>

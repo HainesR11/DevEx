@@ -22,6 +22,7 @@ export const accountDetailsStub = {
 
 export const HomeScreenData = [
   {
+    id: 'HainesR11-1',
     user: {
       image: '',
       name: 'Rhys Haines',
@@ -73,6 +74,7 @@ export const HomeScreenData = [
     ],
   },
   {
+    id: 'HainesR11-2',
     user: {
       image: '',
       name: 'Rhys Haines',
@@ -124,6 +126,7 @@ export const HomeScreenData = [
     ],
   },
   {
+    id: 'HainesR11-3',
     user: {
       image: '',
       name: 'Rhys Haines',
@@ -175,6 +178,7 @@ export const HomeScreenData = [
     ],
   },
   {
+    id: 'HainesR11-4',
     user: {
       image: '',
       name: 'Rhys Haines',
