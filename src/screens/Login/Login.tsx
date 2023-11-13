@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Image, SafeAreaView, View} from 'react-native';
+import {Image, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {useSelector} from 'react-redux';
 
 import {Button} from '@DevEx/components';

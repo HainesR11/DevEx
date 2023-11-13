@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, SafeAreaView, TouchableOpacity, View} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {
   faChevronLeft,
   faSearch,
@@ -33,7 +34,7 @@ export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
 
   if (!isHomeScreen) {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView edges={['top', 'left', 'right']} style={styles.container}>
         <TouchableOpacity
           style={styles.chevron}
           onPress={() => navigation.goBack()}>
@@ -49,7 +50,7 @@ export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
   }
 
   return (
-    <SafeAreaView style={styles.HomeScreenContainer}>
+    <SafeAreaView edges={['top']} style={styles.HomeScreenContainer}>
       <TouchableOpacity onPress={() => navigation.navigate(ACCOUNT_NAVIGATOR)}>
         <FontAwesomeIcon icon={faUser} />
       </TouchableOpacity>

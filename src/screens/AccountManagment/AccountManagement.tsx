@@ -1,6 +1,7 @@
 import React from 'react';
-import {Image, SafeAreaView, TouchableOpacity, View} from 'react-native';
+import {Image, TouchableOpacity, View} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
@@ -55,7 +56,7 @@ const AccountManagement = () => {
   const styles = useThemedStyles(createStyles);
 
   return (
-    <SafeAreaView style={styles.accountManagmentContainer}>
+    <SafeAreaView edges={[]} style={styles.accountManagmentContainer}>
       <View>
         <View style={styles.headerContainer}>
           <Image

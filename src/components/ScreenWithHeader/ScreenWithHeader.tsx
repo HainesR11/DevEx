@@ -1,5 +1,6 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, ViewStyle} from 'react-native';
+import {ScrollView, ViewStyle} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import ModalHeader from '../ModalWithHeader/ModalHeader/ModalHeader';
 
@@ -15,7 +16,7 @@ const ScreenWithHeader = ({
   style,
 }: TScreenWithHeader) => {
   return (
-    <SafeAreaView style={style}>
+    <SafeAreaView edges={[]} style={style}>
       <ModalHeader isFirstScreen={isFirstScreen} />
       <ScrollView>{children}</ScrollView>
     </SafeAreaView>

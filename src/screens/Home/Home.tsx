@@ -1,5 +1,6 @@
 import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {useSelector} from 'react-redux';
 
 import LoadingSpinner from '@DevEx/components/loadingSpinner/loadingSpinner';
@@ -24,7 +25,7 @@ const Home = () => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView edges={['left', 'right']}>
       <ScrollView style={styles.HomeScrollView}>
         {HomeScreenData.map((item: THomeScreenDataItem, index) => {
           return <PostItem key={index} item={item} user={user.user} />;

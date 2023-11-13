@@ -1,7 +1,8 @@
+import React, {FC} from 'react';
+import {Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {faPlaystation} from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import React, {FC} from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
 
 interface ICommentView {
   route?: {
@@ -17,7 +18,7 @@ const CommentView: FC<ICommentView> = ({route}) => {
   console.log(routeParams);
   // TODO: create call to back end to get information about Comment
   return (
-    <SafeAreaView>
+    <SafeAreaView edges={[]}>
       <View>
         <Text>Hello there</Text>
       </View>
