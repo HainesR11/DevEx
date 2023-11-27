@@ -20,6 +20,7 @@ import {
 import {Text} from '../Text/text';
 
 import createStyles from './PostItem.styles';
+import DynamicModal from '../DynamicModal/DynamicModal';
 
 const PostItem = ({
   item,
@@ -28,12 +29,12 @@ const PostItem = ({
   item: THomeScreenDataItem;
   user?: TUserInfo;
 }) => {
-  console.log(user?.username, '---Dislikes---');
   const styles = useThemedStyles(createStyles);
   const navigation = useNavigation<TNavigationProps>();
 
   const [likedLength, setLikedLength] = useState(item.likes.length);
   const [dislikedLength, setDislikedLength] = useState(item.dislikes.length);
+  const [openComments, setOpenComments] = useState(false);
 
   const [disliked, setDisliked] = useState<Boolean>(
     item.dislikes.includes('HainesR11'),
@@ -43,67 +44,75 @@ const PostItem = ({
   );
 
   return (
-    <View style={styles.PostItemContainer}>
-      <View style={[styles.PostItemUserContainer, styles.PostItemCenter]}>
-        <Image
-          source={require('@DevEx/assets/me.jpg')}
-          style={styles.PostItemImage}
-        />
-        <View>
-          <Text bold text={item.user.name} />
-          <Text textStyle={styles.PostItemUsername} text={item.user.username} />
-        </View>
-      </View>
-      <View style={styles.PostItemDataConatiner}>
-        <Text text={item.data} />
-      </View>
-      <View style={[styles.PostItemCommentInfo, styles.PostItemCenter]}>
-        <TouchableOpacity
-          //TODO: Add header + text property to item.data istead of just base string
-          onPress={() =>
-            navigation.navigate(COMMENT_SCREEN, {id: item.id, title: item.data})
-          }>
-          <Text
-            textStyle={styles.PostItemUsername}
-            text={`${item.comments.length} comments`}
+    <>
+      <View style={styles.PostItemContainer}>
+        <View style={[styles.PostItemUserContainer, styles.PostItemCenter]}>
+          <Image
+            source={require('@DevEx/assets/me.jpg')}
+            style={styles.PostItemImage}
           />
-        </TouchableOpacity>
-        <View style={[styles.PostItemShareInfo, styles.PostItemCenter]}>
+          <View>
+            <Text bold text={item.user.name} />
+            <Text
+              textStyle={styles.PostItemUsername}
+              text={item.user.username}
+            />
+          </View>
+        </View>
+        <View style={styles.PostItemDataConatiner}>
+          <Text text={item.data} />
+        </View>
+        <View style={[styles.PostItemCommentInfo, styles.PostItemCenter]}>
           <TouchableOpacity
-            onPress={() => {
-              setLikedLength(liked ? likedLength - 1 : likedLength + 1);
-              setLiked(!liked);
-            }}
-            style={[styles.PostItemShareItem, styles.PostItemCenter]}>
-            <Text text={likedLength} />
-            <FontAwesomeIcon
-              color={liked ? colors.green : colors.grey50}
-              icon={faThumbsUp}
+            //TODO: Add header + text property to item.data istead of just base string
+            onPress={() =>
+              navigation.navigate(COMMENT_SCREEN, {
+                id: item.id,
+                title: item.data,
+              })
+            }>
+            <Text
+              textStyle={styles.PostItemUsername}
+              text={`${item.comments.length} comments`}
             />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              setDislikedLength(
-                disliked ? dislikedLength - 1 : dislikedLength + 1,
-              );
-              setDisliked(!disliked);
-            }}
-            style={[styles.PostItemShareItem, styles.PostItemCenter]}>
-            <Text text={dislikedLength} />
-            <FontAwesomeIcon
-              color={disliked ? colors.red : colors.grey50}
-              icon={faThumbsDown}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            // TODO: create share page (to followers)
-            onPress={() => Share.share({message: item.data})}
-            style={[styles.PostItemShareItem, styles.PostItemCenter]}>
-            <FontAwesomeIcon color={colors.grey50} icon={faShare} />
-          </TouchableOpacity>
+          <View style={[styles.PostItemShareInfo, styles.PostItemCenter]}>
+            <TouchableOpacity
+              onPress={() => {
+                setLikedLength(liked ? likedLength - 1 : likedLength + 1);
+                setLiked(!liked);
+              }}
+              style={[styles.PostItemShareItem, styles.PostItemCenter]}>
+              <Text text={likedLength} />
+              <FontAwesomeIcon
+                color={liked ? colors.green : colors.grey50}
+                icon={faThumbsUp}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setDislikedLength(
+                  disliked ? dislikedLength - 1 : dislikedLength + 1,
+                );
+                setDisliked(!disliked);
+              }}
+              style={[styles.PostItemShareItem, styles.PostItemCenter]}>
+              <Text text={dislikedLength} />
+              <FontAwesomeIcon
+                color={disliked ? colors.red : colors.grey50}
+                icon={faThumbsDown}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              // TODO: create share page (to followers)
+              onPress={() => Share.share({message: item.data})}
+              style={[styles.PostItemShareItem, styles.PostItemCenter]}>
+              <FontAwesomeIcon color={colors.grey50} icon={faShare} />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+    </>
   );
 };
 

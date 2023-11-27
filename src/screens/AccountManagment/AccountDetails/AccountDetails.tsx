@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-import ScreenWithHeader from '@DevEx/components/ScreenWithHeader/ScreenWithHeader';
+import ScreenWithHeader from '@DevEx/components/layouts/ScreenWithHeader/ScreenWithHeader';
 
 const AccountDetails = () => {
   return (

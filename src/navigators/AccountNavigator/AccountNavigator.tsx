@@ -12,10 +12,9 @@ const AccountNavigatorStack = createStackNavigator<TRootNavigationProps>();
 const AccountNavigator = () => {
   return (
     <AccountNavigatorStack.Navigator
-      screenOptions={{headerShown: false}}
+      screenOptions={{headerShown: false, presentation: 'modal'}}
       initialRouteName={screenNames.ACCOUNT_MANAGEMENT}>
       <AccountNavigatorStack.Screen
-        options={{headerShown: false}}
         name={screenNames.ACCOUNT_MANAGEMENT}
         component={AccountManagement}
       />

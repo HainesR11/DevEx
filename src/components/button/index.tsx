@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import theme from '@DevEx/utils/styles/theme';
 
-import LoadingSpinner from '../loadingSpinner/loadingSpinner';
+import LoadingSpinner from '../layouts/loadingSpinner/loadingSpinner';
 
 import {createStyles} from './button.styles';
 
@@ -52,6 +52,7 @@ export const Button = ({
 type TRadioButton = {
   text: string;
 };
+
 export const RadioButton = ({text}: TRadioButton) => {
   const styles = useThemedStyles(createStyles);
   const [checked, setChecked] = useState<boolean>(false);

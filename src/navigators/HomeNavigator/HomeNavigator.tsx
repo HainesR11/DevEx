@@ -21,15 +21,7 @@ const HomeNavigator = () => {
         name={HOME_SCREEN}
         component={Home}
       />
-      <HomeNavigatorStack.Screen
-        options={{
-          header: props => (
-            <HomeHeader isHomeScreen={false} title={props.route.params} />
-          ),
-        }}
-        name={COMMENT_SCREEN}
-        component={CommentView}
-      />
+
     </HomeNavigatorStack.Navigator>
   );
 };

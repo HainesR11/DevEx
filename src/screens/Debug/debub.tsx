@@ -4,7 +4,7 @@ import DeviceInfo from 'react-native-device-info';
 import {useDispatch} from 'react-redux';
 
 import {Button, Text} from '@DevEx/components';
-import ScreenWithHeader from '@DevEx/components/ScreenWithHeader/ScreenWithHeader';
+import ScreenWithHeader from '@DevEx/components/layouts/ScreenWithHeader/ScreenWithHeader';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {accountDetailsStub} from '@DevEx/test/stubs';
 import {setUser} from '@DevEx/utils/store/userSlice/userSlice';

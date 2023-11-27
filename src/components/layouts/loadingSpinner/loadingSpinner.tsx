@@ -1,6 +1,8 @@
+import {Spinner} from '@DevEx/assets';
 import React, {useEffect, useRef} from 'react';
-import {Animated, Easing} from 'react-native';
+import {Animated, Easing, Image, View} from 'react-native';
 import {Path, Svg} from 'react-native-svg';
+import {Text} from '../../Text/text';
 
 const LoadingSpinner = () => {
   const animatedRef = useRef(new Animated.Value(0)).current;
@@ -17,21 +19,23 @@ const LoadingSpinner = () => {
   });
 
   return (
-    <Animated.View
-      style={[
-        {
-          transform: [
-            {
-              rotate: animatedRef.interpolate({
-                inputRange: [0, 1],
-                outputRange: ['0deg', '360deg'],
-              }),
-            },
-          ],
-        },
-      ]}>
-      {/* <Image source={spinner} style={{height: 30, width: 30}} /> */}
-      <Svg
+    <View style={{alignItems: 'center'}}>
+      <Text bold text={'Please Wait'} />
+      <Animated.View
+        style={[
+          {
+            transform: [
+              {
+                rotate: animatedRef.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ['0deg', '360deg'],
+                }),
+              },
+            ],
+          },
+        ]}>
+        <Image source={Spinner} style={{height: 30, width: 30}} />
+        {/* <Svg
         width="40"
         height="40"
         viewBox="0 0 24 24"
@@ -43,8 +47,9 @@ const LoadingSpinner = () => {
           stroke-width="3.55556"
           stroke-linecap="round"
         />
-      </Svg>
-    </Animated.View>
+      </Svg> */}
+      </Animated.View>
+    </View>
   );
 };
 export default LoadingSpinner;

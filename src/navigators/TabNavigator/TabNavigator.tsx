@@ -12,7 +12,7 @@ const TabNavStack = createBottomTabNavigator<TRootNavigationProps>();
 
 const TabNavigator = () => {
   return (
-    <TabNavStack.Navigator>
+    <TabNavStack.Navigator initialRouteName={HOME_NAVIGATOR}>
       <TabNavStack.Screen
         name={HOME_NAVIGATOR}
         options={{
@@ -20,8 +20,10 @@ const TabNavigator = () => {
           headerShown: false,
           tabBarActiveTintColor: colors.grey80,
           tabBarInactiveTintColor: colors.grey40,
-          tabBarIcon: ({focused}) => (
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({focused, size}) => (
             <FontAwesomeIcon
+              size={size}
               color={focused ? colors.grey80 : colors.grey40}
               icon={faHouse}
             />

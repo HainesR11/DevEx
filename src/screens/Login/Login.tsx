@@ -52,7 +52,8 @@ const Login = () => {
             />
           </View>
           <View style={styles.loginButtonContainer}>
-            <Button type="Primary"
+            <Button
+              type="Primary"
               title="Continue"
               onPress={() => setLoginVisible(true)}
             />

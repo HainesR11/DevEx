@@ -11,7 +11,7 @@ import {useDispatch} from 'react-redux';
 
 // import {getTokenFromLogin} from '@DevEx/api';
 import {GradientText, Button, Text} from '@DevEx/components';
-import ModalWithHeader from '@DevEx/components/ModalWithHeader/ModalWithHeader';
+import ModalWithHeader from '@DevEx/components/layouts/ModalWithHeader/ModalWithHeader';
 import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox';
 import {TouchableText} from '@DevEx/components/Text/text';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
@@ -158,7 +158,8 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
             )}
           </Animated.View>
           <View>
-            <Button type="Primary"
+            <Button
+              type="Primary"
               title={createUser ? 'Create User' : 'Login'}
               onPress={onLogin}
             />

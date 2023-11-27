@@ -3,7 +3,7 @@ import {ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useSelector} from 'react-redux';
 
-import LoadingSpinner from '@DevEx/components/loadingSpinner/loadingSpinner';
+import LoadingSpinner from '@DevEx/components/layouts/loadingSpinner/loadingSpinner';
 import PostItem from '@DevEx/components/PostItem/PostItem';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {HomeScreenData} from '@DevEx/test/stubs';
@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <SafeAreaView edges={['left', 'right']}>
       <ScrollView style={styles.HomeScrollView}>
-        {HomeScreenData.map((item: THomeScreenDataItem, index) => {
+        {HomeScreenData.map((item: THomeScreenDataItem, index: number) => {
           return <PostItem key={index} item={item} user={user.user} />;
         })}
       </ScrollView>

@@ -13,6 +13,7 @@ import {clearUser} from '@DevEx/utils/store/userSlice/userSlice';
 import {TAccountManagement, TNavigationProps} from '@DevEx/utils/types/types';
 
 import createStyles from './AccountManagement.styles';
+import ModalHeader from '@DevEx/components/layouts/ModalWithHeader/ModalHeader/ModalHeader';
 
 type TAccountManagementItem = {
   title: string;
@@ -58,6 +59,7 @@ const AccountManagement = () => {
   return (
     <SafeAreaView edges={[]} style={styles.accountManagmentContainer}>
       <View>
+        <ModalHeader />
         <View style={styles.headerContainer}>
           <Image
             source={require('@DevEx/assets/me.jpg')}

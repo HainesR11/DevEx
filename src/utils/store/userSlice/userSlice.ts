@@ -5,6 +5,7 @@ import {USER_SLICE} from '@DevEx/constants/sliceConstant';
 const initialState = {
   isAuthenticated: false,
   actions: [],
+  isDarkMode: false,
   isFirstVisit: false,
   user: {
     id: 24,
