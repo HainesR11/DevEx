@@ -26,12 +26,15 @@ const createStyles = (theme: Theme) =>
       backgroundColor: theme.colors.translucentDark,
     },
     wrapper: {
+      zIndex: 1,
       paddingHorizontal: theme.spacing.s,
       borderTopLeftRadius: theme.spacing.l,
       borderTopRightRadius: theme.spacing.l,
       backgroundColor: theme.colors.grey10,
     },
-    content: {},
+    content: {
+      height: '100%',
+    },
     headerBar: {
       alignSelf: 'center',
       marginTop: theme.spacing.sm,
@@ -39,6 +42,10 @@ const createStyles = (theme: Theme) =>
       borderRadius: theme.spacing.xs,
       height: theme.spacing.xs,
       backgroundColor: theme.colors.grey50,
+    },
+    fillScreen: {
+      width: '100%',
+      height: '100%',
     },
   });
 export default createStyles;

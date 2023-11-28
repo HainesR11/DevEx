@@ -1,10 +1,11 @@
 import React, {FC} from 'react';
-import {Image, View} from 'react-native';
+import {Image, ScrollView, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
+import {Text} from '@DevEx/components';
+import DynamicModal from '@DevEx/components/DynamicModal/DynamicModal';
 import CommentItem from '@DevEx/components/PostItem/CommentItem';
 import {HomeScreenData} from '@DevEx/test/stubs';
-import DynamicModal from '@DevEx/components/DynamicModal/DynamicModal';
 
 interface ICommentView {
   route?: {
@@ -20,7 +21,19 @@ const CommentView: FC<ICommentView> = ({route}) => {
   console.log(routeParams);
   const item = HomeScreenData[1];
   // TODO: create call to back end to get information about Comment
-  return <DynamicModal />;
+  return (
+    <DynamicModal
+      testID="dynamic-modal-comments"
+      header={() => (
+        <View style={{alignItems: 'center'}}>
+          <Text text={'Header'} />
+        </View>
+      )}>
+      <ScrollView style={{width: '100%'}}>
+        <Text text={'Scroll view here'} />
+      </ScrollView>
+    </DynamicModal>
+  );
 };
 
 export default CommentView;
@@ -29,8 +42,5 @@ export default CommentView;
 //         <CommentItem item={item} />
 //       </View>
 //       <View>
-//         {item.comments.map(() => {
-//           return <View></View>;
-//         })}
 //       </View>
 //     </DynamicModal>
