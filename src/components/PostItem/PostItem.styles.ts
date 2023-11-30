@@ -15,6 +15,9 @@ const createStyles = (theme: Theme) =>
       marginVertical: theme.spacing.m,
       marginHorizontal: theme.spacing.sm,
     },
+    marginLeft: {
+      paddingLeft: theme.spacing.s,
+    },
     PostItemCenter: {
       display: 'flex',
       flexDirection: 'row',

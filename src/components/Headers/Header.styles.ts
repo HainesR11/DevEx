@@ -4,6 +4,7 @@ import {Theme} from '@DevEx/utils/styles/theme';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
+    // Home Header Styles
     HomeScreenContainer: {
       flexDirection: 'row',
       marginHorizontal: theme.spacing.m,
@@ -29,6 +30,26 @@ const createStyles = (theme: Theme) =>
     },
     chevron: {
       right: 60,
+    },
+
+    // Comment View Header Styles
+    active: {
+      fontWeight: '900',
+    },
+    textStyle: {
+      paddingVertical: theme.spacing.s,
+      width: 140,
+      textAlign: 'center',
+    },
+    textViewContainer: {
+      borderBottomColor: theme.colors.grey50,
+    },
+    commentContainer: {
+      width: '100%',
+      borderBottomColor: theme.colors.grey20,
+      borderBottomWidth: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
     },
   });
 

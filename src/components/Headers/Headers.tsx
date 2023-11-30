@@ -1,5 +1,5 @@
-import React from 'react';
-import {Image, TouchableOpacity} from 'react-native';
+import React, {Dispatch, SetStateAction} from 'react';
+import {Image, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {
   faChevronLeft,
@@ -62,5 +62,60 @@ export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
         <FontAwesomeIcon icon={faSearch} />
       </TouchableOpacity>
     </SafeAreaView>
+  );
+};
+
+type THeaderParams = 'Comments' | 'Likes' | 'Share';
+
+export const CommentViewHeader = (
+  activeHeader: string,
+  onPress: Dispatch<SetStateAction<THeaderParams>>,
+) => {
+  const styles = useThemedStyles(createStyles);
+  return (
+    <View style={styles.commentContainer}>
+      <View
+        style={[
+          styles.textViewContainer,
+          {
+            borderBottomWidth: activeHeader === 'Likes' ? 1 : undefined,
+          },
+        ]}>
+        <Text
+          textStyle={styles.textStyle}
+          bold={activeHeader === 'Likes'}
+          text={'Likes'}
+          onPress={() => onPress('Likes')}
+        />
+      </View>
+      <View
+        style={[
+          styles.textViewContainer,
+          {
+            borderBottomWidth: activeHeader === 'Comments' ? 1 : undefined,
+          },
+        ]}>
+        <Text
+          textStyle={styles.textStyle}
+          bold={activeHeader === 'Comments'}
+          text={'Comments'}
+          onPress={() => onPress('Comments')}
+        />
+      </View>
+      <View
+        style={[
+          styles.textViewContainer,
+          {
+            borderBottomWidth: activeHeader === 'Share' ? 1 : undefined,
+          },
+        ]}>
+        <Text
+          textStyle={styles.textStyle}
+          bold={activeHeader === 'Share'}
+          text={'Share'}
+          onPress={() => onPress('Share')}
+        />
+      </View>
+    </View>
   );
 };

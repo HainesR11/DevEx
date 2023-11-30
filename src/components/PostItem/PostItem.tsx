@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Image, Share, TouchableOpacity, View} from 'react-native';
 import {
+  faBookmark,
   faShare,
-  faThumbsDown,
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -20,7 +20,6 @@ import {
 import {Text} from '../Text/text';
 
 import createStyles from './PostItem.styles';
-import DynamicModal from '../DynamicModal/DynamicModal';
 
 const PostItem = ({
   item,
@@ -33,14 +32,10 @@ const PostItem = ({
   const navigation = useNavigation<TNavigationProps>();
 
   const [likedLength, setLikedLength] = useState(item.likes.length);
-  const [dislikedLength, setDislikedLength] = useState(item.dislikes.length);
-  const [openComments, setOpenComments] = useState(false);
+  const [saved, setSaved] = useState<boolean>(false);
 
-  const [disliked, setDisliked] = useState<Boolean>(
-    item.dislikes.includes('HainesR11'),
-  );
   const [liked, setLiked] = useState<Boolean>(
-    item.likes.includes(user?.username as string),
+    item.likes.some(test => test.username === user?.username),
   );
 
   return (
@@ -68,7 +63,7 @@ const PostItem = ({
             onPress={() =>
               navigation.navigate(COMMENT_SCREEN, {
                 id: item.id,
-                title: item.data,
+                interaction: 'Comments',
               })
             }>
             <Text
@@ -90,17 +85,15 @@ const PostItem = ({
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => {
-                setDislikedLength(
-                  disliked ? dislikedLength - 1 : dislikedLength + 1,
-                );
-                setDisliked(!disliked);
-              }}
-              style={[styles.PostItemShareItem, styles.PostItemCenter]}>
-              <Text text={dislikedLength} />
+              onPress={() => setSaved(!saved)}
+              style={[
+                styles.PostItemShareItem,
+                styles.PostItemCenter,
+                styles.marginLeft,
+              ]}>
               <FontAwesomeIcon
-                color={disliked ? colors.red : colors.grey50}
-                icon={faThumbsDown}
+                color={saved ? colors.grey80 : colors.grey50}
+                icon={faBookmark}
               />
             </TouchableOpacity>
             <TouchableOpacity
