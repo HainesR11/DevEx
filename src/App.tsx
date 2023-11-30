@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Appearance, Platform, StatusBar} from 'react-native';
+import {Platform, StatusBar} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -9,6 +9,7 @@ import {ThemeProvider} from '@shopify/restyle';
 import {persist, store} from '@DevEx/utils/store/store';
 
 import ErrorBoundary from './ErrorBoundry';
+import QueryClient from './QueryClient';
 import AppStatusCheck from './StatusCheck';
 import OnboardingWrapper from './components/OnboardingWrapper/OnboardingWrapper';
 import LaunchNavigator from './navigators/RootNavigation/LaunchNavigator';
@@ -26,15 +27,17 @@ const App = () => {
       ) : undefined}
       <Provider store={store}>
         <ErrorBoundary>
-          <AppStatusCheck>
-            <PersistGate persistor={persist}>
-              <OnboardingWrapper>
-                <NavigationContainer>
-                  <LaunchNavigator />
-                </NavigationContainer>
-              </OnboardingWrapper>
-            </PersistGate>
-          </AppStatusCheck>
+          <QueryClient>
+            <AppStatusCheck>
+              <PersistGate persistor={persist}>
+                <OnboardingWrapper>
+                  <NavigationContainer>
+                    <LaunchNavigator />
+                  </NavigationContainer>
+                </OnboardingWrapper>
+              </PersistGate>
+            </AppStatusCheck>
+          </QueryClient>
         </ErrorBoundary>
       </Provider>
     </ThemeProvider>
