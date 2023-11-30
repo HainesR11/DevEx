@@ -2,8 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {HomeHeader} from '@DevEx/components/Headers/Headers';
-import {COMMENT_SCREEN, HOME_SCREEN} from '@DevEx/constants/screenNames';
-import CommentView from '@DevEx/screens/CommentView/CommentView';
+import {HOME_SCREEN} from '@DevEx/constants/screenNames';
 import Home from '@DevEx/screens/Home/Home';
 import {TRootNavigationProps} from '@DevEx/utils/types/types';
 
@@ -21,7 +20,6 @@ const HomeNavigator = () => {
         name={HOME_SCREEN}
         component={Home}
       />
-
     </HomeNavigatorStack.Navigator>
   );
 };

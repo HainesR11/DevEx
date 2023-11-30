@@ -4,7 +4,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
-import {GradientText, Button, Text} from '@DevEx/components';
+import {Button, GradientText, Text} from '@DevEx/components';
 import ListPanel from '@DevEx/components/ListPanel/ListPanel';
 import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox';
 import {codeSentString} from '@DevEx/constants';

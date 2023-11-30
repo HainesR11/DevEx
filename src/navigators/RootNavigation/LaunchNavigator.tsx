@@ -7,12 +7,12 @@ import {
   SEARCH_NAVIGATOR,
   TAB_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
+import CommentView from '@DevEx/screens/CommentView/CommentView';
 import {TRootNavigationProps} from '@DevEx/utils/types/types';
 
 import {AccountNavigator, SearchNavigator, TabNavigator} from '../index';
 
 import 'react-native-gesture-handler';
-import CommentView from '@DevEx/screens/CommentView/CommentView';
 
 const AuthStack = createStackNavigator<TRootNavigationProps>();
 

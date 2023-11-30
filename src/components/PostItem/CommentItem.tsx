@@ -22,15 +22,10 @@ const CommentItem = ({
   item: THomeScreenDataItem;
   user?: TUserInfo;
 }) => {
-  console.log(user?.username, '---Dislikes---');
   const styles = useThemedStyles(createStyles);
 
   const [likedLength, setLikedLength] = useState(item.likes.length);
-  const [dislikedLength, setDislikedLength] = useState(item.dislikes.length);
 
-  const [disliked, setDisliked] = useState<Boolean>(
-    item.dislikes.includes('HainesR11'),
-  );
   const [liked, setLiked] = useState<Boolean>(
     item.likes.includes(user?.username as string),
   );

@@ -36,7 +36,6 @@ const OnboardingWrapper: FC<TOnboardingWrapper> = ({children}: any) => {
   if (onboardingActionsToRender && onboardingActionsToRender.length > 0) {
     return <>{onboardingActionsToRender[0].component}</>;
   }
-  console.log(isAuthenticated);
   return <>{children}</>;
 };
 
