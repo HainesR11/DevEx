@@ -31,17 +31,24 @@ export const test = [
     timestamp: '123456789',
     data: `Does any know how to create a new react app?`,
     likes: [
-      'HainesR11',
-      'HainesR2',
-      'HainesR3',
-      'HainesR4',
-      'HainesR5',
-      'HainesR6',
-      'HainesR7',
-      'HainesR8',
-      'HainesR9',
+      {image: '', Username: 'HainesR11', name: 'Rhys Haines'},
+
+      {image: '', Username: 'HainesR1', name: 'Rhys Haines'},
+
+      {image: '', Username: 'HainesR2', name: 'Rhys Haines'},
+
+      {image: '', Username: 'HainesR3', name: 'Rhys Haines'},
+
+      {image: '', Username: 'HainesR4', name: 'Rhys Haines'},
+
+      {image: '', Username: 'HainesR5', name: 'Rhys Haines'},
+
+      {image: '', Username: 'HainesR6', name: 'Rhys Haines'},
+
+      {image: '', Username: 'HainesR7', name: 'Rhys Haines'},
+
+      {image: '', Username: 'HainesR8', name: 'Rhys Haines'},
     ],
-    dislikes: [],
     comments: [
       {
         user: {
@@ -86,17 +93,24 @@ export const HomeScreenData = [
     timestamp: '123456789',
     data: `Does any know how to create a new react app?`,
     likes: [
-      'HainesR11',
-      'HainesR2',
-      'HainesR3',
-      'HainesR4',
-      'HainesR5',
-      'HainesR6',
-      'HainesR7',
-      'HainesR8',
-      'HainesR9',
+      {image: '', username: 'HainesR11', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR1', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR2', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR3', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR4', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR5', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR6', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR7', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR8', name: 'Rhys Haines'},
     ],
-    dislikes: [],
     comments: [
       {
         user: {
@@ -138,17 +152,24 @@ export const HomeScreenData = [
     timestamp: '123456789',
     data: `Does any know how to create a new react app?`,
     likes: [
-      'HainesR11',
-      'HainesR2',
-      'HainesR3',
-      'HainesR4',
-      'HainesR5',
-      'HainesR6',
-      'HainesR7',
-      'HainesR8',
-      'HainesR9',
+      {image: '', username: 'HainesR11', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR1', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR2', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR3', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR4', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR5', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR6', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR7', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR8', name: 'Rhys Haines'},
     ],
-    dislikes: [],
     comments: [
       {
         user: {
@@ -190,17 +211,24 @@ export const HomeScreenData = [
     timestamp: '123456789',
     data: `Does any know how to create a new react app?`,
     likes: [
-      'HainesR1',
-      'HainesR2',
-      'HainesR3',
-      'HainesR4',
-      'HainesR5',
-      'HainesR6',
-      'HainesR7',
-      'HainesR8',
-      'HainesR9',
+      {image: '', username: 'HainesR10', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR1', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR2', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR3', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR4', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR5', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR6', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR7', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR8', name: 'Rhys Haines'},
     ],
-    dislikes: ['HainesR11'],
     comments: [
       {
         user: {
@@ -242,15 +270,23 @@ export const HomeScreenData = [
     timestamp: '123456789',
     data: `Does any know how to create a new react app?`,
     likes: [
-      'HainesR1',
-      'HainesR2',
-      'HainesR3',
-      'HainesR4',
-      'HainesR5',
-      'HainesR6',
-      'HainesR7',
-      'HainesR8',
-      'HainesR9',
+      {image: '', username: 'HainesR10', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR1', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR2', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR3', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR4', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR5', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR6', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR7', name: 'Rhys Haines'},
+
+      {image: '', username: 'HainesR8', name: 'Rhys Haines'},
     ],
     dislikes: [],
     comments: [

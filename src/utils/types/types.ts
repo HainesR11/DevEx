@@ -55,7 +55,7 @@ export type TRootNavigationProps = {
   ComminityScreen: undefined;
   [SEARCH_SCREEN]: undefined;
   [DEBUG_SCREEN]: undefined;
-  [COMMENT_SCREEN]: undefined;
+  [COMMENT_SCREEN]: {id: string; interaction: 'Comments' | 'Share' | 'Likes'};
 };
 
 export type TAccountManagement = {
@@ -92,7 +92,6 @@ export type THomeScreenDataItem = {
   id: string;
   user: TPostItemUser;
   data: string;
-  likes: string[];
-  dislikes: string[];
+  likes: {name?: string; username: string; image?: string}[];
   comments: TCommentItem[];
 };
