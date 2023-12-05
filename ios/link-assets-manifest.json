@@ -2,52 +2,12 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/SFMonoBold.otf",
-      "sha1": "34de7382df9cd780395fac283b3786a9c55f5daa"
+      "path": "src/assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf",
+      "sha1": "482fe6d50836d6dabe77d2810248e5dfb4f093e0"
     },
     {
-      "path": "src/assets/fonts/SFMonoBoldItalic.otf",
-      "sha1": "d006346f80af547d936fbd942185027e07d7c4d4"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoHeavy.otf",
-      "sha1": "2907ab5d6446a7a18a45b422f3b1356e695ff7af"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoHeavyItalic.otf",
-      "sha1": "818f23cf12898a65a9274620f8fab2314b62bbfa"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoLight.otf",
-      "sha1": "232f6c9ac378edbd52b20ba438832f56bc223827"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoLightItalic.otf",
-      "sha1": "e3e39ae25f1829d033ca7338cf6b3b29ec6a1b53"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoMedium.otf",
-      "sha1": "40b82256fa902fc0304143ab4e946584abf20ae1"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoMediumItalic.otf",
-      "sha1": "f16f3cbe26d3e41ebc225b9fce74448fb4a9f56f"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoRegular.otf",
-      "sha1": "4fe5bd007afdbb1b6864c5627e7825703cf1d784"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoRegularItalic.otf",
-      "sha1": "aa6ae33e9dfb6d0d282504b10a5ab85903d53b61"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoSemibold.otf",
-      "sha1": "5b4878cf740457ceaf8de253ba4210f2836589b6"
-    },
-    {
-      "path": "src/assets/fonts/SFMonoSemiboldItalic.otf",
-      "sha1": "eb17f340fb8957575a85c6583a13696efc34f31d"
+      "path": "src/assets/fonts/RobotoMono-VariableFont_wght.ttf",
+      "sha1": "db68e7694003b4a0f58c675b4131a8226a566f5c"
     }
   ]
 }

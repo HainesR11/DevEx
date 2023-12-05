@@ -53,18 +53,8 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SFMonoBold.otf</string>
-		<string>SFMonoBoldItalic.otf</string>
-		<string>SFMonoHeavy.otf</string>
-		<string>SFMonoHeavyItalic.otf</string>
-		<string>SFMonoLight.otf</string>
-		<string>SFMonoLightItalic.otf</string>
-		<string>SFMonoMedium.otf</string>
-		<string>SFMonoMediumItalic.otf</string>
-		<string>SFMonoRegular.otf</string>
-		<string>SFMonoRegularItalic.otf</string>
-		<string>SFMonoSemibold.otf</string>
-		<string>SFMonoSemiboldItalic.otf</string>
+		<string>RobotoMono-Italic-VariableFont_wght.ttf</string>
+		<string>RobotoMono-VariableFont_wght.ttf</string>
 	</array>
 </dict>
 </plist>
