@@ -2,11 +2,11 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf",
+      "path": "src/assets/fonts/RobotoMono-Italic.ttf",
       "sha1": "482fe6d50836d6dabe77d2810248e5dfb4f093e0"
     },
     {
-      "path": "src/assets/fonts/RobotoMono-VariableFont_wght.ttf",
+      "path": "src/assets/fonts/RobotoMono-Regular.ttf",
       "sha1": "db68e7694003b4a0f58c675b4131a8226a566f5c"
     }
   ]

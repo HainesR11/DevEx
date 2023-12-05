@@ -53,8 +53,8 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>RobotoMono-Italic-VariableFont_wght.ttf</string>
-		<string>RobotoMono-VariableFont_wght.ttf</string>
+		<string>RobotoMono-Italic.ttf</string>
+		<string>RobotoMono-Regular.ttf</string>
 	</array>
 </dict>
 </plist>
