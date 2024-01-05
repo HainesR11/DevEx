@@ -1,10 +1,19 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 import {USER_SLICE} from '@DevEx/constants/sliceConstant';
+import {TUserInfo} from '@DevEx/utils/types/types';
 
-const initialState = {
+type TInitialState = {
+  isAuthenticated: boolean;
+  actions: string[] | null;
+  isDarkMode: boolean;
+  isFirstVisit: boolean;
+  user: TUserInfo;
+};
+
+const initialState: TInitialState = {
   isAuthenticated: false,
-  actions: [],
+  actions: null,
   isDarkMode: false,
   isFirstVisit: false,
   user: {

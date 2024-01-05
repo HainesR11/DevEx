@@ -5,21 +5,36 @@ import React, {
   useRef,
   useState,
 } from 'react';
-// import {Buffer} from 'buffer';
+import {Buffer} from 'buffer';
 import {Animated, TouchableOpacity, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 
-// import {getTokenFromLogin} from '@DevEx/api';
-import {GradientText, Button, Text} from '@DevEx/components';
+import {useGetTokensFromLogin} from '@DevEx/api/authentication';
+import useCreateUser from '@DevEx/api/authentication/useCreateUser';
+import {Button, GradientText, Text} from '@DevEx/components';
 import ModalWithHeader from '@DevEx/components/layouts/ModalWithHeader/ModalWithHeader';
 import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox';
 import {TouchableText} from '@DevEx/components/Text/text';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {setAuth} from '@DevEx/utils/store/authSlice/authSlice';
 import {setUser} from '@DevEx/utils/store/userSlice/userSlice';
 
 import ForgotPassword from './ForgotPassword/ForgotPassword';
 
 import createStyles from './Login.styles';
+
+type TLoginSuccessData = {
+  data: {
+    OAuth: string;
+    actions: string[];
+    user: {
+      id: string;
+      name: string;
+      username: string;
+      email: string;
+    };
+  };
+};
 
 type TLoginForm = {
   loginVisible: boolean;
@@ -51,10 +66,57 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const positionAnim = useRef(new Animated.Value(0)).current;
 
+  const loginMutation = useGetTokensFromLogin();
+  const createUserMutation = useCreateUser();
+
+  const onCreateUser = () => {
+    const hashedPassword = Buffer.from(password, 'utf8').toString('base64');
+    createUserMutation.mutate(
+      {
+        email: username,
+        password: hashedPassword,
+        name,
+      },
+      {
+        onSuccess: ({data}) => {
+          dispatch(
+            setUser({
+              user: {
+                email: data.email,
+                name: data.name,
+                usernmae: data.username,
+                profilePic: data.image,
+              },
+              actions: data.actions,
+              isAuthenticated: true,
+            }),
+          );
+        },
+      },
+    );
+  };
+
   const onLogin = async () => {
-    // const hashedPassword = Buffer.from(password, 'utf-8').toString('base64');
-    // await getTokenFromLogin(username, hashedPassword);
-    dispatch(setUser({isAuthenticated: true}));
+    const hashedPassword = Buffer.from(password, 'utf8').toString('base64');
+    loginMutation.mutate(
+      {
+        email: username,
+        password: hashedPassword,
+      },
+      {
+        onError: (error: Error) => console.log('--- error ---', error),
+        onSuccess: ({data}: TLoginSuccessData) => {
+          dispatch(
+            setUser({
+              user: {...data.user},
+              actions: data.actions,
+              isAuthenticated: true,
+            }),
+          );
+          dispatch(setAuth({tokens: {OAuth: data.OAuth}}));
+        },
+      },
+    );
   };
 
   useEffect(() => {
@@ -108,22 +170,21 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
       goBack={createUser ? () => setCreateUser(false) : undefined}
       testID="LoginModal">
       <View style={styles.screenContainer}>
-        <View style={styles.itemContainer}>
+        <View style={[styles.itemContainer]}>
           <View style={[styles.loginButtonContainer]}>
             <GradientText
+              bold
               testID="gradientGetStartedText"
-              text={!createUser ? 'Log in' : 'Create Account'}
+              text={!createUser ? 'Welcome,' : 'Create Account,'}
               gradientStyle="devexMainGradient"
               textStyle={styles.gradientText}
             />
             <Text
               text={
-                !createUser
-                  ? 'Sign into your account'
-                  : 'Create your new account'
+                !createUser ? 'Sign in to continue' : 'Sign up to get started'
               }
               testId="SignInText"
-              textStyle={[styles.text, styles.textAlign]}
+              textStyle={[styles.text]}
             />
           </View>
           <Animated.View style={{top: positionAnim}}>
@@ -161,7 +222,7 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
             <Button
               type="Primary"
               title={createUser ? 'Create User' : 'Login'}
-              onPress={onLogin}
+              onPress={createUser ? onCreateUser : onLogin}
             />
             {!createUser ? (
               <View style={styles.createContainer}>

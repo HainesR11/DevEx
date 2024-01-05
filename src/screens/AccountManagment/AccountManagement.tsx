@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
 import {Button, GradientText, Text} from '@DevEx/components';
+import ModalHeader from '@DevEx/components/layouts/ModalWithHeader/ModalHeader/ModalHeader';
 import {ACCOUNT_DETAILS, DEBUG_SCREEN} from '@DevEx/constants/screenNames';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {RootState} from '@DevEx/utils/store/store';
@@ -13,7 +14,6 @@ import {clearUser} from '@DevEx/utils/store/userSlice/userSlice';
 import {TAccountManagement, TNavigationProps} from '@DevEx/utils/types/types';
 
 import createStyles from './AccountManagement.styles';
-import ModalHeader from '@DevEx/components/layouts/ModalWithHeader/ModalHeader/ModalHeader';
 
 type TAccountManagementItem = {
   title: string;
