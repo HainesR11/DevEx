@@ -1,14 +1,11 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import useAppStatus from '@DevEx/hooks/useAppStatus';
-
-import LoadingSpinner from './screens/loading';
-import Maintenance from './screens/maintenance';
+import {LoadingSpinner, Maintenance} from '@DevEx/screens';
 
 const AppStatusCheck = ({children}: {children: Element}) => {
   const {appStatus} = useAppStatus();
-  console.log(appStatus, 'appStatus');
 
   switch (appStatus) {
     case 'loading':
