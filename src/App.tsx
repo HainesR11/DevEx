@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {Platform, StatusBar} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -26,19 +27,21 @@ const App = () => {
         <StatusBar barStyle={'dark-content'} />
       ) : undefined}
       <Provider store={store}>
-        <ErrorBoundary>
-          <QueryClient>
-            <AppStatusCheck>
-              <PersistGate persistor={persist}>
-                <OnboardingWrapper>
-                  <NavigationContainer>
-                    <LaunchNavigator />
-                  </NavigationContainer>
-                </OnboardingWrapper>
-              </PersistGate>
-            </AppStatusCheck>
-          </QueryClient>
-        </ErrorBoundary>
+        <SafeAreaProvider>
+          <ErrorBoundary>
+            <QueryClient>
+              <AppStatusCheck>
+                <PersistGate persistor={persist}>
+                  <OnboardingWrapper>
+                    <NavigationContainer>
+                      <LaunchNavigator />
+                    </NavigationContainer>
+                  </OnboardingWrapper>
+                </PersistGate>
+              </AppStatusCheck>
+            </QueryClient>
+          </ErrorBoundary>
+        </SafeAreaProvider>
       </Provider>
     </ThemeProvider>
   );

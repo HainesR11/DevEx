@@ -1,5 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
+import RNRestart from 'react-native-restart';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {Button} from '@DevEx/components/button';
@@ -28,7 +29,13 @@ const ErrorLayout = ({title, onPress, hasBody}: TErrorLayout) => {
           <Button type="Primary" onPress={onPress} title="Try Again" />
         )}
         <TouchableOpacity>
-          <Text text="Log out" onPress={logout} />
+          <Text
+            text="Log out"
+            onPress={() => {
+              logout();
+              RNRestart.Restart();
+            }}
+          />
         </TouchableOpacity>
       </View>
     </SafeAreaView>

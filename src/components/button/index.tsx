@@ -4,7 +4,6 @@ import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import theme from '@DevEx/utils/styles/theme';
 
 import LoadingSpinner from '../layouts/loadingSpinner/loadingSpinner';
 
@@ -15,20 +14,28 @@ type TButtonProps = {
   title: string;
   isLoading?: boolean;
   onPress: () => void;
-  type: 'Primary' | 'Secondary';
+  type?: 'Primary' | 'Secondary';
+  disabled?: boolean;
 };
 
 export const Button = ({
-  type,
+  type = 'Primary',
   styles,
   title,
   isLoading,
   onPress,
+  disabled = false,
 }: TButtonProps) => {
-  const style = createStyles(theme);
+  const style = useThemedStyles(createStyles);
   return type === 'Primary' ? (
-    <TouchableOpacity onPress={onPress}>
-      <View style={{...style.button, ...style.button.container, ...styles}}>
+    <TouchableOpacity disabled={disabled} onPress={onPress}>
+      <View
+        style={[
+          style.button,
+          style.button.container,
+          styles,
+          disabled ? style.disbaledBackground : style.background,
+        ]}>
         {isLoading ? (
           <LoadingSpinner />
         ) : (

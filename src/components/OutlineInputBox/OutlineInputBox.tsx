@@ -23,7 +23,6 @@ interface TOutlineTextInput extends TextInputProps {
   state?: 'error' | 'regular';
   secureTextEntry?: boolean;
   helpText?: string;
-  errorLine?: boolean;
 }
 
 const OutlineTextInput = ({
@@ -32,14 +31,13 @@ const OutlineTextInput = ({
   state = 'regular',
   testID,
   secureTextEntry,
-  errorLine,
   ...rest
 }: TOutlineTextInput) => {
   const [secure, setSecure] = useState(secureTextEntry ?? false);
   const styles = useThemedStyles(createStyles);
 
   const helpTextStyle =
-    state === 'error' ? styles.errorText : styles.regularText;
+    state === 'error' ? styles.textError : styles.regularText;
   const outlineStyle =
     state === 'regular' ? styles.outlineRegular : styles.outlineError;
 
@@ -48,7 +46,7 @@ const OutlineTextInput = ({
       <View style={styles.container}>
         <TextInput
           secureTextEntry={secure}
-          style={[styles.input, errorLine && styles.textError]}
+          style={[styles.input, state === 'error' && styles.textError]}
           testID={`${testID}-entry-field`}
           {...rest}
         />
@@ -66,7 +64,7 @@ const OutlineTextInput = ({
             StyleSheet.absoluteFill,
             styles.outline,
             outlineStyle,
-            errorLine && styles.outlineError,
+            state === 'error' && styles.outlineError,
           ]}
           pointerEvents="none"
         />
@@ -76,7 +74,7 @@ const OutlineTextInput = ({
             <Text
               text={title}
               testId="OutlineTextInput.title"
-              textStyle={helpTextStyle}
+              textStyle={[helpTextStyle]}
             />
           </View>
         )}

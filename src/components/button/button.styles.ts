@@ -14,7 +14,6 @@ export const createStyles = (theme: Theme) =>
         alignItems: 'center',
         justifyContent: 'center',
       },
-      backgroundColor: theme.buttons.primary.background,
       borderRadius: 10,
       primaryText: {
         color: 'white',
@@ -36,5 +35,11 @@ export const createStyles = (theme: Theme) =>
       width: width / 3,
       flexDirection: 'row',
       justifyContent: 'space-around',
+    },
+    background: {
+      backgroundColor: theme.buttons.primary.background,
+    },
+    disbaledBackground: {
+      backgroundColor: theme.buttons.disabled.background,
     },
   });

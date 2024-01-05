@@ -58,9 +58,6 @@ const createStyles = (theme: Theme) => {
     regularText: {
       color: theme.colors.grey70,
     },
-    errorText: {
-      color: theme.colors.errorDark,
-    },
   });
 };
 

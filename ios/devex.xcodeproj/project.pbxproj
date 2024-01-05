@@ -11,12 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		4B2B931A3DC84557B844BE23 /* RobotoMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9903790EEBB94D9F9EDC57E6 /* RobotoMono-Italic.ttf */; };
 		4D354CB929F01BB700E69970 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D354CB829F01BB700E69970 /* GoogleService-Info.plist */; };
+		67065002860E4256BBEB04FD /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F26D6626A5F24516A42B3A62 /* RobotoMono-Regular.ttf */; };
 		7516AFA03B4D798E008EB926 /* Pods_devex_devexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDDD84BB02E7F48E783B51A /* Pods_devex_devexTests.framework */; };
 		7CD378BA194C7A618C522F66 /* Pods_devex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BDB25C8CEE1AB5C41DDC67E /* Pods_devex.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		4B2B931A3DC84557B844BE23 /* RobotoMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9903790EEBB94D9F9EDC57E6 /* RobotoMono-Italic.ttf */; };
-		67065002860E4256BBEB04FD /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F26D6626A5F24516A42B3A62 /* RobotoMono-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +46,10 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = devex/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-devex-devexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devex-devexTests.release.xcconfig"; path = "Target Support Files/Pods-devex-devexTests/Pods-devex-devexTests.release.xcconfig"; sourceTree = "<group>"; };
 		8BDB25C8CEE1AB5C41DDC67E /* Pods_devex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_devex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9903790EEBB94D9F9EDC57E6 /* RobotoMono-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-Italic.ttf"; path = "../src/assets/fonts/RobotoMono-Italic.ttf"; sourceTree = "<group>"; };
 		CCDDD84BB02E7F48E783B51A /* Pods_devex_devexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_devex_devexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		9903790EEBB94D9F9EDC57E6 /* RobotoMono-Italic.ttf */ = {isa = PBXFileReference; name = "RobotoMono-Italic.ttf"; path = "../src/assets/fonts/RobotoMono-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F26D6626A5F24516A42B3A62 /* RobotoMono-Regular.ttf */ = {isa = PBXFileReference; name = "RobotoMono-Regular.ttf"; path = "../src/assets/fonts/RobotoMono-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F26D6626A5F24516A42B3A62 /* RobotoMono-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-Regular.ttf"; path = "../src/assets/fonts/RobotoMono-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
