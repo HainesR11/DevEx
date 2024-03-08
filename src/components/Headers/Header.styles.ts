@@ -1,22 +1,27 @@
 import {StyleSheet} from 'react-native';
 
 import {Theme} from '@DevEx/utils/styles/theme';
+import colors from '@DevEx/utils/styles/palette/colors';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
     // Home Header Styles
     HomeScreenContainer: {
       flexDirection: 'row',
-      marginHorizontal: theme.spacing.m,
+      width: '100%',
+      paddingHorizontal: theme.spacing.l,
       alignItems: 'center',
       justifyContent: 'space-between',
+      backgroundColor: colors.grey2,
     },
     container: {
       flexDirection: 'row',
+      width: '100%',
       marginHorizontal: theme.spacing.m,
       marginVertical: theme.spacing.s,
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: colors.grey2,
     },
     image: {
       width: theme.spacing.xl,

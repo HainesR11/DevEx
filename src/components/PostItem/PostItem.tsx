@@ -24,9 +24,13 @@ import createStyles from './PostItem.styles';
 const PostItem = ({
   item,
   user,
+  index,
+  length,
 }: {
   item: THomeScreenDataItem;
   user?: TUserInfo;
+  index: number;
+  length: number;
 }) => {
   const styles = useThemedStyles(createStyles);
   const navigation = useNavigation<TNavigationProps>();
@@ -40,7 +44,11 @@ const PostItem = ({
 
   return (
     <>
-      <View style={styles.PostItemContainer}>
+      <View
+        style={[
+          styles.PostItemContainer,
+          index !== length - 1 && styles.MarginBottom,
+        ]}>
         <View style={[styles.PostItemUserContainer, styles.PostItemCenter]}>
           <Image
             source={require('@DevEx/assets/me.jpg')}

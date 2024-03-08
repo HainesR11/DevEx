@@ -37,6 +37,7 @@ const theme = createTheme({
     grey50: colors.grey50,
     grey70: colors.grey70,
     errorDark: colors.errorDark,
+    errorLight: colors.errorLight,
     rewardsOrange: colors.orange,
     informationTileBackground: colors.grey10,
     primaryNumber: colors.blue,
@@ -114,6 +115,9 @@ const theme = createTheme({
   notification: {
     accentColor: colors.blue,
     activeDot: colors.primaryDark,
+  },
+  centreAlign: {
+    alignItems: 'center',
   },
 });
 

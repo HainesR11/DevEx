@@ -31,6 +31,7 @@ type TTextProps = {
   testId?: string;
   textStyle?: TextStyle | TextStyle[];
   bold?: boolean;
+  size?: number;
   italic?: boolean;
   onPress?: () => void;
   VMargin?: number;
@@ -88,6 +89,7 @@ export const Text = ({
   text,
   bold = false,
   testId,
+  size,
   textStyle,
   italic,
   onPress,
@@ -108,7 +110,7 @@ export const Text = ({
         bold && styles.bold,
         italic && styles.italic,
         textStyle,
-        {marginVertical: VMargin, marginHorizontal: HMargin},
+        {marginVertical: VMargin, marginHorizontal: HMargin, fontSize: size},
       ]}>
       {text}
     </RNText>
