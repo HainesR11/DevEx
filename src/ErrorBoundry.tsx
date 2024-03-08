@@ -35,7 +35,10 @@ export class ErrorBoundary extends Component<Props, State> {
 
     if (hasError) {
       return (
-        <ErrorLayout onPress={() => RNRestart.Restart()} hasBody={false} />
+        <ErrorLayout
+          bodyText="There has been a problem processing the request. Please try again "
+          onPress={() => RNRestart.Restart()}
+        />
       );
     }
     return children;

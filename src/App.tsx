@@ -14,12 +14,18 @@ import QueryClient from './QueryClient';
 import AppStatusCheck from './StatusCheck';
 import OnboardingWrapper from './components/OnboardingWrapper/OnboardingWrapper';
 import LaunchNavigator from './navigators/RootNavigation/LaunchNavigator';
+import {fetchFirebase} from './utils/firebase';
 import theme from './utils/styles/theme';
+
+async function ActivateFirebase() {
+  await fetchFirebase();
+}
 
 const App = () => {
   useEffect(() => {
+    ActivateFirebase();
     SplashScreen.hide();
-  });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>

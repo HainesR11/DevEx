@@ -1,15 +1,18 @@
 import {StyleSheet} from 'react-native';
 
 import {Theme} from '@DevEx/utils/styles/theme';
+import colors from '@DevEx/utils/styles/palette/colors';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
     //PostItem
     PostItemContainer: {
       paddingVertical: theme.spacing.m,
-      borderBottomColor: theme.colors.grey20,
       paddingHorizontal: theme.spacing.s,
-      borderBottomWidth: 1,
+      backgroundColor: colors.grey2,
+    },
+    MarginBottom: {
+      marginBottom: 5,
     },
     PostItemDataConatiner: {
       marginVertical: theme.spacing.m,

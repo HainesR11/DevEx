@@ -33,6 +33,7 @@ const colors = {
   primaryDark: '#000CC4',
   blue: '#000FF5',
   lightBlue: '#5271FF',
+  errorLight: '#fc9d9d',
   errorDark: '#B11212',
   criticalRed: '#C1481B',
   shadowGrey: '#C4C4C426',
