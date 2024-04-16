@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Animated,
   Image,
@@ -16,8 +16,6 @@ import LoadingSpinner from '@DevEx/components/layouts/loadingSpinner/loadingSpin
 import PostItem from '@DevEx/components/PostItem/PostItem';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {RootState} from '@DevEx/utils/store/store';
-import colors from '@DevEx/utils/styles/palette/colors';
-import theme from '@DevEx/utils/styles/theme';
 import {THomeScreenDataItem} from '@DevEx/utils/types/types';
 
 import createStyles from './Home.styles';
@@ -26,27 +24,54 @@ const Home = () => {
   const styles = useThemedStyles(createStyles);
   const user = useSelector((state: RootState) => state.user);
 
-  const {isLoading, data: HomeData, isError, refetch, error} = useGetPosts();
+  const {isLoading, data: HomeData, isError, refetch} = useGetPosts();
 
   const [loading, setLoading] = useState<boolean>(isLoading);
+  const [offset, setOffset] = useState<number>(0);
 
-  const loadingRotate = useRef(new Animated.Value(0)).current;
+  const loadingHeight = useRef(new Animated.Value(0)).current;
 
   const onRefetch = () => {
-    // TODO: create logging for how many times it has been refteched
-    // setPullDownHeight(0);
+    setOffset(70);
+    // TODO: create logging for how many times it has been refetched
     setLoading(true);
     setTimeout(async () => {
-      await refetch();
-      setLoading(false);
+      await refetch().then(() => {
+        setLoading(false);
+        setOffset(0);
+      });
     }, 5000);
+  };
+
+  useEffect(() => {
+    Animated.timing(loadingHeight, {
+      toValue: offset ?? 0,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
+  }, [loadingHeight, offset]);
+
+  const offsetCase = (nativeEvent: NativeScrollEvent) => {
+    switch (true) {
+      case ifCloseToTop(nativeEvent) && !loading:
+        if (nativeEvent.contentOffset.y >= -50) {
+          onRefetch();
+        }
+        if (nativeEvent.contentOffset.y <= -50) {
+          setOffset(-nativeEvent.contentOffset.y.toFixed() * 4);
+        }
+        break;
+      case loading && nativeEvent.contentOffset.y >= 50:
+        setLoading(false);
+        break;
+    }
   };
 
   const ifCloseToTop = (nativeEvent: NativeScrollEvent) => {
     return nativeEvent.contentOffset.y <= 0;
   };
 
-  if (isError || error || (HomeData === undefined && !isLoading)) {
+  if (isError || (HomeData === undefined && !isLoading)) {
     return (
       <SafeAreaView edges={['left', 'right']}>
         <Text text={'An Error occured, please try again'} />
@@ -56,69 +81,33 @@ const Home = () => {
 
   if (HomeData === undefined || user === undefined) {
     return (
-      <SafeAreaView edges={['left', 'right']}>
-        <LoadingSpinner />
+      <SafeAreaView
+        style={styles.loadingSpinnerContainer}
+        edges={['top', 'left', 'right']}>
+        <LoadingSpinner animate currentPosition={100} />
       </SafeAreaView>
     );
   }
 
   return (
     <SafeAreaView edges={['left', 'right']}>
-      {!loading && (
-        <View
-          style={{
-            position: 'absolute',
-            zIndex: -1,
-            backgroundColor: 'red',
-            height: 100,
-            width: '100%',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}>
-          <Text
-            textStyle={{textAlign: 'center'}}
-            text={'Pull down to reload'}
-          />
-        </View>
-      )}
-      <ScrollView
-        // style={{paddingTop: loading ? 100 : 0}}
-        scrollEventThrottle={16}
-        onScroll={({nativeEvent}) => {
-          console.log(nativeEvent.contentOffset);
-          if (nativeEvent.contentOffset.y <= -50 && !loading) {
-            setLoading(true);
-            setTimeout(() => {
-              setLoading(false);
-            }, 5000);
-          }
-          if (loading && nativeEvent.contentOffset.y >= 100) {
-            setLoading(false);
-          }
-        }}>
-        <View
-          style={{
-            display: !loading ? 'none' : 'flex',
-            zIndex: -1,
-            backgroundColor: 'red',
-            height: 100,
-            width: '100%',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}>
-          <LoadingSpinner />
-        </View>
+      <Animated.View
+        style={[
+          styles.LoadingSpinnerContainer,
+          {
+            height: loadingHeight,
+          },
+        ]}>
+        <LoadingSpinner currentPosition={offset} animate={loading} />
+      </Animated.View>
 
-        <View
-          style={{
-            zIndex: 1,
-            marginBottom: theme.spacing.xxs,
-            padding: 10,
-            backgroundColor: colors.grey2,
-          }}>
+      <ScrollView
+        scrollEventThrottle={16}
+        onScroll={({nativeEvent}) => offsetCase(nativeEvent)}>
+        <View style={styles.updateContainer}>
           <Image
             source={require('@DevEx/assets/me.jpg')}
-            style={{width: 50, height: 50, borderRadius: 50}}
+            style={styles.updateImage}
           />
         </View>
         <Breaker />

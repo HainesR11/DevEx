@@ -107,7 +107,7 @@ const AddUsername = () => {
                   );
                 },
                 onError: (error: any) => {
-                  console.log(error.error.codeName);
+                  console.log(error.error.codeName, 'test');
                   if (error.error.codeName === 'DuplicateKey') {
                     setHasError('Duplicate');
                   } else {
