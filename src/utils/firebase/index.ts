@@ -37,7 +37,6 @@ export const fetchFirebase = async () => {
           .activate()
           .then(() => {
             const config = remoteConfig().getAll();
-            console.log(config);
             Object.entries(config).forEach($ => {
               const [key, entry] = $;
               key === event?.updatedKeys.toString() &&

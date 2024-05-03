@@ -4,6 +4,7 @@ import {
   Image,
   NativeScrollEvent,
   ScrollView,
+  TextInput,
   View,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -54,14 +55,15 @@ const Home = () => {
   const offsetCase = (nativeEvent: NativeScrollEvent) => {
     switch (true) {
       case ifCloseToTop(nativeEvent) && !loading:
-        if (nativeEvent.contentOffset.y >= -50) {
+        if (nativeEvent.contentOffset.y <= -70) {
           onRefetch();
         }
-        if (nativeEvent.contentOffset.y <= -50) {
-          setOffset(-nativeEvent.contentOffset.y.toFixed() * 4);
+        if (nativeEvent.contentOffset.y >= -70) {
+          setOffset(-nativeEvent.contentOffset.y.toFixed());
         }
         break;
-      case loading && nativeEvent.contentOffset.y >= 50:
+      case loading && nativeEvent.contentOffset.y >= 70:
+        setOffset(0);
         setLoading(false);
         break;
     }
@@ -108,6 +110,11 @@ const Home = () => {
           <Image
             source={require('@DevEx/assets/me.jpg')}
             style={styles.updateImage}
+          />
+          <TextInput
+            placeholder="What on your mind?"
+            multiline
+            style={styles.updateInputBox}
           />
         </View>
         <Breaker />

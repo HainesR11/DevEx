@@ -23,6 +23,7 @@ const primaryColors = {
 
 const colors = {
   red: '#E73711',
+  yellow: '#ede624',
   darkGreen: '#086300',
   lightGreen: '#15ff00',
   green: '#33912a',

@@ -23,9 +23,16 @@ const createStyles = (theme: Theme) =>
     },
     updateContainer: {
       zIndex: 1,
+      display: 'flex',
+      flexDirection: 'row',
       marginBottom: theme.spacing.xxs,
       padding: 10,
       backgroundColor: colors.grey2,
+    },
+    updateInputBox: {
+      marginLeft: theme.spacing.m,
+      textAlignVertical: 'top',
+      width: '82%',
     },
     updateImage: {
       width: 40,

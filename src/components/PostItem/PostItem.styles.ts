@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 
 import {Theme} from '@DevEx/utils/styles/theme';
-import colors from '@DevEx/utils/styles/palette/colors';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
@@ -9,7 +8,7 @@ const createStyles = (theme: Theme) =>
     PostItemContainer: {
       paddingVertical: theme.spacing.m,
       paddingHorizontal: theme.spacing.s,
-      backgroundColor: colors.grey2,
+      backgroundColor: theme.colors.grey2,
     },
     MarginBottom: {
       marginBottom: 5,
@@ -34,13 +33,14 @@ const createStyles = (theme: Theme) =>
     PostItemUserContainer: {
       justifyContent: 'space-around',
       width: 150,
+      marginLeft: theme.spacing.xs,
     },
     PostItemUsername: {
       color: theme.colors.grey50,
     },
     PostItemCommentInfo: {
       justifyContent: 'space-between',
-      marginHorizontal: theme.spacing.sm,
+      marginHorizontal: theme.spacing.m,
     },
     PostItemShareInfo: {
       width: 120,
@@ -48,8 +48,34 @@ const createStyles = (theme: Theme) =>
     },
     PostItemShareItem: {
       marginHorizontal: theme.spacing.s,
-      width: 40,
       justifyContent: 'space-around',
+    },
+
+    //Liked Options Pill
+    LikedOptionsPillContainer: {
+      alignItems: 'center',
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+      borderTopColor: theme.colors.grey10,
+      borderTopWidth: 0.5,
+    },
+    LikedOptionsPillAnimatedContainer: {
+      alignContent: 'center',
+      zIndex: 3,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      position: 'absolute',
+      backgroundColor: theme.colors.white,
+      width: '50%',
+      padding: 10,
+      shadowColor: theme.colors.grey20,
+      shadowOffset: {width: 0, height: 1},
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 5,
+      borderRadius: 20,
     },
   });
 export default createStyles;

@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
-import {Image, Share, TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {Animated, Image, Share, TouchableOpacity, View} from 'react-native';
+import {TouchableWithoutFeedback} from 'react-native';
 import {
   faBookmark,
-  faShare,
+  faComment,
+  faHeart,
+  faLaughSquint,
+  faLightbulb,
+  faPaperPlane,
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -21,6 +26,62 @@ import {Text} from '../Text/text';
 
 import createStyles from './PostItem.styles';
 
+const LikeOptions = ({
+  closeLiked,
+  setLiked,
+  animatedValues,
+}: {
+  closeLiked: (value: boolean) => void;
+  setLiked: (value: boolean) => void;
+  animatedValues: {
+    animatedPosition: any;
+    animatedOpacity: any;
+  };
+}) => {
+  const styles = useThemedStyles(createStyles);
+
+  useEffect(() => {
+    Animated.timing(animatedValues.animatedPosition, {
+      toValue: 40,
+      duration: 200,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(animatedValues.animatedOpacity, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: false,
+    }).start();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <View style={styles.LikedOptionsPillContainer}>
+      <Animated.View
+        style={[
+          styles.LikedOptionsPillAnimatedContainer,
+          {
+            opacity: animatedValues.animatedOpacity,
+            bottom: animatedValues.animatedPosition,
+          },
+        ]}>
+        <FontAwesomeIcon icon={faThumbsUp} color={colors.blue} />
+        <FontAwesomeIcon icon={faHeart} color={colors.criticalRed} />
+        {/* {/* <FontAwesomeIcon icon={} /> */}
+        <FontAwesomeIcon
+          icon={faLaughSquint}
+          secondaryColor={colors.black}
+          color={colors.yellow}
+        />
+        <FontAwesomeIcon icon={faLightbulb} />
+      </Animated.View>
+      <TouchableWithoutFeedback onPressOut={() => closeLiked(false)}>
+        <Text textStyle={{paddingTop: 10}} text=" Tap to cancel" />
+      </TouchableWithoutFeedback>
+    </View>
+  );
+};
+
 const PostItem = ({
   item,
   user,
@@ -36,15 +97,45 @@ const PostItem = ({
   const navigation = useNavigation<TNavigationProps>();
 
   const [likedLength, setLikedLength] = useState(item.likes.length);
+  const [likedType, setLikedType] = useState();
   const [saved, setSaved] = useState<boolean>(false);
+  const [likeOptions, setLikeOptions] = useState<boolean>(false);
 
-  const [liked, setLiked] = useState<Boolean>(
-    item.likes.some(test => test.username === user?.username),
+  const animatedPosition = useRef(new Animated.Value(0)).current;
+  const animatedOpacity = useRef(new Animated.Value(0)).current;
+
+  const [liked, setLiked] = useState(
+    item.likes.some(likedItem => {
+      return likedItem.username === user?.username;
+    }),
   );
+
+  const onPressLiked = () => {
+    setLikedLength(liked ? likedLength - 1 : likedLength + 1);
+    setLiked(!liked);
+  };
+
+  const closeLikedOptions = () => {
+    Animated.timing(animatedPosition, {
+      toValue: 0,
+      duration: 100,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(animatedOpacity, {
+      toValue: 0,
+      duration: 100,
+      useNativeDriver: false,
+    }).start(({finished}) => {
+      finished && setLikeOptions(false);
+    });
+  };
 
   return (
     <>
       <View
+        onTouchStart={() => {
+          likeOptions && closeLikedOptions();
+        }}
         style={[
           styles.PostItemContainer,
           index !== length - 1 && styles.MarginBottom,
@@ -66,51 +157,79 @@ const PostItem = ({
           <Text text={item.data} />
         </View>
         <View style={[styles.PostItemCommentInfo, styles.PostItemCenter]}>
-          <TouchableOpacity
-            //TODO: Add header + text property to item.data istead of just base string
-            onPress={() =>
-              navigation.navigate(COMMENT_SCREEN, {
-                id: item.id,
-                interaction: 'Comments',
-              })
-            }>
-            <Text
-              textStyle={styles.PostItemUsername}
-              text={`${item.comments.length} comments`}
+          {likeOptions ? (
+            <LikeOptions
+              closeLiked={closeLikedOptions}
+              setLiked={closeLikedOptions}
+              animatedValues={{animatedOpacity, animatedPosition}}
             />
-          </TouchableOpacity>
-          <View style={[styles.PostItemShareInfo, styles.PostItemCenter]}>
-            <TouchableOpacity
-              onPress={() => {
-                setLikedLength(liked ? likedLength - 1 : likedLength + 1);
-                setLiked(!liked);
-              }}
-              style={[styles.PostItemShareItem, styles.PostItemCenter]}>
-              <Text text={likedLength} />
-              <FontAwesomeIcon
-                color={liked ? colors.green : colors.grey50}
-                icon={faThumbsUp}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => setSaved(!saved)}
-              style={[
-                styles.PostItemShareItem,
-                styles.PostItemCenter,
-                styles.marginLeft,
-              ]}>
-              <FontAwesomeIcon
-                color={saved ? colors.grey80 : colors.grey50}
-                icon={faBookmark}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              // TODO: create share page (to followers)
-              onPress={() => Share.share({message: item.data})}
-              style={[styles.PostItemShareItem, styles.PostItemCenter]}>
-              <FontAwesomeIcon color={colors.grey50} icon={faShare} />
-            </TouchableOpacity>
-          </View>
+          ) : (
+            <>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  width: 200,
+                  paddingTop: 10,
+                }}>
+                <TouchableOpacity
+                  style={{flexDirection: 'row'}}
+                  onPress={() => onPressLiked()}
+                  onLongPress={() => setLikeOptions(true)}>
+                  <FontAwesomeIcon
+                    icon={faThumbsUp}
+                    style={{marginRight: 5}}
+                    color={liked ? colors.blue : colors.grey40}
+                  />
+                  <Text text={`${likedLength} Likes`} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{
+                    flexDirection: 'row',
+                  }}
+                  onPress={() =>
+                    navigation.navigate(COMMENT_SCREEN, {
+                      id: item.id,
+                      interaction: 'Comments',
+                    })
+                  }>
+                  <FontAwesomeIcon
+                    style={{marginRight: 5}}
+                    icon={faComment}
+                    color={colors.grey40}
+                  />
+                  <Text text={`${item.comments.length} Comments`} />
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  width: 50,
+                }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate(COMMENT_SCREEN, {
+                      id: item.id,
+                      interaction: 'Comments',
+                    });
+                  }}>
+                  <FontAwesomeIcon icon={faPaperPlane} color={colors.grey40} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    setSaved(!saved);
+                  }}>
+                  <FontAwesomeIcon
+                    icon={faBookmark}
+                    color={saved ? colors.grey70 : colors.grey40}
+                  />
+                </TouchableOpacity>
+              </View>
+            </>
+          )}
         </View>
       </View>
     </>
