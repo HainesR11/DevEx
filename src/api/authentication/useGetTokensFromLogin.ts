@@ -31,7 +31,9 @@ const fetchGetTokenFromLogin = async ({
 }) => {
   const response: AxiosResponse = await axios.get(
     `${env.NODE_SERVICE_URL}/api/authentication`,
-    {params: {email, password}},
+    {
+      data: {email, password},
+    },
   );
 
   return response.data;

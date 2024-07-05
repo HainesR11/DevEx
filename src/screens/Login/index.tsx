@@ -200,7 +200,9 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
               style={[styles.inputStyle, styles.largeMarginBottom]}
               title={'Email Address'}
               testID=""
-              onChange={event => setUsername(event.nativeEvent.text)}
+              onChange={event =>
+                setUsername(event.nativeEvent.text.toLowerCase())
+              }
             />
             <OutlineTextInput
               style={[styles.inputStyle, styles.smallMarginBottom]}
