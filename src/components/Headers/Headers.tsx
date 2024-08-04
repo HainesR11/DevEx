@@ -56,7 +56,7 @@ export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
       </TouchableOpacity>
       <Image
         style={styles.image}
-        source={require('@DevEx/assets/DevExIcon.png')}
+        source={require('@DevEx/assets/DevNotionLogo.png')}
       />
       <TouchableOpacity onPress={() => navigation.navigate(SEARCH_NAVIGATOR)}>
         <FontAwesomeIcon icon={faSearch} />
