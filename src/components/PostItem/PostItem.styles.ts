@@ -4,51 +4,25 @@ import {Theme} from '@DevEx/utils/styles/theme';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
-    //PostItem
+    PostItemShadowContainer: {
+      shadowColor: theme.colors.grey70,
+      shadowOffset: {width: 1, height: 6},
+      shadowOpacity: 0.4,
+      shadowRadius: 5,
+      elevation: 5,
+
+      borderRadius: 10,
+      width: '100%',
+      height: '150%',
+      position: 'absolute',
+      zIndex: 0,
+      backgroundColor: theme.colors.white,
+    },
+
     PostItemContainer: {
-      paddingVertical: theme.spacing.m,
-      paddingHorizontal: theme.spacing.s,
-      backgroundColor: theme.colors.grey2,
-    },
-    MarginBottom: {
-      marginBottom: 5,
-    },
-    PostItemDataConatiner: {
-      marginVertical: theme.spacing.m,
-      marginHorizontal: theme.spacing.sm,
-    },
-    marginLeft: {
-      paddingLeft: theme.spacing.s,
-    },
-    PostItemCenter: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    PostItemImage: {
-      width: 50,
-      height: 50,
-      borderRadius: 30,
-    },
-    PostItemUserContainer: {
-      justifyContent: 'space-around',
-      width: 150,
-      marginLeft: theme.spacing.xs,
-    },
-    PostItemUsername: {
-      color: theme.colors.grey50,
-    },
-    PostItemCommentInfo: {
-      justifyContent: 'space-between',
-      marginHorizontal: theme.spacing.m,
-    },
-    PostItemShareInfo: {
-      width: 120,
-      justifyContent: 'space-around',
-    },
-    PostItemShareItem: {
-      marginHorizontal: theme.spacing.s,
-      justifyContent: 'space-around',
+      paddingVertical: 10,
+      margin: 10,
+      borderRadius: 10,
     },
 
     //Liked Options Pill
@@ -57,6 +31,7 @@ const createStyles = (theme: Theme) =>
       display: 'flex',
       justifyContent: 'center',
       width: '100%',
+      height: theme.spacing['3.5xl'],
       borderTopColor: theme.colors.grey10,
       borderTopWidth: 0.5,
     },

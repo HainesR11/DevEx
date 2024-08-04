@@ -4,10 +4,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {
   ACCOUNT_NAVIGATOR,
   COMMENT_SCREEN,
+  OPTIONS_SCREEN,
   SEARCH_NAVIGATOR,
   TAB_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import CommentView from '@DevEx/screens/CommentView/CommentView';
+import OptionsMenu from '@DevEx/screens/OptionsMenu/OptionsMenu';
 import {TRootNavigationProps} from '@DevEx/utils/types/types';
 
 import {AccountNavigator, SearchNavigator, TabNavigator} from '../index';
@@ -34,6 +36,14 @@ const LaunchNavigator = () => {
         }}
         name={COMMENT_SCREEN}
         component={CommentView}
+      />
+      <AuthStack.Screen
+        options={{
+          presentation: 'transparentModal',
+          headerShown: false,
+        }}
+        name={OPTIONS_SCREEN}
+        component={OptionsMenu}
       />
       <AuthStack.Screen name={SEARCH_NAVIGATOR} component={SearchNavigator} />
     </AuthStack.Navigator>

@@ -10,4 +10,5 @@ export const ACCOUNT_DETAILS = 'account.details';
 export const ACCOUNT_MANAGEMENT = 'account.management';
 export const SEARCH_SCREEN = 'search.home.screen';
 export const DEBUG_SCREEN = 'debug.screen';
-export const COMMENT_SCREEN = 'comment.screen';
+export const COMMENT_SCREEN = 'comment.screen.modal';
+export const OPTIONS_SCREEN = 'options.screen.modal';

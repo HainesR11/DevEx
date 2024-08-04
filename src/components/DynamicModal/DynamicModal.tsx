@@ -1,5 +1,5 @@
-import React, {FC, ReactNode, useEffect, useRef} from 'react';
-import {Animated, Easing, View} from 'react-native';
+import React, {FC, ReactNode, useCallback, useEffect, useRef} from 'react';
+import {Animated, Easing, View, ViewStyle} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
@@ -12,12 +12,21 @@ export interface DynamicHeightModalCoreProps {
   testID: string;
   header?: () => ReactNode | Element;
   children?: (() => ReactNode | Element) | ReactNode;
+  triggerClose?: boolean;
   minHeight?: number;
   maxHeight?: number;
+  style?: ViewStyle;
 }
 
 const DynamicModal: FC<DynamicHeightModalCoreProps> = props => {
-  const {children, header} = props;
+  const {
+    children,
+    header,
+    testID,
+    maxHeight,
+    style,
+    triggerClose = false,
+  } = props;
   const heightRef = useRef(new Animated.Value(0)).current;
 
   const navigation = useNavigation<TNavigationProps>();
@@ -33,14 +42,20 @@ const DynamicModal: FC<DynamicHeightModalCoreProps> = props => {
     }).start();
   }, [heightRef]);
 
-  const closeDynamicModal = () => {
+  const closeDynamicModal = useCallback(() => {
     Animated.timing(heightRef, {
       toValue: 0,
       duration: 300,
       easing: Easing.ease,
       useNativeDriver: false,
     }).start(() => navigation.goBack());
-  };
+  }, [heightRef, navigation]);
+
+  useEffect(() => {
+    if (triggerClose === true) {
+      closeDynamicModal();
+    }
+  }, [triggerClose, closeDynamicModal]);
 
   const renderChildren = () =>
     typeof children === 'function' ? <>{children()}</> : <>{children}</>;
@@ -69,9 +84,11 @@ const DynamicModal: FC<DynamicHeightModalCoreProps> = props => {
   };
 
   return (
-    <View style={[styles.background]}>
-      <Animated.View style={[styles.wrapper, {height: heightRef}]}>
-        <View testID="dynamic-height-modal-panel">
+    <View style={[styles.background]} testID={testID}>
+      <View style={styles.fillScreen} onTouchStart={closeDynamicModal} />
+      <Animated.View
+        style={[styles.wrapper, {height: heightRef, maxHeight: maxHeight}]}>
+        <View testID="dynamic-height-modal-panel" style={style}>
           <Animated.View
             testID="dynamic-height-modal-header"
             style={styles.header}

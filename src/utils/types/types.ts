@@ -1,5 +1,5 @@
 import {TextStyle} from 'react-native';
-import {IconProp} from '@fortawesome/fontawesome-svg-core';
+import {IconDefinition, IconProp} from '@fortawesome/fontawesome-svg-core';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import {
@@ -10,10 +10,13 @@ import {
   DEBUG_SCREEN,
   HOME_NAVIGATOR,
   HOME_SCREEN,
+  OPTIONS_SCREEN,
   SEARCH_NAVIGATOR,
   SEARCH_SCREEN,
   TAB_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
+
+export type Exact<T extends {[key: string]: unknown}> = {[K in keyof T]: T[K]};
 
 export type TInputProps = {
   placeholder: string;
@@ -56,6 +59,7 @@ export type TRootNavigationProps = {
   [SEARCH_SCREEN]: undefined;
   [DEBUG_SCREEN]: undefined;
   [COMMENT_SCREEN]: {id: string; interaction: 'Comments' | 'Share' | 'Likes'};
+  [OPTIONS_SCREEN]: {options: TOptions[]};
 };
 
 export type TAccountManagement = {
@@ -91,7 +95,15 @@ type TCommentItem = {
 export type THomeScreenDataItem = {
   id: string;
   user: TPostItemUser;
-  data: string;
+  data: {content: string; image?: unknown};
   likes: {name?: string; username: string; image?: string}[];
   comments: TCommentItem[];
+};
+
+export type TOptions = {
+  name: string;
+  icon: IconDefinition;
+  onPress: () => void;
+  color?: string;
+  iconSize?: number;
 };

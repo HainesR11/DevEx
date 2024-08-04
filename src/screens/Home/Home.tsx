@@ -10,14 +10,15 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useSelector} from 'react-redux';
 
-import {useGetPosts} from '@DevEx/api/Posts';
+import {useGetPosts} from '@DevEx/api/Posts/useFetchPosts';
 import {Text} from '@DevEx/components';
-import Breaker from '@DevEx/components/Breaker/Breaker';
 import LoadingSpinner from '@DevEx/components/layouts/loadingSpinner/loadingSpinner';
 import PostItem from '@DevEx/components/PostItem/PostItem';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {RootState} from '@DevEx/utils/store/store';
 import {THomeScreenDataItem} from '@DevEx/utils/types/types';
+
+import RenderLoading from './utils/LoadingCard';
 
 import createStyles from './Home.styles';
 
@@ -26,6 +27,8 @@ const Home = () => {
   const user = useSelector((state: RootState) => state.user);
 
   const {isLoading, data: HomeData, isError, refetch} = useGetPosts();
+
+  console.log(HomeData);
 
   const [loading, setLoading] = useState<boolean>(isLoading);
   const [offset, setOffset] = useState<number>(0);
@@ -72,21 +75,18 @@ const Home = () => {
   const ifCloseToTop = (nativeEvent: NativeScrollEvent) => {
     return nativeEvent.contentOffset.y <= 0;
   };
-
-  if (isError || (HomeData === undefined && !isLoading)) {
+  if (HomeData === undefined || user === undefined) {
     return (
-      <SafeAreaView edges={['left', 'right']}>
-        <Text text={'An Error occured, please try again'} />
+      <SafeAreaView style={{alignItems: 'center'}} edges={[]}>
+        <RenderLoading count={5} />
       </SafeAreaView>
     );
   }
 
-  if (HomeData === undefined || user === undefined) {
+  if (isError) {
     return (
-      <SafeAreaView
-        style={styles.loadingSpinnerContainer}
-        edges={['top', 'left', 'right']}>
-        <LoadingSpinner animate currentPosition={100} />
+      <SafeAreaView edges={['left', 'right']}>
+        <Text text={'An Error occured, please try again'} />
       </SafeAreaView>
     );
   }
@@ -117,7 +117,6 @@ const Home = () => {
             style={styles.updateInputBox}
           />
         </View>
-        <Breaker />
         {HomeData.map((item: THomeScreenDataItem, index: number) => {
           return (
             <PostItem

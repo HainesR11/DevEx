@@ -9,10 +9,6 @@ const createStyles = (theme: Theme) =>
     HomeScrollView: {
       height: '100%',
     },
-    loadingSpinnerContainer: {
-      alignItems: 'center',
-      marginTop: theme.spacing.sm,
-    },
     LoadingSpinnerContainer: {
       position: 'relative',
       zIndex: -1,
