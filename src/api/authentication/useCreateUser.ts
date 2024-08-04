@@ -13,6 +13,7 @@ const createUser = async ({email, password, name}: TCreateUserVariables) => {
     const response = await axios.post(
       `${env.NODE_SERVICE_URL}/api/authentication`,
       {email, password, name},
+      // {headers: }
     );
     return response.data;
   } catch (error) {
