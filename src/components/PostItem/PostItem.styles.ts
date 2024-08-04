@@ -4,25 +4,86 @@ import {Theme} from '@DevEx/utils/styles/theme';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
-    PostItemShadowContainer: {
-      shadowColor: theme.colors.grey70,
-      shadowOffset: {width: 1, height: 6},
-      shadowOpacity: 0.4,
-      shadowRadius: 5,
-      elevation: 5,
-
-      borderRadius: 10,
-      width: '100%',
-      height: '150%',
-      position: 'absolute',
-      zIndex: 0,
+    // Post Item styles
+    PostContainer: {
       backgroundColor: theme.colors.white,
+      marginHorizontal: 15,
+      borderRadius: 20,
+      marginVertical: 7,
+      paddingVertical: 10,
+    },
+    PostItemImage: {
+      maxHeight: 200,
+      minHeight: 200,
+      alignSelf: 'center',
+      width: '90%',
+      overflow: 'hidden',
+      borderRadius: 13,
+      resizeMode: 'cover',
+    },
+    PostItemImageOptionsContainer: {
+      position: 'absolute',
+      right: 30,
+      top: 8,
+    },
+    PostItemTextContainer: {
+      marginHorizontal: 30,
+      marginVertical: 10,
     },
 
     PostItemContainer: {
-      paddingVertical: 10,
-      margin: 10,
-      borderRadius: 10,
+      marginHorizontal: 30,
+      marginVertical: 10,
+      marginBottom: 30,
+    },
+    PostItemOptionsContainer: {
+      width: '100%',
+      flexDirection: 'row-reverse',
+    },
+
+    //Post Info Strip
+
+    PostInfoStripContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      marginHorizontal: 20,
+      marginBottom: 10,
+      justifyContent: 'space-between',
+    },
+
+    PostInfoStripImage: {
+      maxHeight: 40,
+      minHeight: 40,
+      minWidth: 40,
+      maxWidth: 40,
+      borderRadius: 20,
+    },
+
+    PostInfoUserContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+    },
+    PostInfoUserTextContainer: {
+      justifyContent: 'center',
+      marginLeft: 10,
+    },
+    PostInfoLikeContainer: {
+      justifyContent: 'space-between',
+      width: 100,
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'row',
+    },
+
+    PostInfoLikeButton: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    PostItemCommentContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
 
     //Liked Options Pill
@@ -51,6 +112,9 @@ const createStyles = (theme: Theme) =>
       shadowRadius: 2,
       elevation: 5,
       borderRadius: 20,
+    },
+    LikedOptionsPillText: {
+      paddingTop: 10,
     },
   });
 export default createStyles;

@@ -11,7 +11,6 @@ import {
   faHeart,
   faLaughSquint,
   faLightbulb,
-  faSave,
   faShareFromSquare,
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
@@ -82,7 +81,7 @@ const LikeOptions = ({
         <FontAwesomeIcon icon={faLightbulb} />
       </Animated.View>
       <TouchableWithoutFeedback onPressOut={() => closeLiked(false)}>
-        <Text textStyle={{paddingTop: 10}} text=" Tap to cancel" />
+        <Text textStyle={styles.LikedOptionsPillText} text=" Tap to cancel" />
       </TouchableWithoutFeedback>
     </View>
   );
@@ -92,12 +91,12 @@ const PostItem = ({
   item,
   user,
   index,
-  length, //? Used to cacluate the bottom of the documents
-}: {
+}: // length, //? Used to cacluate the bottom of the documents
+{
   item: THomeScreenDataItem;
   user?: TUserInfo;
   index: number;
-  length: number;
+  length?: number;
 }) => {
   const styles = useThemedStyles(createStyles);
   const navigation = useNavigation<TNavigationProps>();
@@ -176,12 +175,6 @@ const PostItem = ({
     });
   };
 
-  // if(Opptions) {
-  // return(
-  //   <DynamicModal/>
-  // )
-  // }
-
   const openLikedOptions = () => {
     Animated.timing(animatedProfileOpacity, {
       toValue: 0,
@@ -193,28 +186,13 @@ const PostItem = ({
   };
 
   return (
-    <View
-      style={{
-        backgroundColor: colors.white,
-        marginHorizontal: 15,
-        borderRadius: 20,
-        marginVertical: 7,
-        paddingVertical: 10,
-      }}>
+    <View style={styles.PostContainer} key={`PostItem-${index}`}>
       {/* -- Content --*/}
       {item.data.image ? (
         <View>
           <Image
             source={require('@DevEx/assets/Collaboration1.jpeg')}
-            style={{
-              maxHeight: 200,
-              minHeight: 200,
-              alignSelf: 'center',
-              width: '90%',
-              overflow: 'hidden',
-              borderRadius: 13,
-              resizeMode: 'cover',
-            }}
+            style={styles.PostItemImage}
           />
           <TouchableOpacity
             onPress={() =>
@@ -222,39 +200,22 @@ const PostItem = ({
                 options: postOptions,
               })
             }
-            style={{
-              position: 'absolute',
-              right: 30,
-              top: 8,
-            }}>
+            style={styles.PostItemImageOptionsContainer}>
             <FontAwesomeIcon icon={faEllipsis} color={colors.white} size={25} />
           </TouchableOpacity>
-          <View
-            style={{
-              marginHorizontal: 30,
-              marginVertical: 10,
-            }}>
+          <View style={styles.PostItemTextContainer}>
             <Text text={item.data.content} />
           </View>
         </View>
       ) : (
-        <View
-          style={{
-            marginHorizontal: 30,
-            marginVertical: 10,
-            marginBottom: 30,
-          }}>
+        <View style={styles.PostItemContainer}>
           <TouchableOpacity
             onPress={() =>
               navigation.navigate(OPTIONS_SCREEN, {
                 options: postOptions,
               })
             }
-            style={{
-              width: '100%',
-              // backgroundColor: 'red',
-              flexDirection: 'row-reverse',
-            }}>
+            style={styles.PostItemOptionsContainer}>
             <FontAwesomeIcon
               icon={faEllipsis}
               color={colors.grey60}
@@ -273,31 +234,16 @@ const PostItem = ({
           animatedValues={{animatedOpacity, animatedPosition}}
         />
       ) : (
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            marginHorizontal: 20,
-            marginBottom: 10,
-            justifyContent: 'space-between',
-          }}>
+        <View style={styles.PostInfoStripContainer}>
           <Animated.View
-            style={{
-              opacity: animatedProfileOpacity,
-              display: 'flex',
-              flexDirection: 'row',
-            }}>
-            <Image
-              style={{
-                maxHeight: 40,
-                minHeight: 40,
-                minWidth: 40,
-                maxWidth: 40,
-                borderRadius: 20,
-              }}
-              source={image}
-            />
-            <View style={{justifyContent: 'center', marginLeft: 10}}>
+            style={[
+              styles.PostInfoUserContainer,
+              {
+                opacity: animatedProfileOpacity,
+              },
+            ]}>
+            <Image style={styles.PostInfoStripImage} source={image} />
+            <View style={styles.PostInfoUserTextContainer}>
               <Text text={item.user.name} />
               <Text
                 text={item.user.username}
@@ -305,23 +251,17 @@ const PostItem = ({
               />
             </View>
           </Animated.View>
-          <View
-            style={{
-              justifyContent: 'space-between',
-              width: 100,
-              alignItems: 'center',
-              display: 'flex',
-              flexDirection: 'row',
-            }}>
+          <View style={styles.PostInfoLikeContainer}>
             <TouchableOpacity
               onLongPress={openLikedOptions}
               onPress={() => onPressLiked()}
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                width: likedLength.toFixed().length >= 2 ? 37 : 30,
-                justifyContent: 'space-between',
-              }}>
+              style={[
+                styles.PostInfoLikeButton,
+                // eslint-disable-next-line react-native/no-inline-styles
+                {
+                  width: likedLength.toFixed().length >= 2 ? 37 : 30,
+                },
+              ]}>
               <FontAwesomeIcon
                 icon={faThumbsUp}
                 color={liked ? colors.blue : colors.grey40}
@@ -335,12 +275,13 @@ const PostItem = ({
                   interaction: 'Comments',
                 })
               }
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                width: item.comments.length.toFixed().length >= 2 ? 40 : 30,
-                justifyContent: 'space-between',
-              }}>
+              style={[
+                styles.PostItemCommentContainer,
+                // eslint-disable-next-line react-native/no-inline-styles
+                {
+                  width: item.comments.length.toFixed().length >= 2 ? 40 : 30,
+                },
+              ]}>
               <FontAwesomeIcon icon={faComment} color={colors.grey40} />
               <Text text={item.comments.length} />
             </TouchableOpacity>
