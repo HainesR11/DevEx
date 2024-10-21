@@ -29,6 +29,8 @@ const createStyles = (theme: Theme) =>
       marginLeft: theme.spacing.m,
       textAlignVertical: 'top',
       width: '82%',
+      alignSelf: 'center',
+      marginTop: -5,
     },
     updateImage: {
       width: 40,

@@ -98,6 +98,7 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
 
   const onLogin = async () => {
     const hashedPassword = Buffer.from(password, 'utf8').toString('base64');
+
     loginMutation.mutate(
       {
         email: username,

@@ -5,6 +5,7 @@ import {Theme} from '@DevEx/utils/styles/theme';
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
     //PostItem
+
     PostItemContainer: {
       paddingVertical: theme.spacing.m,
       borderBottomColor: theme.colors.grey20,

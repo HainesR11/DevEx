@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
-import {Theme} from '@DevEx/utils/styles/theme';
 import colors from '@DevEx/utils/styles/palette/colors';
+import {Theme} from '@DevEx/utils/styles/theme';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
@@ -13,6 +13,7 @@ const createStyles = (theme: Theme) =>
       alignItems: 'center',
       justifyContent: 'space-between',
       backgroundColor: colors.grey2,
+      paddingBottom: theme.spacing.s,
     },
     container: {
       flexDirection: 'row',

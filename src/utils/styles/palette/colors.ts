@@ -33,6 +33,7 @@ const colors = {
   purpleDark: '#505074',
   primaryDark: '#000CC4',
   blue: '#000FF5',
+  primaryBlue: '#006291',
   lightBlue: '#5271FF',
   errorLight: '#fc9d9d',
   errorDark: '#B11212',

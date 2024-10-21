@@ -1,18 +1,13 @@
-import axios, {AxiosResponse} from 'axios';
+import axios from 'axios';
 import env from 'react-native-config';
-import {
-  useMutation,
-  // UseMutationOptions,
-  // useQuery,
-  // UseQueryOptions,
-} from '@tanstack/react-query';
+import {useMutation, UseMutationOptions} from '@tanstack/react-query';
 
-export type TokenFromLoginVairables = {
+export type TTokenFromLoginVairables = {
   email: string;
   password: string;
 };
 
-export type TokenFromLoginMutation = {
+export type TTokenFromLoginMutation = {
   typename?: 'RootMutationType';
   OAuth: string;
   user: {
@@ -29,20 +24,39 @@ const fetchGetTokenFromLogin = async ({
   email: string;
   password: string;
 }) => {
-  const response: AxiosResponse = await axios.get(
-    `${env.NODE_SERVICE_URL}/api/authentication`,
-    {
-      data: {email, password},
-    },
-  );
+  try {
+    const {data} = await axios.get(
+      `${env.NODE_SERVICE_URL}/api/authentication`,
+      {
+        params: {
+          email,
+          password,
+        },
+      },
+    );
 
-  return response.data;
+    return data;
+  } catch (error) {
+    console.log('--- error (catch) ---', error);
+  }
 };
 
-const useGetTokensFromLogin = () =>
+const useGetTokensFromLogin = <TError = unknown, TContext = unknown>(
+  options?: Omit<
+    UseMutationOptions<any, TError, TTokenFromLoginVairables, TContext>,
+    'mutationKey'
+  > & {
+    mutationKey?: UseMutationOptions<
+      any,
+      TError,
+      TTokenFromLoginVairables,
+      TContext
+    >['mutationKey'];
+  },
+) =>
   useMutation({
     mutationKey: ['primeAuthorization'],
-    mutationFn: (variables: {email: string; password: string}) =>
-      fetchGetTokenFromLogin(variables),
+    mutationFn: fetchGetTokenFromLogin,
+    ...options,
   });
 export default useGetTokensFromLogin;

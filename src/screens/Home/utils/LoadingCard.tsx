@@ -120,6 +120,7 @@ const RenderLoading = ({count}: {count: number}) => {
           animatedTextPositionRef={animatedTextPositionRef}
           animatedTitleRef={animatedTitleRef}
           index={index}
+          key={`LoadingCard-${index}`}
         />
       ))}
     </View>

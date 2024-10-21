@@ -6,8 +6,12 @@ import {
   ACCOUNT_DETAILS,
   ACCOUNT_MANAGEMENT,
   ACCOUNT_NAVIGATOR,
+  ADD_POST_SCREEN,
+  CHAT_NAVIGATOR,
   COMMENT_SCREEN,
+  COMMUNITIES_NAVIGATOR,
   DEBUG_SCREEN,
+  FRIENDS_NAVIGATOR,
   HOME_NAVIGATOR,
   HOME_SCREEN,
   OPTIONS_SCREEN,
@@ -46,13 +50,15 @@ export type TRootNavigationProps = {
   [TAB_NAVIGATOR]: undefined;
   [ACCOUNT_NAVIGATOR]: undefined;
   [HOME_NAVIGATOR]: undefined;
-  ChatNavigator: undefined;
-  CommunitiesNavigator: undefined;
+  [CHAT_NAVIGATOR]: undefined;
+  [COMMUNITIES_NAVIGATOR]: undefined;
+  [FRIENDS_NAVIGATOR]: undefined;
   [SEARCH_NAVIGATOR]: undefined;
 
   //Screens
   [ACCOUNT_DETAILS]: undefined;
   [ACCOUNT_MANAGEMENT]: undefined;
+  [ADD_POST_SCREEN]: undefined;
   [HOME_SCREEN]: undefined;
   ChatScreen: undefined;
   ComminityScreen: undefined;

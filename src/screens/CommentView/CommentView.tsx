@@ -1,7 +1,5 @@
 import React, {FC, useState} from 'react';
 import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
-import {faHeart} from '@fortawesome/free-regular-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {Text} from '@DevEx/components';
 import DynamicModal from '@DevEx/components/DynamicModal/DynamicModal';
@@ -10,7 +8,7 @@ import {HomeScreenData} from '@DevEx/test/stubs';
 import colors from '@DevEx/utils/styles/palette/colors';
 import theme from '@DevEx/utils/styles/theme';
 
-type THeaderParams = 'Comments' | 'Likes' | 'Share';
+type THeaderParams = 'Comments' | 'Likes';
 
 interface ICommentView {
   route?: {

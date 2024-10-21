@@ -1,8 +1,9 @@
 import React, {useRef, useState} from 'react';
 import {Animated, Image, TouchableOpacity, View} from 'react-native';
 import {Share} from 'react-native';
+import {faBookmark as faBookmarkRegular} from '@fortawesome/free-regular-svg-icons';
 import {
-  faBookmark,
+  faBookmark as faBookmarkSolid,
   faCircleXmark,
   faComment,
   faEllipsis,
@@ -36,7 +37,7 @@ const PostItem = ({
 }: // length, //? Used to cacluate the bottom of the documents
 {
   item: THomeScreenDataItem;
-  user?: TUserInfo;
+  user: TUserInfo;
   index: number;
   length?: number;
 }) => {
@@ -45,7 +46,7 @@ const PostItem = ({
 
   const [likeOptions, setLikeOptions] = useState<boolean>(false);
   const [liked, setLiked] = useState(
-    item.likes.includes({username: user?.username || ''}),
+    item.likes.includes({username: user.username}),
   );
   const [likedLength, setLikedLength] = useState<number>(
     item.likes.length || 0,
@@ -53,12 +54,21 @@ const PostItem = ({
   const [saved, setSaved] = useState(false);
 
   const postOptions: TOptions[] = [
-    {
-      name: 'Save',
-      icon: faBookmark,
-      onPress: () => setSaved(!saved),
-      color: colors.grey60,
-    },
+    saved
+      ? {
+          name: 'Unsave',
+          icon: faBookmarkSolid,
+          onPress: () => setSaved(!saved),
+          color: colors.grey60,
+          iconSize: 20,
+        }
+      : {
+          name: 'Save',
+          icon: faBookmarkRegular,
+          onPress: () => setSaved(!saved),
+          color: colors.grey60,
+          iconSize: 20,
+        },
     {
       name: 'Share Via',
       icon: faShareFromSquare,
