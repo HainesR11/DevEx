@@ -9,8 +9,12 @@ import {
   faEllipsis,
   faEyeSlash,
   faFlag,
+  faHeart,
+  faLaughSquint,
+  faLightbulb,
   faShareFromSquare,
   faThumbsUp,
+  IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useNavigation} from '@react-navigation/native';
@@ -30,12 +34,18 @@ import {Text} from '../Text/text';
 
 import createStyles from './PostItem.styles';
 
+const likeItemMap: {[key: string]: {icon: IconDefinition; color: string}} = {
+  LIKE: {icon: faThumbsUp, color: colors.blue},
+  LOVE: {icon: faHeart, color: colors.red},
+  IDEA: {icon: faLightbulb, color: colors.red},
+  LAUGH: {icon: faLaughSquint, color: colors.yellow},
+};
+
 const PostItem = ({
   item,
   user,
   index,
-}: // length, //? Used to cacluate the bottom of the documents
-{
+}: {
   item: THomeScreenDataItem;
   user: TUserInfo;
   index: number;
@@ -45,9 +55,12 @@ const PostItem = ({
   const navigation = useNavigation<TNavigationProps>();
 
   const [likeOptions, setLikeOptions] = useState<boolean>(false);
-  const [liked, setLiked] = useState(
-    item.likes.includes({username: user.username}),
+  const [liked, setLiked] = useState<any | undefined>(
+    item.likes.find(({username}) => username === user.username) ?? undefined,
   );
+
+  console.log('liked', liked);
+
   const [likedLength, setLikedLength] = useState<number>(
     item.likes.length || 0,
   );
@@ -108,10 +121,10 @@ const PostItem = ({
 
   const onPressLiked = () => {
     setLikedLength(liked ? likedLength - 1 : likedLength + 1);
-    setLiked(!liked);
+    setLiked(liked ? undefined : {type: 'LIKE', username: user.username});
   };
 
-  const closeLikedOptions = () => {
+  const closeLikedOptions = (likeType?: string) => {
     Animated.timing(animatedPosition, {
       toValue: 0,
       duration: 100,
@@ -122,6 +135,13 @@ const PostItem = ({
       duration: 100,
       useNativeDriver: false,
     }).start(({finished}) => {
+      likeType &&
+        setLiked({
+          type: likeType,
+          username: user.username,
+          name: user.name,
+          image: '',
+        });
       finished && setLikeOptions(false);
       Animated.timing(animatedProfileOpacity, {
         toValue: 1,
@@ -185,8 +205,8 @@ const PostItem = ({
       {/* -- Use --*/}
       {likeOptions ? (
         <LikeOptions
-          closeLiked={closeLikedOptions}
-          setLiked={closeLikedOptions}
+          closeLiked={() => closeLikedOptions()}
+          setLiked={type => closeLikedOptions(type)}
           animatedValues={{animatedOpacity, animatedPosition}}
         />
       ) : (
@@ -219,8 +239,8 @@ const PostItem = ({
                 styles.PostInfoLikeButton,
               ]}>
               <FontAwesomeIcon
-                icon={faThumbsUp}
-                color={liked ? colors.blue : colors.grey40}
+                icon={liked ? likeItemMap[liked?.type].icon : faThumbsUp}
+                color={liked ? likeItemMap[liked?.type].color : colors.grey40}
               />
               <Text text={likedLength} />
             </TouchableOpacity>

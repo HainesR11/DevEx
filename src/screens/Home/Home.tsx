@@ -1,11 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Animated, NativeScrollEvent, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {RefreshControl, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useSelector} from 'react-redux';
 
 import {useGetPosts} from '@DevEx/api/Posts/useFetchPosts';
 import {Text} from '@DevEx/components';
-import LoadingSpinner from '@DevEx/components/layouts/loadingSpinner/loadingSpinner';
 import PostItem from '@DevEx/components/PostItem/PostItem';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {RootState} from '@DevEx/utils/store/store';
@@ -19,52 +18,18 @@ const Home = () => {
   const styles = useThemedStyles(createStyles);
   const user = useSelector((state: RootState) => state.user);
 
-  const {isLoading, data: HomeData, isError, refetch, error} = useGetPosts();
+  const {data: HomeData, isError, refetch, error} = useGetPosts();
 
-  const [loading, setLoading] = useState<boolean>(isLoading);
-  const [offset, setOffset] = useState<number>(0);
-
-  const loadingHeight = useRef(new Animated.Value(0)).current;
+  const [loading, setLoading] = useState<boolean>(false);
 
   const onRefetch = () => {
-    setOffset(70);
     // TODO: create logging for how many times it has been refetched
     setLoading(true);
     setTimeout(async () => {
       await refetch().then(() => {
         setLoading(false);
-        setOffset(0);
       });
     }, 5000);
-  };
-
-  useEffect(() => {
-    Animated.timing(loadingHeight, {
-      toValue: offset ?? 0,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
-  }, [loadingHeight, offset]);
-
-  const offsetCase = (nativeEvent: NativeScrollEvent) => {
-    switch (true) {
-      case ifCloseToTop(nativeEvent) && !loading:
-        if (nativeEvent.contentOffset.y <= -70) {
-          onRefetch();
-        }
-        if (nativeEvent.contentOffset.y >= -70) {
-          setOffset(-nativeEvent.contentOffset.y.toFixed());
-        }
-        break;
-      case loading && nativeEvent.contentOffset.y >= 70:
-        setOffset(0);
-        setLoading(false);
-        break;
-    }
-  };
-
-  const ifCloseToTop = (nativeEvent: NativeScrollEvent) => {
-    return nativeEvent.contentOffset.y <= 0;
   };
 
   if (isError) {
@@ -86,19 +51,11 @@ const Home = () => {
 
   return (
     <SafeAreaView edges={['left', 'right']}>
-      <Animated.View
-        style={[
-          styles.LoadingSpinnerContainer,
-          {
-            height: loadingHeight,
-          },
-        ]}>
-        <LoadingSpinner currentPosition={offset} animate={loading} />
-      </Animated.View>
-
       <ScrollView
-        scrollEventThrottle={16}
-        onScroll={({nativeEvent}) => offsetCase(nativeEvent)}>
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={() => onRefetch()} />
+        }
+        scrollEventThrottle={16}>
         {HomeData.map((item: THomeScreenDataItem, index: number) => {
           return (
             <PostItem

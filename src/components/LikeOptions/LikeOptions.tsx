@@ -1,5 +1,11 @@
 import React, {useEffect} from 'react';
-import {Animated, TouchableWithoutFeedback, View} from 'react-native';
+import {
+  Animated,
+  Touchable,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import {
   faHeart,
   faLaughSquint,
@@ -21,7 +27,7 @@ const LikeOptions = ({
   animatedValues,
 }: {
   closeLiked: (value: boolean) => void;
-  setLiked: (value: boolean) => void;
+  setLiked: (value: 'LIKE' | 'LOVE' | 'IDEA' | 'LAUGH') => void;
   animatedValues: {
     animatedPosition: any;
     animatedOpacity: any;
@@ -54,15 +60,25 @@ const LikeOptions = ({
             bottom: animatedValues.animatedPosition,
           },
         ]}>
-        <FontAwesomeIcon icon={faThumbsUp} color={colors.blue} />
-        <FontAwesomeIcon icon={faHeart} color={colors.criticalRed} />
+        <TouchableOpacity onPress={() => setLiked('LIKE')}>
+          <FontAwesomeIcon icon={faThumbsUp} color={colors.blue} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => setLiked('LOVE')}>
+          <FontAwesomeIcon icon={faHeart} color={colors.criticalRed} />
+        </TouchableOpacity>
         {/* {/* <FontAwesomeIcon icon={} /> */}
-        <FontAwesomeIcon
-          icon={faLaughSquint}
-          secondaryColor={colors.black}
-          color={colors.yellow}
-        />
-        <FontAwesomeIcon icon={faLightbulb} />
+
+        <TouchableOpacity onPress={() => setLiked('LAUGH')}>
+          <FontAwesomeIcon
+            icon={faLaughSquint}
+            secondaryColor={colors.black}
+            color={colors.yellow}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setLiked('IDEA')}>
+          <FontAwesomeIcon icon={faLightbulb} />
+        </TouchableOpacity>
       </Animated.View>
       <TouchableWithoutFeedback onPressOut={() => closeLiked(false)}>
         <Text textStyle={styles.LikedOptionsPillText} text=" Tap to cancel" />
