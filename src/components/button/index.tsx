@@ -4,19 +4,11 @@ import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {TButtonProps} from '@DevEx/utils/types/types';
 
 import LoadingSpinner from '../layouts/loadingSpinner/loadingSpinner';
 
-import {createStyles} from './button.styles';
-
-type TButtonProps = {
-  styles?: any;
-  title: string;
-  isLoading?: boolean;
-  onPress: () => void;
-  type?: 'Primary' | 'Secondary';
-  disabled?: boolean;
-};
+import {createStyles} from './Button.styles';
 
 export const Button = ({
   type = 'Primary',

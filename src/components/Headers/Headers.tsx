@@ -1,31 +1,22 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {
-  faChevronLeft,
-  faSearch,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons';
+import {faBell, faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useNavigation} from '@react-navigation/native';
 
+import {MessagesPlane} from '@DevEx/assets/Icons/Linear/MessagesPlane';
 import {
-  ACCOUNT_NAVIGATOR,
+  MESSAGES_NAVIGATOR,
   SEARCH_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {TNavigationProps} from '@DevEx/utils/types/types';
+import {THeaderProps, TNavigationProps} from '@DevEx/utils/types/types';
 
+import NotificationIcon from '../NotificationIcon/NotificationIcon';
 import {Text} from '../Text/text';
 
 import createStyles from './Header.styles';
-
-type THeaderProps = {
-  isHomeScreen?: boolean;
-  title?: {
-    title?: string;
-  };
-};
 
 export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
   const navigation = useNavigation<TNavigationProps>();
@@ -51,16 +42,26 @@ export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
 
   return (
     <SafeAreaView edges={['top']} style={styles.HomeScreenContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate(ACCOUNT_NAVIGATOR)}>
-        <FontAwesomeIcon icon={faUser} />
-      </TouchableOpacity>
       <Image
         style={styles.image}
         source={require('@DevEx/assets/DevNotionLogo.png')}
       />
-      <TouchableOpacity onPress={() => navigation.navigate(SEARCH_NAVIGATOR)}>
-        <FontAwesomeIcon icon={faSearch} />
-      </TouchableOpacity>
+      <View style={styles.iconContainer}>
+        <NotificationIcon
+          count={1}
+          icon={faBell}
+          size={20}
+          onPress={() => navigation.navigate(SEARCH_NAVIGATOR)}
+        />
+        <NotificationIcon
+          type="Numbered"
+          count={1}
+          icon={MessagesPlane}
+          size={25}
+          dotStyle={styles.messagesDot}
+          onPress={() => navigation.navigate(MESSAGES_NAVIGATOR)}
+        />
+      </View>
     </SafeAreaView>
   );
 };
