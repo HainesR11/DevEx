@@ -17,6 +17,65 @@ import {createStyles} from './ForgotPassword.styles';
 
 type Email = string;
 
+const CodeSent = ({
+  rotateAnim,
+  fadeInAnim,
+  setActiveStep,
+  instructions,
+  activeStep,
+}: {
+  rotateAnim: any;
+  fadeInAnim: any;
+  setActiveStep: (number: number) => void;
+  instructions: {id: number; text: string}[];
+  activeStep: number;
+}) => {
+  const styles = useThemedStyles(createStyles);
+  const [rotateFin, setRotateFin] = useState(false);
+  useEffect(() => {
+    setActiveStep(2);
+    rotateFin &&
+      Animated.timing(fadeInAnim, {
+        toValue: 1,
+        duration: 2000,
+        easing: Easing.linear,
+        useNativeDriver: false,
+      }).start();
+    Animated.timing(rotateAnim, {
+      toValue: 1,
+      duration: 1500,
+      useNativeDriver: false,
+    }).start(() => setRotateFin(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rotateFin]);
+
+  const spin = rotateAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+
+  return (
+    <>
+      <View style={styles.checkedContainer}>
+        <Animated.View
+          style={[styles.AnimatedIcon, {transform: [{rotate: spin}]}]}
+          onResponderEnd={() => console.log('testing')}>
+          <FontAwesomeIcon icon={faCircleCheck} color="green" size={50} />
+        </Animated.View>
+        <Animated.View style={[styles.animatedText, {opacity: fadeInAnim}]}>
+          <Text text={codeSentString} />
+          <ListPanel
+            style={styles.listPanel}
+            active={activeStep}
+            title={'Reset your password in 3 easy stps'}
+            data={instructions}
+          />
+        </Animated.View>
+      </View>
+    </>
+  );
+};
+
 const ForgotPassword = () => {
   const styles = useThemedStyles(createStyles);
 
@@ -34,51 +93,6 @@ const ForgotPassword = () => {
     {id: 3, text: 'Enter new password'},
   ];
 
-  const CodeSent = () => {
-    const [rotateFin, setRotateFin] = useState(false);
-    useEffect(() => {
-      setActiveStep(2);
-      rotateFin &&
-        Animated.timing(fadeInAnim, {
-          toValue: 1,
-          duration: 2000,
-          easing: Easing.linear,
-          useNativeDriver: false,
-        }).start();
-      Animated.timing(rotateAnim, {
-        toValue: 1,
-        duration: 1500,
-        useNativeDriver: false,
-      }).start(() => setRotateFin(true));
-    }, [rotateFin]);
-
-    const spin = rotateAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['0deg', '360deg'],
-    });
-
-    return (
-      <>
-        <View style={styles.checkedContainer}>
-          <Animated.View
-            style={[styles.AnimatedIcon, {transform: [{rotate: spin}]}]}
-            onResponderEnd={() => console.log('testing')}>
-            <FontAwesomeIcon icon={faCircleCheck} color="green" size={50} />
-          </Animated.View>
-          <Animated.View style={[styles.animatedText, {opacity: fadeInAnim}]}>
-            <Text text={codeSentString} />
-            <ListPanel
-              style={styles.listPanel}
-              active={activeStep}
-              title={'Reset your password in 3 easy stps'}
-              data={instructions}
-            />
-          </Animated.View>
-        </View>
-      </>
-    );
-  };
-
   const validator = () => {
     const emailValid = FnEmailValidator(email);
     if (!emailValid) {
@@ -92,7 +106,13 @@ const ForgotPassword = () => {
   return (
     <SafeAreaView style={styles.container}>
       {confirmed ? (
-        <CodeSent />
+        <CodeSent
+          rotateAnim={rotateAnim}
+          fadeInAnim={fadeInAnim}
+          setActiveStep={setActiveStep}
+          activeStep={activeStep}
+          instructions={instructions}
+        />
       ) : (
         <View>
           <View style={styles.inputContainer}>
@@ -112,7 +132,8 @@ const ForgotPassword = () => {
                 />
               </View>
               <OutlineTextInput
-                errorLine={error}
+                // errorLine={error}
+                state={error ? 'error' : 'regular'}
                 style={[styles.outlineTextBox]}
                 title="Email"
                 onChange={e => {

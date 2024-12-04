@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 
 import {Theme} from '@DevEx/utils/styles/theme';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
     container: {

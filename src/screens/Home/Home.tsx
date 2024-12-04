@@ -6,19 +6,19 @@ import {useSelector} from 'react-redux';
 import {useGetPosts} from '@DevEx/api/Posts/useFetchPosts';
 import {Text} from '@DevEx/components';
 import PostItem from '@DevEx/components/PostItem/PostItem';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+// import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {RootState} from '@DevEx/utils/store/store';
 import {THomeScreenDataItem} from '@DevEx/utils/types/types';
 
 import RenderLoading from './utils/LoadingCard';
 
-import createStyles from './Home.styles';
+// import createStyles from './Home.styles';
 
 const Home = () => {
-  const styles = useThemedStyles(createStyles);
+  // const styles = useThemedStyles(createStyles);
   const user = useSelector((state: RootState) => state.user);
 
-  const {data: HomeData, isError, refetch, error} = useGetPosts();
+  const {data: HomeData, isError, refetch} = useGetPosts();
 
   const [loading, setLoading] = useState<boolean>(false);
 

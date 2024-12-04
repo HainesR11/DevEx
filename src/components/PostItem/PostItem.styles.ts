@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import {Theme} from '@DevEx/utils/styles/theme';
 
 const createStyles = (theme: Theme) =>
-  StyleSheet.create({
+  StyleSheet.create<any>({
     // Post Item styles
     PostContainer: {
       backgroundColor: theme.colors.white,
@@ -12,6 +12,12 @@ const createStyles = (theme: Theme) =>
       marginVertical: 7,
       paddingVertical: 10,
     },
+    likeOptions: (number: number) => ({
+      width: number >= 2 ? 37 : 30,
+    }),
+    commentOptions: (number: number) => ({
+      width: number >= 2 ? 40 : 30,
+    }),
     PostItemImage: {
       maxHeight: 200,
       minHeight: 200,
@@ -20,6 +26,7 @@ const createStyles = (theme: Theme) =>
       overflow: 'hidden',
       borderRadius: 13,
       resizeMode: 'cover',
+      marginVertical: theme.spacing.s,
     },
     PostItemImageOptionsContainer: {
       position: 'absolute',

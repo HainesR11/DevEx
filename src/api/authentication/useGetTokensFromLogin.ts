@@ -41,7 +41,7 @@ const fetchGetTokenFromLogin = async ({
   }
 };
 
-const useGetTokensFromLogin = <TError = unknown, TContext = unknown>(
+const useGetTokensFromLogin = <TError = Error, TContext = unknown>(
   options?: Omit<
     UseMutationOptions<any, TError, TTokenFromLoginVairables, TContext>,
     'mutationKey'

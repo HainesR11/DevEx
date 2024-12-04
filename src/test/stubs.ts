@@ -29,7 +29,7 @@ export const test = [
       username: 'HainesR11',
     },
     timestamp: '123456789',
-    data: `Does any know how to create a new react app?`,
+    data: 'Does any know how to create a new react app?',
     likes: [
       {image: '', Username: 'HainesR11', name: 'Rhys Haines'},
 
@@ -91,7 +91,7 @@ export const HomeScreenData = [
       username: 'HainesR11',
     },
     timestamp: '123456789',
-    data: `Does any know how to create a new react app?`,
+    data: 'Does any know how to create a new react app?',
     likes: [
       {image: '', username: 'HainesR11', name: 'Rhys Haines'},
 
@@ -150,7 +150,7 @@ export const HomeScreenData = [
       username: 'HainesR11',
     },
     timestamp: '123456789',
-    data: `Does any know how to create a new react app?`,
+    data: 'Does any know how to create a new react app?',
     likes: [
       {image: '', username: 'HainesR11', name: 'Rhys Haines'},
 
@@ -209,7 +209,7 @@ export const HomeScreenData = [
       username: 'HainesR11',
     },
     timestamp: '123456789',
-    data: `Does any know how to create a new react app?`,
+    data: 'Does any know how to create a new react app?',
     likes: [
       {image: '', username: 'HainesR10', name: 'Rhys Haines'},
 
@@ -268,7 +268,7 @@ export const HomeScreenData = [
       username: 'HainesR11',
     },
     timestamp: '123456789',
-    data: `Does any know how to create a new react app?`,
+    data: 'Does any know how to create a new react app?',
     likes: [
       {image: '', username: 'HainesR10', name: 'Rhys Haines'},
 

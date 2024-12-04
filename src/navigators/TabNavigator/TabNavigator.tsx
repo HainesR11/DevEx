@@ -4,7 +4,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {
-  ACCOUNT_NAVIGATOR,
   ADD_POST_SCREEN,
   CHAT_NAVIGATOR,
   COMMUNITIES_NAVIGATOR,

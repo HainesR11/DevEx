@@ -35,7 +35,7 @@ import {Text} from '../Text/text';
 import createStyles from './PostItem.styles';
 
 const likeItemMap: {[key: string]: {icon: IconDefinition; color: string}} = {
-  LIKE: {icon: faThumbsUp, color: colors.blue},
+  LIKE: {icon: faThumbsUp, color: colors.primaryBlue},
   LOVE: {icon: faHeart, color: colors.red},
   IDEA: {icon: faLightbulb, color: colors.red},
   LAUGH: {icon: faLaughSquint, color: colors.yellow},
@@ -54,17 +54,14 @@ const PostItem = ({
   const styles = useThemedStyles(createStyles);
   const navigation = useNavigation<TNavigationProps>();
 
+  const [saved, setSaved] = useState<boolean>(false);
   const [likeOptions, setLikeOptions] = useState<boolean>(false);
   const [liked, setLiked] = useState<any | undefined>(
     item.likes.find(({username}) => username === user.username) ?? undefined,
   );
-
-  console.log('liked', liked);
-
   const [likedLength, setLikedLength] = useState<number>(
     item.likes.length || 0,
   );
-  const [saved, setSaved] = useState(false);
 
   const postOptions: TOptions[] = [
     saved
@@ -163,7 +160,6 @@ const PostItem = ({
 
   return (
     <View style={styles.PostContainer} key={`PostItem-${index}`}>
-      {/* -- Content --*/}
       {item.data.image ? (
         <View>
           <Image
@@ -201,8 +197,6 @@ const PostItem = ({
           <Text text={item.data.content} />
         </View>
       )}
-
-      {/* -- Use --*/}
       {likeOptions ? (
         <LikeOptions
           closeLiked={() => closeLikedOptions()}
@@ -232,10 +226,11 @@ const PostItem = ({
               onLongPress={openLikedOptions}
               onPress={() => onPressLiked()}
               style={[
-                // eslint-disable-next-line react-native/no-inline-styles
-                {
-                  width: likedLength.toFixed().length >= 2 ? 37 : 30,
-                },
+                //// eslint-disable-next-line react-native/no-inline-styles
+                // {
+                //   width: likedLength.toFixed().length >= 2 ? 37 : 30,
+                // },
+                styles.likeOptions(likedLength.toFixed().length),
                 styles.PostInfoLikeButton,
               ]}>
               <FontAwesomeIcon

@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {
   Animated,
-  Touchable,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
@@ -61,7 +60,7 @@ const LikeOptions = ({
           },
         ]}>
         <TouchableOpacity onPress={() => setLiked('LIKE')}>
-          <FontAwesomeIcon icon={faThumbsUp} color={colors.blue} />
+          <FontAwesomeIcon icon={faThumbsUp} color={colors.primaryBlue} />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => setLiked('LOVE')}>
