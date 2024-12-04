@@ -56,7 +56,7 @@ export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
       </TouchableOpacity>
       <Image
         style={styles.image}
-        source={require('@DevEx/assets/DevExIcon.png')}
+        source={require('@DevEx/assets/DevNotionLogo.png')}
       />
       <TouchableOpacity onPress={() => navigation.navigate(SEARCH_NAVIGATOR)}>
         <FontAwesomeIcon icon={faSearch} />
@@ -65,7 +65,7 @@ export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
   );
 };
 
-type THeaderParams = 'Comments' | 'Likes' | 'Share';
+type THeaderParams = 'Comments' | 'Likes';
 
 export const CommentViewHeader = (
   activeHeader: string,
@@ -100,20 +100,6 @@ export const CommentViewHeader = (
           bold={activeHeader === 'Comments'}
           text={'Comments'}
           onPress={() => onPress('Comments')}
-        />
-      </View>
-      <View
-        style={[
-          styles.textViewContainer,
-          {
-            borderBottomWidth: activeHeader === 'Share' ? 1 : undefined,
-          },
-        ]}>
-        <Text
-          textStyle={styles.textStyle}
-          bold={activeHeader === 'Share'}
-          text={'Share'}
-          onPress={() => onPress('Share')}
         />
       </View>
     </View>

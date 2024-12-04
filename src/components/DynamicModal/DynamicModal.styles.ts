@@ -46,6 +46,9 @@ const createStyles = (theme: Theme) =>
     fillScreen: {
       width: '100%',
       height: '100%',
+      backgroundColor: theme.colors.grey70,
+      opacity: 0.4,
+      position: 'absolute',
     },
   });
 export default createStyles;

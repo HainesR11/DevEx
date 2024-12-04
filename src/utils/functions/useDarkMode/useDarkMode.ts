@@ -1,7 +1,8 @@
-import {setUser} from '@DevEx/utils/store/userSlice/userSlice';
 import {useEffect} from 'react';
 import {Appearance} from 'react-native';
 import {useDispatch} from 'react-redux';
+
+import {setUser} from '@DevEx/utils/store/userSlice/userSlice';
 
 const useDarkMode = () => {
   const dispatch = useDispatch();
@@ -10,3 +11,4 @@ const useDarkMode = () => {
     dispatch(setUser({isDarkMode: darkmode}));
   }, [dispatch]);
 };
+export default useDarkMode;

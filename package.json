@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "ts": "tsc --noEmit --project tsconfig.lint.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",

@@ -41,17 +41,17 @@ type TLoginForm = {
   setLoginVisible: Dispatch<SetStateAction<boolean>>;
 };
 
-const convertToBase64 = (file: any) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(console.log('---- base64 -----', fileReader.result));
-    };
-    fileReader.onerror = e => console.log('error', e);
-  });
-};
+// const convertToBase64 = (file: any) => {
+//   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+//   return new Promise((resolve, reject) => {
+//     const fileReader = new FileReader();
+//     fileReader.readAsDataURL(file);
+//     fileReader.onload = () => {
+//       resolve(console.log('---- base64 -----', fileReader.result));
+//     };
+//     fileReader.onerror = e => console.log('error', e);
+//   });
+// };
 
 const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
   const styles = useThemedStyles(createStyles);
@@ -98,6 +98,7 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
 
   const onLogin = async () => {
     const hashedPassword = Buffer.from(password, 'utf8').toString('base64');
+
     loginMutation.mutate(
       {
         email: username,
@@ -200,7 +201,9 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
               style={[styles.inputStyle, styles.largeMarginBottom]}
               title={'Email Address'}
               testID=""
-              onChange={event => setUsername(event.nativeEvent.text)}
+              onChange={event =>
+                setUsername(event.nativeEvent.text.toLowerCase())
+              }
             />
             <OutlineTextInput
               style={[styles.inputStyle, styles.smallMarginBottom]}

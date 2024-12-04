@@ -3,8 +3,12 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import {AUTH_SLICE} from '@DevEx/constants/sliceConstant';
 
+type TTokens = {
+  OAuth: string;
+};
+
 export interface EncryptedAuthState {
-  tokens: any;
+  tokens: TTokens | null;
   sessionID?: string | null;
 }
 

@@ -26,25 +26,24 @@ export const fetchFirebase = async () => {
     )
     .catch(error => console.log('error - ', error));
 
-  () => {
-    remoteConfig().onConfigUpdated(async (event, error) => {
-      if (error !== undefined) {
-        console.log(
-          'remote-config listener subscription error: ' + JSON.stringify(error),
-        );
-      } else {
-        await remoteConfig()
-          .activate()
-          .then(() => {
-            const config = remoteConfig().getAll();
-            console.log(config);
-            Object.entries(config).forEach($ => {
-              const [key, entry] = $;
-              key === event?.updatedKeys.toString() &&
-                setConfig({[key]: entry.asString()});
-            });
+  remoteConfig().onConfigUpdated(async (event, error) => {
+    if (error !== undefined) {
+      console.log(
+        'remote-config listener subscription error: ' + JSON.stringify(error),
+      );
+    } else {
+      await remoteConfig()
+        .fetch()
+        .then(() => {
+          console.log('remote-config updated');
+
+          const config = remoteConfig().getAll();
+          Object.entries(config).forEach($ => {
+            const [key, entry] = $;
+            key === event?.updatedKeys.toString() &&
+              setConfig({[key]: entry.asString()});
           });
-      }
-    });
-  };
+        });
+    }
+  });
 };

@@ -43,7 +43,7 @@ const CommentItem = ({
         </View>
       </View>
       <View style={styles.PostItemDataConatiner}>
-        <Text text={item.data} />
+        <Text text={item.data.content} />
       </View>
       <View style={[styles.PostItemCommentInfo, styles.PostItemCenter]}>
         <Text

@@ -1,16 +1,14 @@
 import React, {FC, useState} from 'react';
 import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
-import {faHeart} from '@fortawesome/free-regular-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {Text} from '@DevEx/components';
 import DynamicModal from '@DevEx/components/DynamicModal/DynamicModal';
 import {CommentViewHeader} from '@DevEx/components/Headers/Headers';
 import {HomeScreenData} from '@DevEx/test/stubs';
-import theme from '@DevEx/utils/styles/theme';
 import colors from '@DevEx/utils/styles/palette/colors';
+import theme from '@DevEx/utils/styles/theme';
 
-type THeaderParams = 'Comments' | 'Likes' | 'Share';
+type THeaderParams = 'Comments' | 'Likes';
 
 interface ICommentView {
   route?: {
@@ -23,6 +21,8 @@ interface ICommentView {
 
 const CommentView: FC<ICommentView> = ({route}) => {
   const routeParams = route?.params;
+
+  // const {data, isLoading, isError} = useGetComments(routeParams?.id);
 
   const [activeHeader, setActiveHeader] = useState<THeaderParams>(
     routeParams?.interaction || 'Comments',
@@ -110,10 +110,3 @@ const CommentView: FC<ICommentView> = ({route}) => {
 };
 
 export default CommentView;
-
-// <View>
-//         <CommentItem item={item} />
-//       </View>
-//       <View>
-//       </View>
-//     </DynamicModal>
