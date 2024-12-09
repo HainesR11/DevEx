@@ -37,7 +37,7 @@ const TabNavigator = () => {
     <TabNavStack.Navigator
       screenOptions={{
         tabBarStyle: {
-          height: '7%',
+          height: '8%',
         },
       }}
       initialRouteName={HOME_NAVIGATOR}>
