@@ -153,7 +153,7 @@ export interface IconsProps {
   isScalable?: boolean;
 }
 
-const IconStateNames = [
+export const IconStateNames = [
   'default',
   'selected',
   'positive',

@@ -8,6 +8,7 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import NotificationIcon from '@DevEx/components/NotificationIcon/NotificationIcon';
 import {
   ACCOUNT_MANAGEMENT,
   COMMUNITIES_NAVIGATOR,
@@ -25,6 +26,13 @@ const BaseLayer = () => {
 };
 
 const TabNavigator = () => {
+  const [count, setCount] = React.useState(2);
+
+  const onPress = (navigate?: () => void) => {
+    navigate && navigate();
+    setCount(0);
+  };
+
   return (
     <TabNavStack.Navigator
       screenOptions={{
@@ -63,16 +71,19 @@ const TabNavigator = () => {
       />
       <TabNavStack.Screen
         name={COMMUNITIES_NAVIGATOR}
-        options={{
+        options={({navigation}) => ({
           headerShown: false,
           tabBarLabelStyle: {display: 'none'},
           tabBarIcon: ({focused, size}) =>
-            FontAwesomeIcon({
-              size,
-              color: focused ? colors.primaryBlue : colors.grey20,
+            NotificationIcon({
+              onPress: () =>
+                onPress(navigation.navigate(COMMUNITIES_NAVIGATOR)),
+              count: count,
               icon: faUserGroup,
+              size,
+              state: focused ? 'selected' : 'inactiveTab',
             }),
-        }}
+        })}
         component={BaseLayer}
       />
       <TabNavStack.Screen
