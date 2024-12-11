@@ -15,7 +15,7 @@ const BaseLayer = () => {
 
 const MessagesNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name={MESSAGES_SCREEN_HOME} component={BaseLayer} />
       <Stack.Screen name={MESSAGES_SCREEN_MESSAGE} component={BaseLayer} />
     </Stack.Navigator>

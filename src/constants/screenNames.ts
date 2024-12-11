@@ -19,3 +19,4 @@ export const OPTIONS_SCREEN = 'options.screen.modal';
 export const ADD_POST_SCREEN = 'add_post.screen';
 export const MESSAGES_SCREEN_HOME = 'messages.screen.home';
 export const MESSAGES_SCREEN_MESSAGE = 'messages.screen.message';
+export const NOTIFICATION_SCREEN = 'notification.screen';

@@ -25,7 +25,7 @@ type TNotificationIconProps = {
   containerStyle?: ViewStyle;
   iconStyle?: ViewStyle;
   dotStyle?: ViewStyle;
-  state:
+  state?:
     | 'default'
     | 'selected'
     | 'positive'
@@ -48,7 +48,6 @@ const NotificationIcon = ({
   state,
 }: TNotificationIconProps) => {
   const style = useThemedStyles(createStyles);
-  console.log(count);
 
   switch (true) {
     case !onPress:

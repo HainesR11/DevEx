@@ -18,6 +18,7 @@ import {
   MESSAGES_NAVIGATOR,
   MESSAGES_SCREEN_HOME,
   MESSAGES_SCREEN_MESSAGE,
+  NOTIFICATION_SCREEN,
   OPTIONS_SCREEN,
   SEARCH_NAVIGATOR,
   SEARCH_SCREEN,
@@ -49,6 +50,11 @@ export type TEmailIconInputProps = {
   value?: string;
 };
 
+export type THomeNagigatorProps = {
+  [HOME_SCREEN]: undefined;
+  [NOTIFICATION_SCREEN]: undefined;
+};
+
 export type TRootNavigationProps = {
   //Navigators
   [TAB_NAVIGATOR]: undefined;
@@ -73,6 +79,7 @@ export type TRootNavigationProps = {
   [OPTIONS_SCREEN]: {options: TOptions[]};
   [MESSAGES_SCREEN_HOME]: undefined;
   [MESSAGES_SCREEN_MESSAGE]: {id: string};
+  [NOTIFICATION_SCREEN]: undefined;
 };
 
 export type TAccountManagement = {
@@ -132,9 +139,7 @@ export type TButtonProps = {
 
 export type THeaderProps = {
   isHomeScreen?: boolean;
-  title?: {
-    title?: string;
-  };
+  title?: string;
 };
 
 export interface IconProps {

@@ -6,7 +6,7 @@ import {useDispatch} from 'react-redux';
 import {Button, Text} from '@DevEx/components';
 import ScreenWithHeader from '@DevEx/components/layouts/ScreenWithHeader/ScreenWithHeader';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {accountDetailsStub} from '@DevEx/test/stubs';
+import {accountDetailsStub} from '@DevEx/testing/stubs';
 import {setUser} from '@DevEx/utils/store/userSlice/userSlice';
 
 import createStyles from './debug.styles';
