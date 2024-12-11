@@ -4,7 +4,6 @@ import {fireEvent, render} from '@testing-library/react-native';
 import {
   MESSAGES_NAVIGATOR,
   NOTIFICATION_SCREEN,
-  SEARCH_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import {mockGoBack, mockNavigate} from '@DevEx/testing/setup-jest-tests';
 import TestWrapper from '@DevEx/testing/TestWrapper';

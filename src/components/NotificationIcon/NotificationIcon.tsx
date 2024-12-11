@@ -1,10 +1,5 @@
 import React, {FC} from 'react';
-import {
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-  ViewStyle,
-} from 'react-native';
+import {TouchableOpacity, View, ViewStyle} from 'react-native';
 import {IconDefinition} from '@fortawesome/fontawesome-svg-core';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
