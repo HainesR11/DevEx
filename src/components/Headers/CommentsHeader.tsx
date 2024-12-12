@@ -1,5 +1,5 @@
 import React, {Dispatch, SetStateAction} from 'react';
-import {View} from 'react-native-reanimated/lib/typescript/Animated';
+import {View} from 'react-native';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 

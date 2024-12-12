@@ -3,7 +3,7 @@ import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
 
 import {Text} from '@DevEx/components';
 import DynamicModal from '@DevEx/components/DynamicModal/DynamicModal';
-import {CommentViewHeader} from '@DevEx/components/Headers/Headers';
+import {CommentViewHeader} from '@DevEx/components/Headers/CommentsHeader';
 import {HomeScreenData} from '@DevEx/testing/stubs';
 import colors from '@DevEx/utils/styles/palette/colors';
 import theme from '@DevEx/utils/styles/theme';

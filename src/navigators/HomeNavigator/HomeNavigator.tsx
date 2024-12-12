@@ -3,12 +3,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeHeader from '@DevEx/components/Headers/HomeHeader';
 import {HOME_SCREEN, NOTIFICATION_SCREEN} from '@DevEx/constants/screenNames';
-import Home from '@DevEx/screens/Home/Home';
+import HomeScreen from '@DevEx/screens/Home/Home';
 import colors from '@DevEx/utils/styles/palette/colors';
 import {THomeNagigatorProps} from '@DevEx/utils/types/types';
 
 const HomeNavigatorStack = createStackNavigator<THomeNagigatorProps>();
-const baseLayer = () => {
+
+const BaseLayer = () => {
   return <></>;
 };
 
@@ -27,11 +28,14 @@ const HomeNavigator = () => {
             HomeHeader({isHomeScreen: true, title: props.route.name}),
         }}
         name={HOME_SCREEN}
-        component={Home}
+        component={HomeScreen}
       />
       <HomeNavigatorStack.Screen
+        options={{
+          headerShown: false,
+        }}
         name={NOTIFICATION_SCREEN}
-        component={baseLayer}
+        component={BaseLayer}
       />
     </HomeNavigatorStack.Navigator>
   );
