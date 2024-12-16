@@ -19,6 +19,7 @@ export const Button = ({
   disabled = false,
 }: TButtonProps) => {
   const style = useThemedStyles(createStyles);
+
   return type === 'Primary' ? (
     <TouchableOpacity disabled={disabled} onPress={onPress}>
       <View
