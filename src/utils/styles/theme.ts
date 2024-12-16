@@ -18,7 +18,7 @@ const theme = createTheme({
     cardPrimaryBackground: colors.white,
     buttonPrimaryBackground: colors.purplePrimary,
     modalBackground: colors.grey2,
-    inactiveTab: colors.grey40,
+    inactiveTab: colors.grey20,
     activeTab: colors.primaryDark,
     focusedInputHighlight: colors.purplePrimary,
     carouselCount: colors.grey50,

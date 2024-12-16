@@ -1,16 +1,9 @@
-## Build Links
 
-<!-- DO NOT EDIT LINKS MANUALLY -->
+## GitHub Ticket
 
-Android Build: <img src="https://cdn3.emoji.gg/emojis/28213-tts-loading.gif" width="16" height="16" alt="Spinner">
-iOS Build: <img src="https://cdn3.emoji.gg/emojis/28213-tts-loading.gif" width="16" height="16" alt="Spinner">
+<!-- _Please link to GitHub Ticket below (Autolink regex: PROJECTNAME-123)_ -->
 
-BrowserStack Android: <img src="https://cdn3.emoji.gg/emojis/28213-tts-loading.gif" width="16" height="16" alt="Spinner">
-BrowserStack iOS: <img src="https://cdn3.emoji.gg/emojis/28213-tts-loading.gif" width="16" height="16" alt="Spinner">
-
-## Github Ticket
-
-[PROJECTNAME-123][]
+PROJECTNAME-123
 
 ## Description
 
@@ -29,7 +22,6 @@ BrowserStack iOS: <img src="https://cdn3.emoji.gg/emojis/28213-tts-loading.gif" 
 - [ ] Manually tested in iOS Simulator
 - [ ] Manually tested in Android Simulator
 - [ ] Your tests cover the changes made in this Pull Request (i.e. unit, component, snapshot etc.)
-- [ ] Automation tests have been run successfully on local machine
 
 ## Dependencies
 

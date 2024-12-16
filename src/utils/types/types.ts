@@ -1,4 +1,5 @@
-import {TextStyle} from 'react-native';
+import {FC} from 'react';
+import {StyleProp, TextStyle, ViewStyle} from 'react-native';
 import {IconDefinition, IconProp} from '@fortawesome/fontawesome-svg-core';
 import {StackNavigationProp} from '@react-navigation/stack';
 
@@ -14,6 +15,10 @@ import {
   FRIENDS_NAVIGATOR,
   HOME_NAVIGATOR,
   HOME_SCREEN,
+  MESSAGES_NAVIGATOR,
+  MESSAGES_SCREEN_HOME,
+  MESSAGES_SCREEN_MESSAGE,
+  NOTIFICATION_SCREEN,
   OPTIONS_SCREEN,
   SEARCH_NAVIGATOR,
   SEARCH_SCREEN,
@@ -45,6 +50,11 @@ export type TEmailIconInputProps = {
   value?: string;
 };
 
+export type THomeNagigatorProps = {
+  [HOME_SCREEN]: undefined;
+  [NOTIFICATION_SCREEN]: undefined;
+};
+
 export type TRootNavigationProps = {
   //Navigators
   [TAB_NAVIGATOR]: undefined;
@@ -54,6 +64,7 @@ export type TRootNavigationProps = {
   [COMMUNITIES_NAVIGATOR]: undefined;
   [FRIENDS_NAVIGATOR]: undefined;
   [SEARCH_NAVIGATOR]: undefined;
+  [MESSAGES_NAVIGATOR]: undefined;
 
   //Screens
   [ACCOUNT_DETAILS]: undefined;
@@ -66,6 +77,9 @@ export type TRootNavigationProps = {
   [DEBUG_SCREEN]: undefined;
   [COMMENT_SCREEN]: {id: string; interaction: 'Comments' | 'Share' | 'Likes'};
   [OPTIONS_SCREEN]: {options: TOptions[]};
+  [MESSAGES_SCREEN_HOME]: undefined;
+  [MESSAGES_SCREEN_MESSAGE]: {id: string};
+  [NOTIFICATION_SCREEN]: undefined;
 };
 
 export type TAccountManagement = {
@@ -113,3 +127,45 @@ export type TOptions = {
   color?: string;
   iconSize?: number;
 };
+
+export type TButtonProps = {
+  styles?: any;
+  title: string;
+  isLoading?: boolean;
+  onPress: () => void;
+  type?: 'Primary' | 'Secondary';
+  disabled?: boolean;
+};
+
+export type THeaderProps = {
+  isHomeScreen?: boolean;
+  title?: string;
+};
+
+export interface IconProps {
+  viewStyle?: StyleProp<ViewStyle>;
+  size: number;
+  color: string;
+  testID?: string;
+}
+
+export interface IconsProps {
+  Icon: FC<IconProps> | IconDefinition;
+  size?: number;
+  state?: IconState;
+  viewStyle?: StyleProp<ViewStyle>;
+  testId?: string;
+  isScalable?: boolean;
+}
+
+export const IconStateNames = [
+  'default',
+  'selected',
+  'positive',
+  'negative',
+  'activeTab',
+  'inactiveTab',
+  'error',
+] as const;
+
+export type IconState = (typeof IconStateNames)[number];

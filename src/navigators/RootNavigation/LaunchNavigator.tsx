@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {
   ACCOUNT_NAVIGATOR,
   COMMENT_SCREEN,
+  MESSAGES_NAVIGATOR,
   OPTIONS_SCREEN,
   SEARCH_NAVIGATOR,
   TAB_NAVIGATOR,
@@ -12,7 +13,12 @@ import CommentView from '@DevEx/screens/CommentView/CommentView';
 import OptionsMenu from '@DevEx/screens/OptionsMenu/OptionsMenu';
 import {TRootNavigationProps} from '@DevEx/utils/types/types';
 
-import {AccountNavigator, SearchNavigator, TabNavigator} from '../index';
+import {
+  AccountNavigator,
+  MessagesNavigator,
+  SearchNavigator,
+  TabNavigator,
+} from '../index';
 
 import 'react-native-gesture-handler';
 
@@ -44,6 +50,10 @@ const LaunchNavigator = () => {
         }}
         name={OPTIONS_SCREEN}
         component={OptionsMenu}
+      />
+      <AuthStack.Screen
+        name={MESSAGES_NAVIGATOR}
+        component={MessagesNavigator}
       />
       <AuthStack.Screen name={SEARCH_NAVIGATOR} component={SearchNavigator} />
     </AuthStack.Navigator>

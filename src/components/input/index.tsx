@@ -3,6 +3,11 @@ import {TextInput, View} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import {
+  TEmailIconInputProps,
+  TIconInputProps,
+  TInputProps,
+} from '@DevEx/utils/types/types';
 
 import {createStyles} from './input.styles';
 

@@ -13,6 +13,7 @@ import {
   combineReducers,
   configureStore,
   createListenerMiddleware,
+  DeepPartial,
 } from '@reduxjs/toolkit';
 
 import {
@@ -51,16 +52,21 @@ const reducers = combineReducers({
   config: persistReducer(configPersistConfig, configReducer),
 });
 
-export const store = configureStore({
-  reducer: reducers,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }).prepend(listenerMiddleware.middleware),
-});
+export const setupStore = (preloadedState = {}) =>
+  configureStore({
+    preloadedState,
+    reducer: reducers,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }).prepend(listenerMiddleware.middleware),
+  });
+
+export const store = setupStore();
 
 export const persist = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
+export type PreloadedState = DeepPartial<RootState>;

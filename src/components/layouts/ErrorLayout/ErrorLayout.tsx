@@ -5,7 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {faCircleExclamation} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
-import {Button} from '@DevEx/components/button';
+import {Button} from '@DevEx/components/Button';
 import {Text} from '@DevEx/components/Text/text';
 import {strings} from '@DevEx/constants/stings';
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';

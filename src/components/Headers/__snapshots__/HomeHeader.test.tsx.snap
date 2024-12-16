@@ -1,0 +1,449 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Headers HomeHeader isHomeScreen - false Should match snapshot when isHomeScreen is set to false 1`] = `
+Array [
+  <RNCSafeAreaView
+    edges={
+      Object {
+        "bottom": "off",
+        "left": "additive",
+        "right": "additive",
+        "top": "additive",
+      }
+    }
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FAFAFA",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "marginHorizontal": 16,
+        "marginVertical": 8,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        Object {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        Object {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+          "right": 60,
+        }
+      }
+      testID="go-back-chevron"
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight="16"
+        bbWidth="16"
+        focusable={false}
+        height={16}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {},
+            Object {
+              "flex": 0,
+              "height": 16,
+              "width": 16,
+            },
+          ]
+        }
+        vbHeight={512}
+        vbWidth={320}
+        width={16}
+      >
+        <RNSVGGroup
+          fill={
+            Object {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGPath
+            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
+            fill={
+              Object {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
+    <Text
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      style={
+        Array [
+          false,
+          undefined,
+          Object {
+            "fontSize": 17,
+            "right": 8,
+            "textAlign": "center",
+            "width": 250,
+          },
+          Object {
+            "fontSize": undefined,
+            "marginHorizontal": undefined,
+            "marginVertical": undefined,
+          },
+        ]
+      }
+    >
+      TestScreen
+    </Text>
+  </RNCSafeAreaView>,
+  ",",
+]
+`;
+
+exports[`Headers HomeHeader isHomeScreen - true renders correctly 1`] = `
+<RNCSafeAreaView
+  edges={
+    Object {
+      "bottom": "off",
+      "left": "off",
+      "right": "off",
+      "top": "additive",
+    }
+  }
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FAFAFA",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "paddingBottom": 8,
+      "paddingHorizontal": 32,
+      "width": "100%",
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/assets/DevNotionLogo.png",
+      }
+    }
+    style={
+      Object {
+        "height": 32,
+        "width": 32,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "width": "15%",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        Object {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        Object {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="notification-bell-icon"
+    >
+      <View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#E73711",
+                "borderRadius": 5,
+                "height": 8,
+                "position": "absolute",
+                "right": "0%",
+                "top": "0%",
+                "width": 8,
+                "zIndex": 1,
+              },
+              undefined,
+            ]
+          }
+        />
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight="20"
+          bbWidth="20"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {},
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={512}
+          vbWidth={448}
+          width={20}
+        >
+          <RNSVGGroup
+            fill={
+              Object {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
+            <RNSVGPath
+              d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"
+              fill={
+                Object {
+                  "payload": 4283256141,
+                  "type": 0,
+                }
+              }
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        Object {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        Object {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="messages-plane-icon"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#E73711",
+              "borderRadius": 10,
+              "height": 14,
+              "justifyContent": "center",
+              "position": "absolute",
+              "right": "0%",
+              "top": "0%",
+              "width": 14,
+              "zIndex": 1,
+            },
+            Object {
+              "left": 17,
+            },
+          ]
+        }
+      >
+        <Text
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "fontWeight": "bold",
+              },
+              undefined,
+              Object {
+                "color": "#FFFFFF",
+              },
+              Object {
+                "fontSize": 10,
+                "marginHorizontal": undefined,
+                "marginVertical": undefined,
+              },
+            ]
+          }
+        >
+          1
+        </Text>
+      </View>
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight="25"
+        bbWidth="25"
+        fill="none"
+        focusable={false}
+        height={25}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 25,
+              "width": 25,
+            },
+          ]
+        }
+        vbHeight={24}
+        vbWidth={24}
+        width={25}
+      >
+        <RNSVGGroup
+          fill={null}
+          propList={
+            Array [
+              "fill",
+            ]
+          }
+        >
+          <RNSVGGroup
+            fill={
+              Object {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            name="Communication / Paper_Plane"
+          >
+            <RNSVGPath
+              d="M10.3078 13.6923L15.1539 8.84619M20.1113 5.88867L16.0207 19.1833C15.6541 20.3747 15.4706 20.9707 15.1544 21.1683C14.8802 21.3396 14.5406 21.3683 14.2419 21.2443C13.8975 21.1014 13.618 20.5433 13.0603 19.428L10.4694 14.2461C10.3809 14.0691 10.3366 13.981 10.2775 13.9043C10.225 13.8363 10.1645 13.7749 10.0965 13.7225C10.0215 13.6647 9.93486 13.6214 9.76577 13.5369L4.57192 10.9399C3.45662 10.3823 2.89892 10.1032 2.75601 9.75879C2.63207 9.4601 2.66033 9.12023 2.83169 8.84597C3.02928 8.52974 3.62523 8.34603 4.81704 7.97932L18.1116 3.88867C19.0486 3.60038 19.5173 3.45635 19.8337 3.57253C20.1094 3.67373 20.3267 3.89084 20.4279 4.16651C20.544 4.48283 20.3999 4.95126 20.1119 5.88729L20.1113 5.88867Z"
+              fill={
+                Object {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              name="Vector"
+              propList={
+                Array [
+                  "stroke",
+                  "strokeWidth",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                ]
+              }
+              stroke={
+                Object {
+                  "payload": 4283256141,
+                  "type": 0,
+                }
+              }
+              strokeLinecap={1}
+              strokeLinejoin={1}
+              strokeWidth="2.5"
+            />
+          </RNSVGGroup>
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
+  </View>
+</RNCSafeAreaView>
+`;

@@ -1,13 +1,19 @@
 import React from 'react';
-import {faComment, faHouse, faUsers} from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faHouse,
+  faMagnifyingGlass,
+  faUserGroup,
+} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import NotificationIcon from '@DevEx/components/NotificationIcon/NotificationIcon';
 import {
-  ADD_POST_SCREEN,
-  CHAT_NAVIGATOR,
+  ACCOUNT_MANAGEMENT,
   COMMUNITIES_NAVIGATOR,
   HOME_NAVIGATOR,
+  SEARCH_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import HomeNavigator from '@DevEx/navigators/HomeNavigator/HomeNavigator';
 import colors from '@DevEx/utils/styles/palette/colors';
@@ -20,11 +26,18 @@ const BaseLayer = () => {
 };
 
 const TabNavigator = () => {
+  const [count, setCount] = React.useState(2);
+
+  const onPress = (navigate?: () => void) => {
+    navigate && navigate();
+    setCount(0);
+  };
+
   return (
     <TabNavStack.Navigator
       screenOptions={{
         tabBarStyle: {
-          height: '7%',
+          height: '8%',
         },
       }}
       initialRouteName={HOME_NAVIGATOR}>
@@ -43,7 +56,38 @@ const TabNavigator = () => {
         component={HomeNavigator}
       />
       <TabNavStack.Screen
+        name={SEARCH_NAVIGATOR}
+        component={BaseLayer}
+        options={{
+          headerShown: false,
+          tabBarLabelStyle: {display: 'none'},
+          tabBarIcon: ({focused, size}) =>
+            FontAwesomeIcon({
+              size,
+              color: focused ? colors.primaryBlue : colors.grey20,
+              icon: faMagnifyingGlass,
+            }),
+        }}
+      />
+      <TabNavStack.Screen
         name={COMMUNITIES_NAVIGATOR}
+        options={({navigation}) => ({
+          headerShown: false,
+          tabBarLabelStyle: {display: 'none'},
+          tabBarIcon: ({focused, size}) =>
+            NotificationIcon({
+              onPress: () =>
+                onPress(navigation.navigate(COMMUNITIES_NAVIGATOR)),
+              count: count,
+              icon: faUserGroup,
+              size,
+              state: focused ? 'selected' : 'inactiveTab',
+            }),
+        })}
+        component={BaseLayer}
+      />
+      <TabNavStack.Screen
+        name={ACCOUNT_MANAGEMENT}
         options={{
           headerShown: false,
           tabBarLabelStyle: {display: 'none'},
@@ -51,56 +95,11 @@ const TabNavigator = () => {
             FontAwesomeIcon({
               size,
               color: focused ? colors.primaryBlue : colors.grey20,
-              icon: faUsers,
+              icon: faBars,
             }),
         }}
         component={BaseLayer}
       />
-      <TabNavStack.Screen
-        name={ADD_POST_SCREEN}
-        options={{
-          headerShown: false,
-          tabBarLabelStyle: {display: 'none'},
-          tabBarIcon: ({focused, size}) =>
-            FontAwesomeIcon({
-              size,
-              color: focused ? colors.primaryBlue : colors.grey20,
-              icon: faComment,
-            }),
-        }}
-        component={BaseLayer}
-      />
-      <TabNavStack.Screen
-        name={CHAT_NAVIGATOR}
-        options={{
-          headerShown: false,
-          tabBarLabelStyle: {display: 'none'},
-          tabBarIcon: ({focused, size}) =>
-            FontAwesomeIcon({
-              size,
-              color: focused ? colors.primaryBlue : colors.grey20,
-              icon: faComment,
-            }),
-        }}
-        component={BaseLayer}
-      />
-
-      {/*
-      TODO: To be replace the account account management screen
-      <TabNavStack.Screen
-        name={ACCOUNT_NAVIGATOR}
-        options={{
-          headerShown: false,
-          tabBarLabelStyle: {display: 'none'},
-          tabBarIcon: ({focused, size}) =>
-            FontAwesomeIcon({
-              size,
-              color: focused ? colors.primaryBlue : colors.grey20,
-              icon: faUsers,
-            }),
-        }}
-        component={BaseLayer}
-      /> */}
     </TabNavStack.Navigator>
   );
 };
