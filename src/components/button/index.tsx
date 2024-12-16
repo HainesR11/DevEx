@@ -7,7 +7,7 @@ import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 
 import LoadingSpinner from '../layouts/loadingSpinner/loadingSpinner';
 
-import {createStyles} from './button.styles';
+import {createStyles} from './Button.styles';
 
 type TButtonProps = {
   styles?: any;
@@ -27,6 +27,7 @@ export const Button = ({
   disabled = false,
 }: TButtonProps) => {
   const style = useThemedStyles(createStyles);
+
   return type === 'Primary' ? (
     <TouchableOpacity disabled={disabled} onPress={onPress}>
       <View
